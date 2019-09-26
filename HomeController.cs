@@ -26,28 +26,38 @@ namespace WebApi.Controllers
 
         public ActionResult Index()
         {
-            Validacao();
+            //Validacao();
             //WebScrapingArpenp();
             //WebScrapingCadesp();
             //WebSrapingArisp();
             //WebScrapingJucesp();
 
             //System.Environment.Exit(1);
-
-            return null;
+            
+            return View();
 
         }
 
-        public void Validacao()
+        [HttpPost]
+        public ActionResult Validacao(LoginModel loginModel)
         {
             using (IWebDriver driver = new ChromeDriver())
             {
 
                 driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/ ");
-                driver.FindElement(By.Id("username")).SendKeys("fiap");
-                driver.FindElement(By.Id("password")).SendKeys("mpsp");
+                driver.FindElement(By.Id("username")).SendKeys(loginModel.Login);
+                driver.FindElement(By.Id("password")).SendKeys(loginModel.Senha);
                 driver.FindElement(By.Id("password")).SendKeys(Keys.Enter);
+
+                if (driver.FindElement(By.XPath("/html/body/div/form/div")).Enabled)
+                {
+                    return RedirectToAction("Validacao", "Home");
+                }
+                else
+                {
+                    return View(loginModel);                }
             }
+            
         }
 
 
