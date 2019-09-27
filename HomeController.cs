@@ -18,45 +18,44 @@ using org.apache.pdfbox.util;
 using java.net;
 using Newtonsoft.Json;
 using Microsoft.Ajax.Utilities;
+using WebApi.Repositories;
+//using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ValidacaoRepository validacaoRepository;
 
-        public ActionResult Index()
+        public HomeController()
         {
-            //Validacao();
-            //WebScrapingArpenp();
-            //WebScrapingCadesp();
-            //WebSrapingArisp();
-            //WebScrapingJucesp();
+            validacaoRepository = new ValidacaoRepository();
+        }
 
-            //System.Environment.Exit(1);
+        [HttpGet]
+        public  ActionResult Login()
+        {
             
-            return View();
+            return View(new LoginModel());
 
         }
 
-        [HttpPost]
-        public ActionResult Validacao(LoginModel loginModel)
+        [System.Web.Http.HttpPost]
+        public ActionResult Login(LoginModel loginModel)
         {
-            using (IWebDriver driver = new ChromeDriver())
-            {
+            
+                bool validacao = validacaoRepository.Validacao(loginModel);
 
-                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/ ");
-                driver.FindElement(By.Id("username")).SendKeys(loginModel.Login);
-                driver.FindElement(By.Id("password")).SendKeys(loginModel.Senha);
-                driver.FindElement(By.Id("password")).SendKeys(Keys.Enter);
-
-                if (driver.FindElement(By.XPath("/html/body/div/form/div")).Enabled)
+                if (validacao == false)
                 {
-                    return RedirectToAction("Validacao", "Home");
+                    return RedirectToAction("Login", "Home");
                 }
                 else
                 {
-                    return View(loginModel);                }
+                    //return View(loginModel);
+                    return RedirectToAction("Index", "Home");
             }
+            
             
         }
 
