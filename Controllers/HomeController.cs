@@ -17,82 +17,112 @@ using org.apache.pdfbox.pdfparser;
 using org.apache.pdfbox.util;
 using java.net;
 using Newtonsoft.Json;
+using Microsoft.Ajax.Utilities;
+using WebApi.Repositories;
+using WebApi.Scraping;
+//using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ValidacaoRepository validacaoRepository;
+        private readonly WebScrapingArpensp webScrapingArpensp;
 
-        public ActionResult Index()
+        public HomeController()
         {
+            validacaoRepository = new ValidacaoRepository();
+            webScrapingArpensp = new WebScrapingArpensp();
+        }
 
-            WebScrapingArpenp();
-            //WebScrapingCadesp();
-            //WebSrapingArisp();
-            //WebScrapingJucesp();
-
-            System.Environment.Exit(1);
-
-            return null;
+        [HttpGet]
+        public  ActionResult Login()
+        {
+            
+            return View(new LoginModel());
 
         }
 
-        public void Validação()
+        [HttpPost]
+        public ActionResult Login(LoginModel loginModel)
         {
-            using (IWebDriver driver = new ChromeDriver())
-            {
+            bool validacao = validacaoRepository.Validacao(loginModel);
 
-                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/ ");
-                driver.FindElement(By.Id("username")).SendKeys("fiap");
-                driver.FindElement(By.Id("password")).SendKeys("mpsp");
-                driver.FindElement(By.Id("password")).SendKeys(Keys.Enter);
+            if (validacao == false)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            else
+            {
+                //Ação após login sucesso
+                //return View(loginModel);
+                return RedirectToAction("Menu", "Home");
             }
         }
 
 
         [HttpGet]
+        public ActionResult Menu()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult PesquisaCPFCNPJ()
+        {
+            return View(new PesquisaCPFCNPJ());
+        }
+
+        [HttpPost]
+        public ActionResult PesquisaCPFCNPJ(PesquisaCPFCNPJ pesquisaCPFCNPJ)
+        {
+
+            string arpensp = webScrapingArpensp.Arpensp(pesquisaCPFCNPJ);
+
+            return View(new PesquisaCPFCNPJ());
+        }
+
+        [HttpGet]
         //localhost:49850/home/WebScrapingArpenp
         //Arpensp
-        public void WebScrapingArpenp()
+        public JsonResult WebScrapingArpenp(PesquisaCPFCNPJ cpfcnpj)
         {
             using (IWebDriver driver = new ChromeDriver())
             {
 
-                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/ ");
+                /*driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/ ");
                 driver.FindElement(By.Id("username")).SendKeys("fiap");
                 driver.FindElement(By.Id("password")).SendKeys("mpsp");
                 driver.FindElement(By.Id("password")).SendKeys(Keys.Enter);
-
-                driver.Manage().Window.Maximize();
+                */
+                //driver.Manage().Window.Maximize();
                 Actions builder = new Actions(driver);
 
                 driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/arpensp/login.html");
 
                 driver.FindElement(By.XPath("//*[@id='main']/div[2]/div[2]/div[2]/div/a/img")).Click();
-                System.Threading.Thread.Sleep(500);
+                //System.Threading.Thread.Sleep(500);
                 driver.FindElement(By.ClassName("item3")).Click();
-                System.Threading.Thread.Sleep(500);
+                //System.Threading.Thread.Sleep(500);
                 driver.FindElement(By.XPath("//*[@id='wrapper']/ul/li[2]/ul/li[1]/a")).Click();
                 driver.FindElement(By.XPath("//*[@id='principal']/div/form/table/tbody/tr[9]/td[2]/input")).SendKeys("Teste");
                 driver.FindElement(By.ClassName("botao")).SendKeys(Keys.Enter);
 
                 var resultado = driver.FindElement(By.ClassName("principal")).Text;
 
-                string[] entersplit = resultado.Split('\r','\n');
+                string[] strsplit = resultado.Replace("\r\n",":").Split(':');
 
-                string[] strsplit = resultado.Split(':');
-
-                string cartorioRegistro = strsplit[1];
-                string numeroCNS = strsplit[3];
-                string uf = strsplit[5];
-                string nomeConj = strsplit[7];
-                string novoNomeConj = strsplit[9];
-                string nomeConj2 = strsplit[11];
-                string novoNomeConj2 = strsplit[13];
-                string dataCasamento = strsplit[15];
-                string matricula = strsplit[17];
-                //string dataEntrada = strsplit[19];
-                //string dataRegistro = strsplit[21];
+                string cartorioRegistro = strsplit[3];
+                string numeroCNS = strsplit[5];
+                string uf = strsplit[7];
+                string nomeConj = strsplit[10];
+                string novoNomeConj = strsplit[12];
+                string nomeConj2 = strsplit[14];
+                string novoNomeConj2 = strsplit[16];
+                string dataCasamento = strsplit[18];
+                string matricula = strsplit[20];
+                string dataEntrada = strsplit[22];
+                string dataRegistro = strsplit[24];
 
                 ArpenspModel objArp = new ArpenspModel();
                 objArp.CartorioRegistro = cartorioRegistro;
@@ -104,13 +134,15 @@ namespace WebApi.Controllers
                 objArp.NovoNomeConj2 = novoNomeConj2;
                 objArp.DataCasamento = dataCasamento;
                 objArp.Matricula = matricula;
-                //objArp.DataEntrada = dataEntrada;
-                //objArp.DataRegistro = dataRegistro;
-
-                string objjsonData = JsonConvert.SerializeObject(objArp);
+                objArp.DataEntrada = dataEntrada;
+                objArp.DataRegistro = dataRegistro;
+                
+                string objjsonData = JsonConvert.SerializeObject(objArp, new JsonSerializerSettings { Formatting = Formatting.Indented });
+                
                 Response.Write(objjsonData);
-                System.IO.File.WriteAllText(@"C:\Users\Nicolas PC\Desktop\teste\Arpensp.txt", objjsonData);
-                //System.IO.File.WriteAllText(@"C:\Users\nperes\Desktop\Projeto\Arquivos\Arpensp.txt", objjsonData);
+                //System.IO.File.WriteAllText(@"C:\Users\Nicolas PC\Desktop\teste\Arpensp.txt", objjsonData);
+                System.IO.File.WriteAllText(@"C:\Users\nperes\Desktop\Projeto\Arquivos\Arpensp.txt", objjsonData);
+                return Json(objjsonData, JsonRequestBehavior.AllowGet);
 
             }
         }
@@ -131,18 +163,18 @@ namespace WebApi.Controllers
         }
 
         //Cadesp
-        public void WebScrapingCadesp()
+        public JsonResult WebScrapingCadesp()
         {
 
             using (IWebDriver driver = new ChromeDriver())
             {
-                driver.Manage().Window.Maximize();
-                Actions builder = new Actions(driver);
-
+                /*driver.Manage().Window.Maximize();
                 driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/ ");
                 driver.FindElement(By.Id("username")).SendKeys("fiap");
                 driver.FindElement(By.Id("password")).SendKeys("mpsp");
                 driver.FindElement(By.Id("password")).SendKeys(Keys.Enter);
+                */
+                Actions builder = new Actions(driver);
 
                 driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/cadesp/login.html");
                 driver.FindElement(By.Id("ctl00_conteudoPaginaPlaceHolder_loginControl_UserName")).SendKeys("fiap");
@@ -160,7 +192,46 @@ namespace WebApi.Controllers
 
                 var resultado = driver.FindElement(By.XPath("//*[@id='ctl00_conteudoPaginaPlaceHolder_dlEstabelecimentoGeral']/tbody/tr[2]/td")).Text;
 
-                System.IO.File.WriteAllText(@"C:\Users\Nicolas PC\Desktop\teste\Cadesp.txt", resultado1 + resultado);
+                var resultadoFinal = resultado1 + resultado;
+
+                string[] strsplit = resultadoFinal.Replace("\r\n", ":").Split(':');
+
+                string ie = strsplit[1].Replace("Situação", "");
+                string situacao = strsplit[2];
+                string cnpj = strsplit[4].Replace("Data da Inscrição no Estado", "");
+                string dataInscricao = strsplit[5];
+                string nomeEmpresarial = strsplit[7].Replace("Regime Estadual", "");
+                string regimeEstadual = strsplit[8];
+                string drt = strsplit[10].Replace("Posto Fiscal", "");
+                string postoFiscal = strsplit[11];
+                string nire = strsplit[21];
+                string ocorrenciaFiscal = strsplit[26];
+                string tipoUnidade = strsplit[28].Replace("Formas de Atuação", "");
+                string formaAtuacao = strsplit[30];
+
+                CadespModel objCad = new CadespModel();
+
+                objCad.IE = ie;
+                objCad.Situacao = situacao;
+                objCad.CNPJ = cnpj;
+                objCad.DataInscricao = dataInscricao;
+                objCad.NomeEmpresarial = nomeEmpresarial;
+                objCad.RegimeEstadual = regimeEstadual;
+                objCad.DRT = drt;
+                objCad.PostoFiscal = postoFiscal;
+                objCad.Nire = nire;
+                objCad.OcorrenciaFiscal = ocorrenciaFiscal;
+                objCad.TipoUnidade = tipoUnidade;
+                objCad.FormasAtuacao = formaAtuacao;
+
+                string objjsonData = JsonConvert.SerializeObject(objCad, new JsonSerializerSettings { Formatting = Formatting.Indented });
+
+                Response.Write(objjsonData);
+
+                //System.IO.File.WriteAllText(@"C:\Users\Nicolas PC\Desktop\teste\Cadesp.txt", resultado1 + resultado);
+                System.IO.File.WriteAllText(@"C:\Users\nperes\Desktop\Projeto\Arquivos\Cadesp.txt", objjsonData);
+
+                return Json(objjsonData, JsonRequestBehavior.AllowGet);
             }
 
 
@@ -170,12 +241,12 @@ namespace WebApi.Controllers
         {
             using (IWebDriver driver = new ChromeDriver())
             {
-                driver.Manage().Window.Maximize();
+                /*driver.Manage().Window.Maximize();
                 driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/ ");
                 driver.FindElement(By.Id("username")).SendKeys("fiap");
                 driver.FindElement(By.Id("password")).SendKeys("mpsp");
                 driver.FindElement(By.Id("password")).SendKeys(Keys.Enter);
-
+                */
 
                 Actions builder = new Actions(driver);
 
@@ -233,17 +304,17 @@ namespace WebApi.Controllers
 
         }
 
-        public void WebScrapingJucesp()
+        public JsonResult WebScrapingJucesp()
         {
 
             using (IWebDriver driver = new ChromeDriver())
             {
-                driver.Manage().Window.Maximize();
+                /*driver.Manage().Window.Maximize();
                 driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/ ");
                 driver.FindElement(By.Id("username")).SendKeys("fiap");
                 driver.FindElement(By.Id("password")).SendKeys("mpsp");
                 driver.FindElement(By.Id("password")).SendKeys(Keys.Enter);
-
+                */
 
                 Actions builder = new Actions(driver);
 
@@ -266,23 +337,25 @@ namespace WebApi.Controllers
                 }
                 driver.FindElement(By.XPath("//*[@id='ctl00_cphContent_gdvResultadoBusca_gdvContent']/tbody/tr/td")).Click();
 
-                var dados = driver.FindElement(By.Id("dados")).Text;
+                var resultadoFinal = driver.FindElement(By.Id("dados")).Text;
 
-                string[] entersplit = dados.Split('\n');
+                string[] strsplit = resultadoFinal.Replace("\r\n", ":").Split(':');
 
-                //string enter = entersplit[3];
-
-                //string[] strsplit = enter.Split(':');
-
-                string[] strsplit = dados.Split(':');
-
-                string data = strsplit[1];
-                string nome = entersplit[1];
-                string nMatriz = entersplit[4];
-                string tipoEmpresa = entersplit[9];
-                string dataConst = entersplit[11];
-                string inicioAtiv = entersplit[13];
-                string cnpj = entersplit[15];
+                string data = strsplit[1].Replace("17", "");
+                string nome = strsplit[4];
+                string nMatriz = strsplit[7];
+                string tipoEmpresa = strsplit[12];
+                string dataConst = strsplit[14];
+                string inicioAtiv = strsplit[16];
+                string cnpj = strsplit[18];
+                string capital = strsplit[26];
+                string logradouro = strsplit[28];
+                string numero = strsplit[30];
+                string complemento = strsplit[34];
+                string bairro = strsplit[32];
+                string municipio = strsplit[36];
+                string cep = strsplit[38];
+                string uf = strsplit[40];
 
                 JucespModel objJu = new JucespModel();
                 objJu.Data = data;
@@ -292,10 +365,20 @@ namespace WebApi.Controllers
                 objJu.DataConst = dataConst;
                 objJu.InicioAtiv = inicioAtiv;
                 objJu.CNPJ = cnpj;
+                objJu.Capital = capital;
+                objJu.Logradouro = logradouro;
+                objJu.Numero = numero;
+                objJu.Complemento = complemento;
+                objJu.Bairro = bairro;
+                objJu.Municipio = municipio;
+                objJu.Cep = cep;
+                objJu.Uf = uf;
                 string objjsonData = JsonConvert.SerializeObject(objJu);
                 Response.Write(objjsonData);
 
                 System.IO.File.WriteAllText(@"C:\Users\nperes\Desktop\Projeto\Arquivos\Jucesp.txt", objjsonData);
+
+                return Json(objjsonData, JsonRequestBehavior.AllowGet);
             }
         }
 

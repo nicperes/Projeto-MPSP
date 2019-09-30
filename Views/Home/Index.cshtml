@@ -7,7 +7,7 @@
 
 <html lang="en">
 <head>
-    <title>Login V3</title>
+    <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -38,7 +38,7 @@
     <div class="limiter">
         <div class="container-login100" style="background-image: url(../../wwwroot/images/bg-01.jpg)">
             <div class="wrap-login100">
-                <form class="login100-form validate-form" asp-action="Validacao" asp-controller="Home" asp-route-id="" method="post">
+                <form class="login100-form validate-form" asp-action="Login" asp-controller="Home" asp-route-id="" method="post">
                     <span class="login100-form-logo">
                         <img src="~/wwwroot/images/mpsp.png" />
                     </span>
@@ -46,12 +46,14 @@
                         Log in
                     </span>
 
-                    <div class="wrap-input100 validate-input" data-validate="Usuário">
-                        <input class="input100" type="text" asp-for="Login" name="usuario" placeholder="Usuário">
+                    <div class="wrap-input100 validate-input" data-validate="Login">
+                        <label asp-for="Login"></label>
+                        <input class="input100" type="text" asp-for="Login" name="login" placeholder="Login">
                         <span class="focus-input100" data-placeholder="&#xf207;"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Senha">
+                        <label asp-for="Senha"></label>
                         <input class="input100" type="password" asp-for="Senha" name="senha" placeholder="Senha">
                         <span class="focus-input100" data-placeholder="&#xf191;"></span>
                     </div>

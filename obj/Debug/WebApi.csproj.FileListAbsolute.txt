@@ -1,240 +1,296 @@
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\WebApi.dll.config
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\WebApi.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\WebApi.pdb
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\csc.exe
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\csc.exe.config
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\csc.rsp
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\csi.exe
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\csi.exe.config
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\csi.rsp
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\Microsoft.Managed.Core.targets
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.AppContext.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.Console.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.IO.Compression.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.IO.FileSystem.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.IO.Pipes.AccessControl.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.IO.Pipes.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.Security.AccessControl.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.Security.Claims.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.Security.Cryptography.Encoding.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.Security.Cryptography.Primitives.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.Security.Principal.Windows.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.Text.Encoding.CodePages.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.ValueTuple.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.Xml.ReaderWriter.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.Xml.XmlDocument.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.Xml.XPath.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\System.Xml.XPath.XDocument.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\vbc.exe
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\vbc.exe.config
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\vbc.rsp
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\VBCSCompiler.exe
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\Microsoft.Win32.Primitives.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\netstandard.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.AppContext.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Collections.Concurrent.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Collections.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Collections.NonGeneric.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Collections.Specialized.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.ComponentModel.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.ComponentModel.EventBasedAsync.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.ComponentModel.Primitives.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.ComponentModel.TypeConverter.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Console.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Data.Common.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Diagnostics.Contracts.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Diagnostics.Debug.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Diagnostics.FileVersionInfo.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Diagnostics.Process.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Diagnostics.StackTrace.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Diagnostics.TextWriterTraceListener.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Diagnostics.Tools.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Diagnostics.TraceSource.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Diagnostics.Tracing.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Drawing.Primitives.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Dynamic.Runtime.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Globalization.Calendars.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Globalization.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Globalization.Extensions.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.IO.Compression.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.IO.Compression.ZipFile.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.IO.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.IO.FileSystem.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.IO.FileSystem.DriveInfo.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.IO.FileSystem.Primitives.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.IO.FileSystem.Watcher.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.IO.IsolatedStorage.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.IO.MemoryMappedFiles.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.IO.Pipes.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.IO.UnmanagedMemoryStream.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Linq.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Linq.Expressions.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Linq.Parallel.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Linq.Queryable.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Net.Http.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Net.NameResolution.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Net.NetworkInformation.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Net.Ping.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Net.Primitives.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Net.Requests.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Net.Security.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Net.Sockets.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Net.WebHeaderCollection.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Net.WebSockets.Client.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Net.WebSockets.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.ObjectModel.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Reflection.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Reflection.Extensions.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Reflection.Primitives.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Resources.Reader.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Resources.ResourceManager.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Resources.Writer.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Runtime.CompilerServices.VisualC.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Runtime.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Runtime.Extensions.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Runtime.Handles.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Runtime.InteropServices.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Runtime.InteropServices.RuntimeInformation.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Runtime.Numerics.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Runtime.Serialization.Formatters.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Runtime.Serialization.Json.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Runtime.Serialization.Primitives.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Runtime.Serialization.Xml.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Security.Claims.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Security.Cryptography.Algorithms.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Security.Cryptography.Csp.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Security.Cryptography.Encoding.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Security.Cryptography.Primitives.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Security.Cryptography.X509Certificates.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Security.Principal.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Security.SecureString.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Text.Encoding.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Text.Encoding.Extensions.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Text.RegularExpressions.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Threading.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Threading.Overlapped.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Threading.Tasks.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Threading.Tasks.Parallel.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Threading.Thread.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Threading.ThreadPool.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Threading.Timer.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.ValueTuple.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Xml.ReaderWriter.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Xml.XDocument.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Xml.XmlDocument.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Xml.XmlSerializer.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Xml.XPath.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Xml.XPath.XDocument.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\Antlr3.Runtime.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\bcmail-jdk15-1.44.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\bcprov-jdk15-1.44.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\Carbon.Data.Protection.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\Carbon.Json.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\Carbon.Packaging.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\Carbon.Storage.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\Carbon.VersionControl.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\Carbon.Versioning.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\commons-logging.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\Facebook.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\fontbox-1.8.2.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\GitHub.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\icu4j-3.8.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\IKVM.OpenJDK.Beans.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\IKVM.OpenJDK.Charsets.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\IKVM.OpenJDK.Corba.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\IKVM.OpenJDK.Core.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\IKVM.OpenJDK.Jdbc.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\IKVM.OpenJDK.Management.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\IKVM.OpenJDK.Media.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\IKVM.OpenJDK.Misc.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\IKVM.OpenJDK.Naming.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\IKVM.OpenJDK.Remoting.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\IKVM.OpenJDK.Security.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\IKVM.OpenJDK.SwingAWT.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\IKVM.OpenJDK.Text.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\IKVM.OpenJDK.Util.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\IKVM.OpenJDK.XML.API.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\IKVM.Runtime.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\IKVM.Runtime.JNI.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\jempbox-1.8.2.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\junit.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\Microsoft.AspNet.TelemetryCorrelation.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\Newtonsoft.Json.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\pdfbox-1.8.2.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Buffers.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Diagnostics.DiagnosticSource.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Memory.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Net.Http.Formatting.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Numerics.Vectors.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Text.Encodings.Web.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Threading.Tasks.Extensions.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Web.Helpers.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Web.Http.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Web.Http.WebHost.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Web.Mvc.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Web.Optimization.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Web.Razor.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Web.WebPages.Deployment.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Web.WebPages.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Web.WebPages.Razor.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\WebDriver.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\WebGrease.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\Facebook.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Buffers.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Memory.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Numerics.Vectors.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Text.Encodings.Web.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Threading.Tasks.Extensions.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\Newtonsoft.Json.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Net.Http.Formatting.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Web.Helpers.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Web.Http.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Web.Http.WebHost.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Web.Mvc.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Web.Optimization.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Web.Razor.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Web.WebPages.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Web.WebPages.Deployment.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Web.WebPages.Razor.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\WebDriver.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\Antlr3.Runtime.pdb
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\System.Diagnostics.DiagnosticSource.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\Microsoft.AspNet.TelemetryCorrelation.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\pt-br\System.Net.Http.Formatting.resources.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\pt-br\System.Web.Helpers.resources.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\pt-br\System.Web.Http.resources.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\pt-br\System.Web.Http.WebHost.resources.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\pt-br\System.Web.Mvc.resources.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\pt-br\System.Web.Optimization.resources.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\pt-br\System.Web.Razor.resources.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\pt-br\System.Web.WebPages.resources.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\pt-br\System.Web.WebPages.Deployment.resources.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\bin\pt-br\System.Web.WebPages.Razor.resources.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\obj\Debug\WebApi.csprojAssemblyReference.cache
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\obj\Debug\WebApi.csproj.CoreCompileInputs.cache
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\obj\Debug\WebApi.csproj.CopyComplete
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\obj\Debug\WebApi.dll
-C:\Users\Nicolas PC\Desktop\WebApi\WebApi\obj\Debug\WebApi.pdb
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\WebApi.dll.config
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\WebApi.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\WebApi.pdb
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\csc.exe
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\csc.exe.config
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\csc.rsp
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\csi.exe
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\csi.exe.config
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\csi.rsp
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.AppContext.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.Console.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.IO.Compression.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.IO.Pipes.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.Security.Claims.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.ValueTuple.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.Xml.XPath.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\vbc.exe
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\vbc.exe.config
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\vbc.rsp
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\VBCSCompiler.exe
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Win32.Primitives.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\netstandard.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.AppContext.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Collections.Concurrent.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Collections.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Collections.NonGeneric.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Collections.Specialized.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.ComponentModel.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.ComponentModel.EventBasedAsync.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.ComponentModel.Primitives.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.ComponentModel.TypeConverter.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Console.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Data.Common.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Diagnostics.Contracts.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Diagnostics.Debug.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Diagnostics.FileVersionInfo.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Diagnostics.Process.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Diagnostics.StackTrace.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Diagnostics.TextWriterTraceListener.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Diagnostics.Tools.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Diagnostics.TraceSource.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Diagnostics.Tracing.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Drawing.Primitives.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Dynamic.Runtime.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Globalization.Calendars.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Globalization.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Globalization.Extensions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.IO.Compression.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.IO.Compression.ZipFile.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.IO.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.IO.FileSystem.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.IO.FileSystem.DriveInfo.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.IO.FileSystem.Primitives.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.IO.FileSystem.Watcher.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.IO.IsolatedStorage.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.IO.MemoryMappedFiles.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.IO.Pipes.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.IO.UnmanagedMemoryStream.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Linq.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Linq.Expressions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Linq.Parallel.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Linq.Queryable.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Net.Http.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Net.NameResolution.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Net.NetworkInformation.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Net.Ping.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Net.Primitives.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Net.Requests.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Net.Security.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Net.Sockets.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Net.WebHeaderCollection.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Net.WebSockets.Client.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Net.WebSockets.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.ObjectModel.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Reflection.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Reflection.Extensions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Reflection.Primitives.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Resources.Reader.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Resources.ResourceManager.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Resources.Writer.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Runtime.CompilerServices.VisualC.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Runtime.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Runtime.Extensions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Runtime.Handles.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Runtime.InteropServices.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Runtime.Numerics.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Runtime.Serialization.Formatters.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Runtime.Serialization.Json.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Runtime.Serialization.Primitives.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Runtime.Serialization.Xml.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Security.Claims.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Security.Cryptography.Algorithms.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Security.Cryptography.Csp.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Security.Cryptography.Encoding.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Security.Cryptography.Primitives.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Security.Cryptography.X509Certificates.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Security.Principal.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Security.SecureString.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Text.Encoding.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Text.Encoding.Extensions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Text.RegularExpressions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Threading.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Threading.Overlapped.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Threading.Tasks.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Threading.Tasks.Parallel.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Threading.Thread.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Threading.ThreadPool.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Threading.Timer.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.ValueTuple.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Xml.ReaderWriter.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Xml.XDocument.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Xml.XmlDocument.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Xml.XmlSerializer.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Xml.XPath.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Xml.XPath.XDocument.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Antlr3.Runtime.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\bcmail-jdk15-1.44.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\bcprov-jdk15-1.44.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Carbon.Data.Protection.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Carbon.Json.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Carbon.Packaging.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Carbon.Storage.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Carbon.VersionControl.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Carbon.Versioning.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\commons-logging.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Facebook.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\fontbox-1.8.2.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\GitHub.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\icu4j-3.8.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\IKVM.OpenJDK.Beans.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\IKVM.OpenJDK.Charsets.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\IKVM.OpenJDK.Corba.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\IKVM.OpenJDK.Core.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\IKVM.OpenJDK.Jdbc.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\IKVM.OpenJDK.Management.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\IKVM.OpenJDK.Media.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\IKVM.OpenJDK.Misc.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\IKVM.OpenJDK.Naming.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\IKVM.OpenJDK.Remoting.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\IKVM.OpenJDK.Security.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\IKVM.OpenJDK.SwingAWT.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\IKVM.OpenJDK.Text.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\IKVM.OpenJDK.Util.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\IKVM.OpenJDK.XML.API.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\IKVM.Runtime.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\IKVM.Runtime.JNI.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\jempbox-1.8.2.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\junit.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Newtonsoft.Json.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\pdfbox-1.8.2.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Buffers.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Memory.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Net.Http.Formatting.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Numerics.Vectors.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Text.Encodings.Web.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Web.Helpers.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Web.Http.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Web.Http.WebHost.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Web.Mvc.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Web.Optimization.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Web.Razor.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Web.WebPages.Deployment.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Web.WebPages.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Web.WebPages.Razor.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\WebDriver.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\WebGrease.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Facebook.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Buffers.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Memory.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Numerics.Vectors.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Text.Encodings.Web.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Newtonsoft.Json.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Net.Http.Formatting.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Web.Helpers.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Web.Http.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Web.Http.WebHost.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Web.Mvc.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Web.Optimization.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Web.Razor.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Web.WebPages.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Web.WebPages.Deployment.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Web.WebPages.Razor.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\WebDriver.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Antlr3.Runtime.pdb
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\pt-br\System.Net.Http.Formatting.resources.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\pt-br\System.Web.Helpers.resources.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\pt-br\System.Web.Http.resources.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\pt-br\System.Web.Http.WebHost.resources.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\pt-br\System.Web.Mvc.resources.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\pt-br\System.Web.Optimization.resources.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\pt-br\System.Web.Razor.resources.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\pt-br\System.Web.WebPages.resources.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\pt-br\System.Web.WebPages.Deployment.resources.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\pt-br\System.Web.WebPages.Razor.resources.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\obj\Debug\WebApi.csprojAssemblyReference.cache
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\obj\Debug\WebApi.csproj.CoreCompileInputs.cache
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\obj\Debug\WebApi.csproj.CopyComplete
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\obj\Debug\WebApi.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\obj\Debug\WebApi.pdb
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Json.Net.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Authentication.Abstractions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Authentication.Core.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Authorization.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Authorization.Policy.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Hosting.Abstractions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Http.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Http.Extensions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Mvc.Abstractions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Mvc.Core.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.ResponseCaching.Abstractions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Routing.Abstractions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Routing.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Extensions.DependencyModel.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Extensions.ObjectPool.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Extensions.Options.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Net.Http.Headers.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\System.ComponentModel.Annotations.dll
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Authentication.Abstractions.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Authentication.Core.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Authorization.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Authorization.Policy.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Hosting.Abstractions.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Hosting.Server.Abstractions.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Http.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Http.Abstractions.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Http.Extensions.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Http.Features.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Mvc.Abstractions.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Mvc.Core.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.ResponseCaching.Abstractions.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Routing.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.Routing.Abstractions.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.AspNetCore.WebUtilities.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Extensions.Hosting.Abstractions.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Extensions.ObjectPool.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Extensions.Options.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\nperes\Desktop\Projeto\WebApi\WebApi\bin\Microsoft.Net.Http.Headers.xml
