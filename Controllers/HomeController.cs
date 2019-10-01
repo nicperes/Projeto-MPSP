@@ -28,11 +28,13 @@ namespace WebApi.Controllers
     {
         private readonly ValidacaoRepository validacaoRepository;
         private readonly WebScrapingArpensp webScrapingArpensp;
-
+        private readonly RelatorioSimplificadoRepository relatorioSimplificadoRepository;
+        
         public HomeController()
         {
             validacaoRepository = new ValidacaoRepository();
             webScrapingArpensp = new WebScrapingArpensp();
+            relatorioSimplificadoRepository = new RelatorioSimplificadoRepository();
         }
 
         [HttpGet]
@@ -79,73 +81,19 @@ namespace WebApi.Controllers
 
             string arpensp = webScrapingArpensp.Arpensp(pesquisaCPFCNPJ);
 
-            return View(new PesquisaCPFCNPJ());
+            ArpenspModel alo = relatorioSimplificadoRepository.Simples(arpensp);
+
+            //return View(RelatorioSimplificado(alo));
+            return RedirectToAction("RelatorioSimplificado",alo);
         }
 
         [HttpGet]
-        //localhost:49850/home/WebScrapingArpenp
-        //Arpensp
-        public JsonResult WebScrapingArpenp(PesquisaCPFCNPJ cpfcnpj)
+        public ActionResult RelatorioSimplificado(ArpenspModel arpenspModel)
         {
-            using (IWebDriver driver = new ChromeDriver())
-            {
-
-                /*driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/ ");
-                driver.FindElement(By.Id("username")).SendKeys("fiap");
-                driver.FindElement(By.Id("password")).SendKeys("mpsp");
-                driver.FindElement(By.Id("password")).SendKeys(Keys.Enter);
-                */
-                //driver.Manage().Window.Maximize();
-                Actions builder = new Actions(driver);
-
-                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/arpensp/login.html");
-
-                driver.FindElement(By.XPath("//*[@id='main']/div[2]/div[2]/div[2]/div/a/img")).Click();
-                //System.Threading.Thread.Sleep(500);
-                driver.FindElement(By.ClassName("item3")).Click();
-                //System.Threading.Thread.Sleep(500);
-                driver.FindElement(By.XPath("//*[@id='wrapper']/ul/li[2]/ul/li[1]/a")).Click();
-                driver.FindElement(By.XPath("//*[@id='principal']/div/form/table/tbody/tr[9]/td[2]/input")).SendKeys("Teste");
-                driver.FindElement(By.ClassName("botao")).SendKeys(Keys.Enter);
-
-                var resultado = driver.FindElement(By.ClassName("principal")).Text;
-
-                string[] strsplit = resultado.Replace("\r\n",":").Split(':');
-
-                string cartorioRegistro = strsplit[3];
-                string numeroCNS = strsplit[5];
-                string uf = strsplit[7];
-                string nomeConj = strsplit[10];
-                string novoNomeConj = strsplit[12];
-                string nomeConj2 = strsplit[14];
-                string novoNomeConj2 = strsplit[16];
-                string dataCasamento = strsplit[18];
-                string matricula = strsplit[20];
-                string dataEntrada = strsplit[22];
-                string dataRegistro = strsplit[24];
-
-                ArpenspModel objArp = new ArpenspModel();
-                objArp.CartorioRegistro = cartorioRegistro;
-                objArp.NumCNS = numeroCNS;
-                objArp.UF = uf;
-                objArp.NomeConj = nomeConj;
-                objArp.NovoNomeConj = novoNomeConj;
-                objArp.NomeConj2 = nomeConj2;
-                objArp.NovoNomeConj2 = novoNomeConj2;
-                objArp.DataCasamento = dataCasamento;
-                objArp.Matricula = matricula;
-                objArp.DataEntrada = dataEntrada;
-                objArp.DataRegistro = dataRegistro;
-                
-                string objjsonData = JsonConvert.SerializeObject(objArp, new JsonSerializerSettings { Formatting = Formatting.Indented });
-                
-                Response.Write(objjsonData);
-                //System.IO.File.WriteAllText(@"C:\Users\Nicolas PC\Desktop\teste\Arpensp.txt", objjsonData);
-                System.IO.File.WriteAllText(@"C:\Users\nperes\Desktop\Projeto\Arquivos\Arpensp.txt", objjsonData);
-                return Json(objjsonData, JsonRequestBehavior.AllowGet);
-
-            }
+            return View(arpenspModel);
         }
+
+        
 
         //Conversão do PDF
         public void ReadPDF()

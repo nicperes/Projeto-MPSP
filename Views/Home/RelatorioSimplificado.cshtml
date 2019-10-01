@@ -1,6 +1,6 @@
-﻿@model WebApi.Models.LoginModel
+﻿@model WebApi.Models.ArpenspModel
 @{
-    ViewData["Title"] = "Bem vindo";
+    ViewData["Title"] = "Relatorio Simplificado";
 }
 
 <!-- Page Content -->
@@ -38,29 +38,52 @@
     <div class="limiter">
         <div class="container-login100" style="background-image: url(../../wwwroot/images/bg-01.jpg)">
             <div class="wrap-login100">
-                <form class="login100-form validate-form" asp-action="PesquisaCPFCNPJ" asp-controller="Home" asp-route-id="" method="get">
+                <form class="login100-form validate-form" asp-action="RelatorioSimplificado" asp-controller="Home" asp-route-id="" method="get">
                     <span class="login100-form-logo">
                         <img src="~/wwwroot/images/mpsp.png" />
                     </span>
                     <span class="login100-form-title p-b-34 p-t-27">
-                        Bem vindo!
+                        Relatorio Simplificado
                     </span>
 
-                    <div class="container-login100-form-btn">
-                        <button class="login100-form-btn">@Html.ActionLink("Pesquisa de CPF/CNPJ", "PesquisaCPFCNPJ")</button>
-                    </div>
+                    <label>Cartorio do Registro</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.CartorioRegistro)">
 
-                    <br />
+                    <label>Numero do CNS</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.NumCNS)">
 
-                    <div class="container-login100-form-btn">
-                        <button class="login100-form-btn">@Html.ActionLink("Consultas Anteriores", "PesquisaCPFCNPJ")</button>
-                    </div>
+                    <label>UF</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.UF)">
+
+                    <label>Nome do Conjuge</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.NomeConj)">
+
+                    <label>Novo nome do Conjuge</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.NovoNomeConj)">
+
+                    <label>Nome do Conjuge</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.NomeConj2)">
+
+                    <label>Novo nome do Conjuge 2</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.NovoNomeConj2)">
+
+                    <label>Data do Casamento</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.DataCasamento)">
+
+                    <label>Matricula</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.Matricula)">
+
+                    <label>Data da Entrada</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.DataEntrada)">
+
+                    <label>Data do Registro</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.DataRegistro)">
 
                     <br />
 
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn">
-                            @Html.ActionLink("Sair", "Login")
+                            @Html.ActionLink("Voltar", "Menu")
                         </button>
                     </div>
 

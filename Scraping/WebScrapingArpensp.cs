@@ -27,8 +27,6 @@ namespace WebApi.Scraping
     {
 
         [HttpPost]
-        //localhost:49850/home/WebScrapingArpenp
-        //Arpensp
         public string Arpensp(PesquisaCPFCNPJ pesquisaCPFCNPJ)
         {
             using (IWebDriver driver = new ChromeDriver())
