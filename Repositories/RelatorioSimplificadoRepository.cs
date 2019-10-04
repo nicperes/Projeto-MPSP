@@ -20,12 +20,19 @@ namespace WebApi.Repositories
             
         }
 
-        public ArpenspModel Simples(string arpensp)
+        public ArpenspModel SimplesArpensp(string arpensp)
         {
             ArpenspModel arpenspModel = JsonConvert.DeserializeObject<ArpenspModel>(arpensp);
             
             return arpenspModel;
         }
-        
+
+        public CadespModel SimplesCadesp(string cadesp)
+        {
+            CadespModel cadespModel = JsonConvert.DeserializeObject<CadespModel>(cadesp);
+
+            return cadespModel;
+        }
+
     }
 }

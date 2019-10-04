@@ -28,12 +28,14 @@ namespace WebApi.Controllers
     {
         private readonly ValidacaoRepository validacaoRepository;
         private readonly WebScrapingArpensp webScrapingArpensp;
+        private readonly WebScrapingCadesp webScrapingCadesp;
         private readonly RelatorioSimplificadoRepository relatorioSimplificadoRepository;
         
         public HomeController()
         {
             validacaoRepository = new ValidacaoRepository();
             webScrapingArpensp = new WebScrapingArpensp();
+            webScrapingCadesp = new WebScrapingCadesp();
             relatorioSimplificadoRepository = new RelatorioSimplificadoRepository();
         }
 
@@ -78,22 +80,31 @@ namespace WebApi.Controllers
         [HttpPost]
         public ActionResult PesquisaCPFCNPJ(PesquisaCPFCNPJ pesquisaCPFCNPJ)
         {
-
-            string arpensp = webScrapingArpensp.Arpensp(pesquisaCPFCNPJ);
-
-            ArpenspModel alo = relatorioSimplificadoRepository.Simples(arpensp);
-
-            //return View(RelatorioSimplificado(alo));
-            return RedirectToAction("RelatorioSimplificado",alo);
+            return RedirectToAction("RelatorioSimplificado",pesquisaCPFCNPJ);
         }
 
         [HttpGet]
-        public ActionResult RelatorioSimplificado(ArpenspModel arpenspModel)
+        public ActionResult RelatorioSimplificado(PesquisaCPFCNPJ pesquisaCPFCNPJ)
         {
-            return View(arpenspModel);
+            string arpensp = webScrapingArpensp.Arpensp(pesquisaCPFCNPJ);
+            string cadesp = webScrapingCadesp.Cadesp(pesquisaCPFCNPJ);
+            ArpenspModel arpenspModel = relatorioSimplificadoRepository.SimplesArpensp(arpensp);
+            CadespModel cadespModel = relatorioSimplificadoRepository.SimplesCadesp(cadesp);
+
+            var tuple = new Tuple<ArpenspModel, CadespModel>(arpenspModel, cadespModel);
+            return View(tuple);
         }
 
         
+        public ActionResult RelatorioPdf()
+        {
+
+            //relatorioSimplificadoRepository.RelatorioPDF();
+
+            return RedirectToAction("Menu");
+        }
+
+
 
         //Conversão do PDF
         public void ReadPDF()
@@ -110,80 +121,7 @@ namespace WebApi.Controllers
             System.IO.File.WriteAllText(@"C:\Users\Nicolas PC\Desktop\teste\PDFTESTE.txt", TestText);
         }
 
-        //Cadesp
-        public JsonResult WebScrapingCadesp()
-        {
-
-            using (IWebDriver driver = new ChromeDriver())
-            {
-                /*driver.Manage().Window.Maximize();
-                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/ ");
-                driver.FindElement(By.Id("username")).SendKeys("fiap");
-                driver.FindElement(By.Id("password")).SendKeys("mpsp");
-                driver.FindElement(By.Id("password")).SendKeys(Keys.Enter);
-                */
-                Actions builder = new Actions(driver);
-
-                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/cadesp/login.html");
-                driver.FindElement(By.Id("ctl00_conteudoPaginaPlaceHolder_loginControl_UserName")).SendKeys("fiap");
-                driver.FindElement(By.Id("ctl00_conteudoPaginaPlaceHolder_loginControl_Password")).SendKeys("mpsp");
-                driver.FindElement(By.Id("ctl00_conteudoPaginaPlaceHolder_loginControl_Password")).SendKeys(Keys.Enter);
-
-                //driver.FindElement(By.XPath("//*[@id='ctl00_menuPlaceHolder_menuControl1_LoginView1_menuSuperiorn1']/table/tbody/tr/td/a")).Click();
-
-                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/cadesp/pagina3-pesquisa.html");
-                driver.FindElement(By.Id("ctl00_conteudoPaginaPlaceHolder_tcConsultaCompleta_TabPanel1_txtIdentificacao")).SendKeys("54545454545454");
-
-                driver.FindElement(By.Id("ctl00_conteudoPaginaPlaceHolder_tcConsultaCompleta_TabPanel1_btnConsultarEstabelecimento")).SendKeys(Keys.Enter);
-
-                var resultado1 = driver.FindElement(By.XPath("//*[@id='ctl00_conteudoPaginaPlaceHolder_dlCabecalho']/tbody/tr/td/table")).Text;
-
-                var resultado = driver.FindElement(By.XPath("//*[@id='ctl00_conteudoPaginaPlaceHolder_dlEstabelecimentoGeral']/tbody/tr[2]/td")).Text;
-
-                var resultadoFinal = resultado1 + resultado;
-
-                string[] strsplit = resultadoFinal.Replace("\r\n", ":").Split(':');
-
-                string ie = strsplit[1].Replace("Situação", "");
-                string situacao = strsplit[2];
-                string cnpj = strsplit[4].Replace("Data da Inscrição no Estado", "");
-                string dataInscricao = strsplit[5];
-                string nomeEmpresarial = strsplit[7].Replace("Regime Estadual", "");
-                string regimeEstadual = strsplit[8];
-                string drt = strsplit[10].Replace("Posto Fiscal", "");
-                string postoFiscal = strsplit[11];
-                string nire = strsplit[21];
-                string ocorrenciaFiscal = strsplit[26];
-                string tipoUnidade = strsplit[28].Replace("Formas de Atuação", "");
-                string formaAtuacao = strsplit[30];
-
-                CadespModel objCad = new CadespModel();
-
-                objCad.IE = ie;
-                objCad.Situacao = situacao;
-                objCad.CNPJ = cnpj;
-                objCad.DataInscricao = dataInscricao;
-                objCad.NomeEmpresarial = nomeEmpresarial;
-                objCad.RegimeEstadual = regimeEstadual;
-                objCad.DRT = drt;
-                objCad.PostoFiscal = postoFiscal;
-                objCad.Nire = nire;
-                objCad.OcorrenciaFiscal = ocorrenciaFiscal;
-                objCad.TipoUnidade = tipoUnidade;
-                objCad.FormasAtuacao = formaAtuacao;
-
-                string objjsonData = JsonConvert.SerializeObject(objCad, new JsonSerializerSettings { Formatting = Formatting.Indented });
-
-                Response.Write(objjsonData);
-
-                //System.IO.File.WriteAllText(@"C:\Users\Nicolas PC\Desktop\teste\Cadesp.txt", resultado1 + resultado);
-                System.IO.File.WriteAllText(@"C:\Users\nperes\Desktop\Projeto\Arquivos\Cadesp.txt", objjsonData);
-
-                return Json(objjsonData, JsonRequestBehavior.AllowGet);
-            }
-
-
-        }
+        
 
         public void WebSrapingArisp()
         {
