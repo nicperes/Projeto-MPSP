@@ -29,7 +29,10 @@ namespace WebApi.Scraping
         [HttpPost]
         public string Arpensp(PesquisaCPFCNPJ pesquisaCPFCNPJ)
         {
-            using (IWebDriver driver = new ChromeDriver())
+
+            var options = new ChromeOptions();
+            options.AddArguments("headless");
+            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
             {
                 Actions builder = new Actions(driver);
 
@@ -75,7 +78,7 @@ namespace WebApi.Scraping
                 string objjsonData = JsonConvert.SerializeObject(objArp, new JsonSerializerSettings { Formatting = Formatting.Indented });
 
                 //System.IO.File.WriteAllText(@"C:\Users\Nicolas PC\Desktop\teste\Arpensp.txt", objjsonData);
-                System.IO.File.WriteAllText(@"C:\Users\nperes\Desktop\Projeto\Arquivos\Arpensp.txt", objjsonData);
+                //System.IO.File.WriteAllText(@"C:\Users\nperes\Desktop\Projeto\Arquivos\Arpensp.txt", objjsonData);
                 return objjsonData;
 
             }

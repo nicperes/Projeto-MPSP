@@ -1,0 +1,116 @@
+﻿@model WebApi.Models.ArpenspModel
+@{
+    ViewData["Title"] = "Relatorio Simplificado";
+}
+
+<!-- Page Content -->
+
+<html lang="en">
+<head>
+    <title>Login V3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/wwwroot/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url(../../wwwroot/images/bg-01.jpg)">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" asp-action="RelatorioSimplificado" asp-controller="Home" asp-route-id="" method="get">
+                    <span class="login100-form-logo">
+                        <img src="~/wwwroot/images/mpsp.png" />
+                    </span>
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Relatorio Simplificado
+                    </span>
+
+                    <label>Cartorio do Registro</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.CartorioRegistro)">
+
+                    <label>Numero do CNS</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.NumCNS)">
+
+                    <label>UF</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.UF)">
+
+                    <label>Nome do Conjuge</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.NomeConj)">
+
+                    <label>Novo nome do Conjuge</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.NovoNomeConj)">
+
+                    <label>Nome do Conjuge</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.NomeConj2)">
+
+                    <label>Novo nome do Conjuge 2</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.NovoNomeConj2)">
+
+                    <label>Data do Casamento</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.DataCasamento)">
+
+                    <label>Matricula</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.Matricula)">
+
+                    <label>Data da Entrada</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.DataEntrada)">
+
+                    <label>Data do Registro</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.DataRegistro)">
+
+                    <br />
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            @Html.ActionLink("Voltar", "Menu")
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <script src="~/wwwroot/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/wwwroot/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/wwwroot/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/wwwroot/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/wwwroot/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/wwwroot/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/wwwroot/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/wwwroot/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/wwwroot/js/main.js"></script>
+
+</body>
+</html>
