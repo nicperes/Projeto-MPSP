@@ -27,15 +27,13 @@ namespace WebApi.Controllers
     public class HomeController : Controller
     {
         private readonly ValidacaoRepository validacaoRepository;
-        private readonly WebScrapingArpensp webScrapingArpensp;
-        private readonly WebScrapingCadesp webScrapingCadesp;
+        private readonly WebScraping webScraping;
         private readonly RelatorioSimplificadoRepository relatorioSimplificadoRepository;
         
         public HomeController()
         {
             validacaoRepository = new ValidacaoRepository();
-            webScrapingArpensp = new WebScrapingArpensp();
-            webScrapingCadesp = new WebScrapingCadesp();
+            webScraping = new WebScraping();
             relatorioSimplificadoRepository = new RelatorioSimplificadoRepository();
         }
 
@@ -86,12 +84,22 @@ namespace WebApi.Controllers
         [HttpGet]
         public ActionResult RelatorioSimplificado(PesquisaCPFCNPJ pesquisaCPFCNPJ)
         {
-            string arpensp = webScrapingArpensp.Arpensp(pesquisaCPFCNPJ);
-            string cadesp = webScrapingCadesp.Cadesp(pesquisaCPFCNPJ);
+            string arpensp = "";
+            string cadesp = "";
+            string juscesp = "";
+            if (pesquisaCPFCNPJ.Arpensp == "on"){
+                arpensp = webScraping.Arpensp(pesquisaCPFCNPJ);
+            }else if(pesquisaCPFCNPJ.Cadesp == "on"){
+                cadesp = webScraping.Cadesp(pesquisaCPFCNPJ);
+            }else if (pesquisaCPFCNPJ.Jucesp == "on"){
+                juscesp = webScraping.Jucesp(pesquisaCPFCNPJ);
+            }
+            
             ArpenspModel arpenspModel = relatorioSimplificadoRepository.SimplesArpensp(arpensp);
             CadespModel cadespModel = relatorioSimplificadoRepository.SimplesCadesp(cadesp);
+            JucespModel jucespModel = relatorioSimplificadoRepository.SimplesJucesp(juscesp);
 
-            var tuple = new Tuple<ArpenspModel, CadespModel>(arpenspModel, cadespModel);
+            var tuple = new Tuple<ArpenspModel, CadespModel, JucespModel>(arpenspModel, cadespModel, jucespModel);
             return View(tuple);
         }
 
@@ -190,83 +198,7 @@ namespace WebApi.Controllers
 
         }
 
-        public JsonResult WebScrapingJucesp()
-        {
-
-            using (IWebDriver driver = new ChromeDriver())
-            {
-                /*driver.Manage().Window.Maximize();
-                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/ ");
-                driver.FindElement(By.Id("username")).SendKeys("fiap");
-                driver.FindElement(By.Id("password")).SendKeys("mpsp");
-                driver.FindElement(By.Id("password")).SendKeys(Keys.Enter);
-                */
-
-                Actions builder = new Actions(driver);
-
-                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/jucesp/index.html");
-                driver.FindElement(By.Id("ctl00_cphContent_frmBuscaSimples_txtPalavraChave")).SendKeys("google");
-                driver.FindElement(By.XPath("//*[@id='ctl00_cphContent_frmBuscaSimples_pnlBuscaSimples']/table/tbody/tr/td[2]/input")).Click();
-
-                driver.FindElement(By.XPath("//*[@id='formBuscaAvancada']/table/tbody/tr[1]/td/div/div[2]/label/input")).SendKeys("Q8TJA");
-                driver.FindElement(By.ClassName("btcadastro")).Click();
-
-                var tables = driver.FindElement(By.XPath("//*[@id='ctl00_cphContent_gdvResultadoBusca_gdvContent']/tbody"));
-                var rows = tables.FindElements(By.TagName("tr"));
-
-                var count = -1;
-
-                foreach (var row in rows)
-                {
-                    count++;
-
-                }
-                driver.FindElement(By.XPath("//*[@id='ctl00_cphContent_gdvResultadoBusca_gdvContent']/tbody/tr/td")).Click();
-
-                var resultadoFinal = driver.FindElement(By.Id("dados")).Text;
-
-                string[] strsplit = resultadoFinal.Replace("\r\n", ":").Split(':');
-
-                string data = strsplit[1].Replace("17", "");
-                string nome = strsplit[4];
-                string nMatriz = strsplit[7];
-                string tipoEmpresa = strsplit[12];
-                string dataConst = strsplit[14];
-                string inicioAtiv = strsplit[16];
-                string cnpj = strsplit[18];
-                string capital = strsplit[26];
-                string logradouro = strsplit[28];
-                string numero = strsplit[30];
-                string complemento = strsplit[34];
-                string bairro = strsplit[32];
-                string municipio = strsplit[36];
-                string cep = strsplit[38];
-                string uf = strsplit[40];
-
-                JucespModel objJu = new JucespModel();
-                objJu.Data = data;
-                objJu.Nome = nome;
-                objJu.NumMatriz = nMatriz;
-                objJu.TipoEmpresa = tipoEmpresa;
-                objJu.DataConst = dataConst;
-                objJu.InicioAtiv = inicioAtiv;
-                objJu.CNPJ = cnpj;
-                objJu.Capital = capital;
-                objJu.Logradouro = logradouro;
-                objJu.Numero = numero;
-                objJu.Complemento = complemento;
-                objJu.Bairro = bairro;
-                objJu.Municipio = municipio;
-                objJu.Cep = cep;
-                objJu.Uf = uf;
-                string objjsonData = JsonConvert.SerializeObject(objJu);
-                Response.Write(objjsonData);
-
-                System.IO.File.WriteAllText(@"C:\Users\nperes\Desktop\Projeto\Arquivos\Jucesp.txt", objjsonData);
-
-                return Json(objjsonData, JsonRequestBehavior.AllowGet);
-            }
-        }
+        
 
 
     }

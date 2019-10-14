@@ -11,12 +11,12 @@ namespace WebApi.Repositories
 {
     public class RelatorioSimplificadoRepository
     {
-        private readonly WebScrapingArpensp webScrapingArpensp;
+        private readonly WebScraping webScrapingArpensp;
         
 
         public RelatorioSimplificadoRepository()
         {
-            webScrapingArpensp = new WebScrapingArpensp();
+            webScrapingArpensp = new WebScraping();
             
         }
 
@@ -32,6 +32,13 @@ namespace WebApi.Repositories
             CadespModel cadespModel = JsonConvert.DeserializeObject<CadespModel>(cadesp);
 
             return cadespModel;
+        }
+
+        public JucespModel SimplesJucesp(string jucesp)
+        {
+            JucespModel jucespModel = JsonConvert.DeserializeObject<JucespModel>(jucesp);
+
+            return jucespModel;
         }
 
     }

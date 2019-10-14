@@ -1,13 +1,49 @@
-﻿
-@{
-    ViewData["Title"] = "Pesquisa por CPF/CNPJ";
+﻿@{
+    ViewData["Title"] = "Portais de Consulta";
 }
 
 <!-- Page Content -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript">
 
+    function myfunctionChecked() {
+        $(document).ready(function () {
+            $("#arpensp").click(function () {
+                if ($("#divCPF").is(":hidden")) {
+                    $("#divCPF").prop("hidden", !this.checked);
+                }
+                if (!$("#cadesp").is(":checked") && !$("#jucesp").is(":checked")) {
+                    $("#divCPF").prop("hidden", !this.checked);
+                }
+            });
+            $("#cadesp").click(function () {
+                if ($("#divCPF").is(":hidden")) {
+                    $("#divCPF").prop("hidden", !this.checked);
+                } else
+                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked")) {
+                        $("#divCPF").prop("hidden", !this.checked);
+                    }
+            });
+            $("#jucesp").click(function () {
+                if ($("#divCPF").is(":hidden")) {
+                    $("#divCPF").prop("hidden", !this.checked);
+                }
+                else if (!$("#arpensp").is(":checked") && !$("#cadesp").is(":checked")) {
+                        $("#divCPF").prop("hidden", !this.checked);
+                }
+
+                if ($("#divNome").is(":hidden")) {
+                    $("#divNome").prop("hidden", !this.checked);
+                } else if (!$("#jucesp").is(":checked")){
+                    $("#divNome").prop("hidden", !this.checked);
+                }
+            });
+        });
+    }
+</script>
 <html lang="en">
 <head>
-    <title>Login V3</title>
+    <title>Portais de Consulta</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -33,8 +69,8 @@
     <link rel="stylesheet" type="text/css" href="~/wwwroot/css/main.css">
     <!--===============================================================================================-->
 </head>
-<body>
 
+<body>
     <div class="limiter">
         <div class="container-login100" style="background-image: url(../../wwwroot/images/bg-01.jpg)">
             <div class="wrap-login100">
@@ -43,13 +79,43 @@
                         <img src="~/wwwroot/images/mpsp.png" />
                     </span>
                     <span class="login100-form-title p-b-34 p-t-27">
-                        Pesquisa por CPF ou CNPJ
+                        Portais de Consulta
                     </span>
+                    <div id="teste" onclick="myfunctionChecked()">
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" asp-for="Arpensp" id="arpensp" type="checkbox" name="Arpensp">
+                            <label class="label-checkbox100" for="arpensp">
+                                Arpensp
+                            </label>
+                        </div>
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" asp-for="Cadesp" id="cadesp" type="checkbox" name="Cadesp">
+                            <label class="label-checkbox100" for="cadesp">
+                                Cadesp
+                            </label>
+                        </div>
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" asp-for="Jucesp" id="jucesp" type="checkbox" name="Jucesp">
+                            <label class="label-checkbox100" for="jucesp">
+                                Jucesp
+                            </label>
+                        </div>
+                    </div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Informe o CPF ou CNPJ">
-                        <label asp-for="CPFCNPJ"></label>
-                        <input class="input100" type="number" asp-for="CPFCNPJ" name="CPFCNPJ" placeholder="CPF ou CNPJ">
-                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    <div id="divCPF" hidden>
+                        <div class="wrap-input100 validate-input" data-validate="Informe o CPF ou CNPJ">
+                            <label asp-for="CPFCNPJ"></label>
+                            <input class="input100" type="number" asp-for="CPFCNPJ" name="CPFCNPJ" placeholder="CPF ou CNPJ">
+                            <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        </div>
+                    </div>
+
+                    <div id="divNome" hidden>
+                        <div class="wrap-input100 validate-input" data-validate="Informe o Nome">
+                            <label asp-for="Nome"></label>
+                            <input class="input100" type="text" asp-for="Nome" name="Nome" placeholder="João da Silva">
+                            <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        </div>
                     </div>
 
                     <div class="container-login100-form-btn">

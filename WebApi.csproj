@@ -394,8 +394,7 @@
     <Compile Include="Repositories\PesquisaCPFCNPJRepository.cs" />
     <Compile Include="Repositories\RelatorioSimplificadoRepository.cs" />
     <Compile Include="Repositories\ValidacaoRepository.cs" />
-    <Compile Include="Scraping\WebScrapingArpensp.cs" />
-    <Compile Include="Scraping\WebScrapingCadesp.cs" />
+    <Compile Include="Scraping\WebScraping.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />

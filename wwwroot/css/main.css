@@ -255,7 +255,7 @@ iframe {
   width: 100%;
   height: 45px;
   background: transparent;
-  padding: 0 5px 0 3px;
+  padding: 0 0px 0 23px;
 }
 
 /*---------------------------------------------*/ 
@@ -337,8 +337,8 @@ iframe {
 
 .contact100-form-checkbox {
   padding-left: 5px;
-  padding-top: 5px;
-  padding-bottom: 35px;
+  padding-top: 3px;
+  padding-bottom: 15px;
 }
 
 .input-checkbox100 {

@@ -13,11 +13,11 @@ namespace WebApi.Repositories
 {
     public class PesquisaCPFCNPJRepository
     {
-        private readonly WebScrapingArpensp webScrapingArpensp;
+        private readonly WebScraping webScrapingArpensp;
 
         public PesquisaCPFCNPJRepository()
         {
-            webScrapingArpensp = new WebScrapingArpensp();
+            webScrapingArpensp = new WebScraping();
         }
         /*
        public JsonResult WebScrapingArpenp(PesquisaCPFCNPJ cpfcnpj)
