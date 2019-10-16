@@ -143,13 +143,7 @@ namespace WebApi.Controllers
         {
             using (IWebDriver driver = new ChromeDriver())
             {
-                /*driver.Manage().Window.Maximize();
-                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/ ");
-                driver.FindElement(By.Id("username")).SendKeys("fiap");
-                driver.FindElement(By.Id("password")).SendKeys("mpsp");
-                driver.FindElement(By.Id("password")).SendKeys(Keys.Enter);
-                */
-
+                
                 Actions builder = new Actions(driver);
 
                 driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/arisp/login.html");
@@ -206,8 +200,63 @@ namespace WebApi.Controllers
 
         }
 
-        
+        public void Censec()
+        {
 
+            var options = new ChromeOptions();
+            options.AddArguments("headless");
+            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            using (IWebDriver driver = new ChromeDriver(options))
+            {
+                Actions builder = new Actions(driver);
+
+                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/censec/login.html");
+
+                driver.FindElement(By.Id("EntrarButton")).Click();
+                driver.FindElement(By.Id("menucentrais")).Click();
+                driver.FindElement(By.XPath("//*[@id='ctl00_CESDILi']/a")).Click();
+                driver.FindElement(By.XPath("//*[@id='ctl00_CESDIConsultaAtoHyperLink']")).Click();
+                driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_DocumentoTextBox")).SendKeys("21321321323");
+                driver.FindElement(By.ClassName("BT_Buscar")).SendKeys(Keys.Enter);
+
+                driver.FindElement(By.XPath("//*[@id='ctl00_ContentPlaceHolder1_ResultadoBuscaGeralPanel']/div[2]/div[1]/div/table/tbody/tr[2]/td[1]/input")).Click();
+                driver.FindElement(By.ClassName("BT_Buscar")).SendKeys(Keys.Enter);
+
+                string carga = driver.FindElement(By.XPath("//*[@id='aspnetForm']/div[5]/div/div[3]/div[2]/div[3]/div[1]/div")).Text;
+                string mes = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_MesReferenciaDropDownList")).Text;
+                string ano = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_AnoReferenciaDropDownList")).Text;
+                string ato = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_TipoAtoDropDownList")).Text;
+                string diaAto = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_DiaAtoTextBox")).Text;
+                string mesAto = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_MesAtoTextBox")).Text;
+                string anoAto = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_AnoAtoTextBox")).Text;
+                string livro  = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_LivroTextBox")).Text;
+                string folha = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_FolhaTextBox")).Text;
+
+                string nomes = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_PartesUpdatePanel")).Text;
+
+                string uf = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_DadosCartorio_CartorioUFTextBox")).Text;
+                string municipio = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_DadosCartorio_CartorioMunicipioTextBox")).Text;
+                string cartorio = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_DadosCartorio_CartorioNomeTextBox")).Text;
+                string tabela = driver.FindElement(By.XPath("//*[@id='ctl00_ContentPlaceHolder1_DadosCartorio_DivTelefonesCartorioListView']/div/table")).Text;
+
+                CensecModel objCen = new CensecModel();
+                objCen.Carga = carga;
+                objCen.Mes = mes;
+                objCen.Ano = ano;
+                objCen.Ato = ato;
+                objCen.DiaAto = diaAto;
+                objCen.MesAto = mesAto;
+                objCen.AnoAto = anoAto;
+                objCen.Livro = livro;
+                objCen.Folha = folha;
+
+                string objjsonData = JsonConvert.SerializeObject(objCen);
+
+                System.IO.File.WriteAllText(@"C:\Users\nperes\Desktop\Projeto\Arquivos\Censec.txt", objjsonData);
+                
+
+            }
+        }
 
     }
 }

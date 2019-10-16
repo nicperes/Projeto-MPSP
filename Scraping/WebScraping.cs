@@ -81,7 +81,7 @@ namespace WebApi.Scraping
 
                 string bd = objjsonData as string;
 
-                System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Arpensp.txt", bd);
+                //System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Arpensp.txt", bd);
 
                 return objjsonData;
 
