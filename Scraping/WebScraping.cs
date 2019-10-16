@@ -20,6 +20,7 @@ using Newtonsoft.Json;
 using Microsoft.Ajax.Utilities;
 using WebApi.Repositories;
 using OpenQA.Selenium.Remote;
+using java.sql;
 
 namespace WebApi.Scraping
 {
@@ -49,32 +50,38 @@ namespace WebApi.Scraping
 
                 string[] strsplit = resultado.Replace("\r\n", ":").Split(':');
 
-                string cartorioRegistro = strsplit[3];
-                string numeroCNS = strsplit[5];
-                string uf = strsplit[7];
-                string nomeConj = strsplit[10];
-                string novoNomeConj = strsplit[12];
-                string nomeConj2 = strsplit[14];
-                string novoNomeConj2 = strsplit[16];
-                string dataCasamento = strsplit[18];
-                string matricula = strsplit[20];
-                string dataEntrada = strsplit[22];
-                string dataRegistro = strsplit[24];
+                string cartorioRegistro = strsplit[3].Trim();
+                string numeroCNS = strsplit[5].Replace("-","").Trim();
+                string uf = strsplit[7].Trim();
+                string nomeConj = strsplit[10].Trim();
+                string novoNomeConj = strsplit[12].Trim();
+                string nomeConj2 = strsplit[14].Trim();
+                string novoNomeConj2 = strsplit[16].Trim();
+                string dataCasamento = strsplit[18].Trim();
+                string matricula = strsplit[20].Trim();
+                string dataEntrada = strsplit[22].Trim();
+                string dataRegistro = strsplit[24].Trim();
 
                 ArpenspModel objArp = new ArpenspModel();
                 objArp.CartorioRegistro = cartorioRegistro;
-                objArp.NumCNS = numeroCNS;
+                objArp.NumCNS = Double.Parse(numeroCNS);
                 objArp.UF = uf;
                 objArp.NomeConj = nomeConj;
                 objArp.NovoNomeConj = novoNomeConj;
                 objArp.NomeConj2 = nomeConj2;
                 objArp.NovoNomeConj2 = novoNomeConj2;
                 objArp.DataCasamento = dataCasamento;
-                objArp.Matricula = matricula;
+                objArp.Matricula = Double.Parse(matricula);
                 objArp.DataEntrada = dataEntrada;
                 objArp.DataRegistro = dataRegistro;
 
                 string objjsonData = JsonConvert.SerializeObject(objArp, new JsonSerializerSettings { Formatting = Formatting.Indented });
+
+                //string arr = JsonConvert.DeserializeObject<string>(objjsonData);
+
+                string bd = objjsonData as string;
+
+                System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Arpensp.txt", bd);
 
                 return objjsonData;
 
@@ -112,18 +119,18 @@ namespace WebApi.Scraping
 
                 string[] strsplit = resultadoFinal.Replace("\r\n", ":").Split(':');
 
-                string ie = strsplit[1].Replace("Situação", "");
-                string situacao = strsplit[2];
-                string cnpj = strsplit[4].Replace("Data da Inscrição no Estado", "");
-                string dataInscricao = strsplit[5];
-                string nomeEmpresarial = strsplit[7].Replace("Regime Estadual", "");
-                string regimeEstadual = strsplit[8];
-                string drt = strsplit[10].Replace("Posto Fiscal", "");
-                string postoFiscal = strsplit[11];
-                string nire = strsplit[21];
-                string ocorrenciaFiscal = strsplit[26];
-                string tipoUnidade = strsplit[28].Replace("Formas de Atuação", "");
-                string formaAtuacao = strsplit[30];
+                string ie = strsplit[1].Replace("Situação", "").Trim();
+                string situacao = strsplit[2].Trim();
+                string cnpj = strsplit[4].Replace("Data da Inscrição no Estado", "").Trim();
+                string dataInscricao = strsplit[5].Trim();
+                string nomeEmpresarial = strsplit[7].Replace("Regime Estadual", "").Trim();
+                string regimeEstadual = strsplit[8].Trim();
+                string drt = strsplit[10].Replace("Posto Fiscal", "").Trim();
+                string postoFiscal = strsplit[11].Trim();
+                string nire = strsplit[21].Trim();
+                string ocorrenciaFiscal = strsplit[26].Trim();
+                string tipoUnidade = strsplit[28].Replace("Formas de Atuação", "").Trim();
+                string formaAtuacao = strsplit[30].Trim();
 
                 CadespModel objCad = new CadespModel();
 
@@ -181,21 +188,21 @@ namespace WebApi.Scraping
 
                 string[] strsplit = resultadoFinal.Replace("\r\n", ":").Split(':');
 
-                string data = strsplit[1].Replace("17", "");
-                string nome = strsplit[4];
-                string nMatriz = strsplit[7];
-                string tipoEmpresa = strsplit[12];
-                string dataConst = strsplit[14];
-                string inicioAtiv = strsplit[16];
-                string cnpj = strsplit[18];
-                string capital = strsplit[26];
-                string logradouro = strsplit[28];
-                string numero = strsplit[30];
-                string complemento = strsplit[34];
-                string bairro = strsplit[32];
-                string municipio = strsplit[36];
-                string cep = strsplit[38];
-                string uf = strsplit[40];
+                string data = strsplit[1].Replace("17", "").Trim();
+                string nome = strsplit[4].Trim();
+                string nMatriz = strsplit[7].Trim();
+                string tipoEmpresa = strsplit[12].Trim();
+                string dataConst = strsplit[14].Trim();
+                string inicioAtiv = strsplit[16].Trim();
+                string cnpj = strsplit[18].Trim();
+                string capital = strsplit[26].Trim();
+                string logradouro = strsplit[28].Trim();
+                string numero = strsplit[30].Trim();
+                string complemento = strsplit[34].Trim();
+                string bairro = strsplit[32].Trim();
+                string municipio = strsplit[36].Trim();
+                string cep = strsplit[38].Trim();
+                string uf = strsplit[40].Trim();
 
                 JucespModel objJu = new JucespModel();
                 objJu.Data = data;
@@ -216,6 +223,46 @@ namespace WebApi.Scraping
                 string objjsonData = JsonConvert.SerializeObject(objJu, new JsonSerializerSettings { Formatting = Formatting.Indented });
                 
                 //System.IO.File.WriteAllText(@"C:\Users\nperes\Desktop\Projeto\Arquivos\Jucesp.txt", objjsonData);
+
+                return objjsonData;
+            }
+        }
+
+        
+        public string Caged(PesquisaCPFCNPJ pesquisaCPFCNPJ)
+        {
+
+            var options = new ChromeOptions();
+            options.AddArguments("headless");
+            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
+            using (IWebDriver driver = new ChromeDriver(options))
+            {
+                Actions builder = new Actions(driver);
+
+                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/login.html");
+                driver.FindElement(By.Id("btn-submit")).Click();
+                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina3-consulta-autorizado-responsavel.html");
+                driver.FindElement(By.Id("formPesquisarAutorizado:txtChavePesquisaAutorizado014")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ);
+                driver.FindElement(By.Id("formPesquisarAutorizado:bt027_8")).Click();
+
+                var resultado = driver.FindElement(By.XPath("//*[@id='conteudo']/fieldset[3]")).Text;
+
+                string[] strsplit = resultado.Replace("\r\n", ":").Split(':');
+
+                string nome = strsplit[1].Trim();
+                string telefone = strsplit[9].Trim();
+                string ramal = strsplit[12].Trim();
+                string email = strsplit[15].Trim();
+
+                CagedModel objCa = new CagedModel();
+                objCa.Nome = nome;
+                objCa.Telefone = telefone;
+                objCa.Ramal = ramal;
+                objCa.Email = email;
+
+                string objjsonData = JsonConvert.SerializeObject(objCa);
+
+                System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Caged.txt", objjsonData);
 
                 return objjsonData;
             }

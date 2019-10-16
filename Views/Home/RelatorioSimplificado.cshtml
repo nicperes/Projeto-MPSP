@@ -1,5 +1,5 @@
 ﻿@using WebApi.Models;
-@model Tuple<ArpenspModel, CadespModel, JucespModel>
+@model Tuple<ArpenspModel, CadespModel, JucespModel, CagedModel>
 
 @{
     ViewData["Title"] = "Relatorio Simplificado";
@@ -54,7 +54,7 @@
                     <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(tuple => tuple.Item1.CartorioRegistro)">
 
                     <label>Numero do CNS</label>
-                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.Item1.NumCNS)">
+                    <input class="input100" type="number" disabled="disabled" value="@Html.DisplayFor(model => model.Item1.NumCNS)">
 
                     <label>UF</label>
                     <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.Item1.UF)">
@@ -172,6 +172,21 @@
 
                     <label>UF</label>
                     <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.Item3.Uf)">
+
+                    <br />
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Caged
+                    </span>
+
+                    <label>Telefone</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.Item4.Telefone)">
+
+                    <label>Ramal</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.Item4.Ramal)">
+
+                    <label>E-mail</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.Item4.Email)">
 
                     <br />
 

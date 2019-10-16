@@ -86,20 +86,28 @@ namespace WebApi.Controllers
         {
             string arpensp = "";
             string cadesp = "";
+            string caged = "";
             string juscesp = "";
             if (pesquisaCPFCNPJ.Arpensp == "on"){
                 arpensp = webScraping.Arpensp(pesquisaCPFCNPJ);
-            }else if(pesquisaCPFCNPJ.Cadesp == "on"){
+            }
+            if (pesquisaCPFCNPJ.Cadesp == "on"){
                 cadesp = webScraping.Cadesp(pesquisaCPFCNPJ);
-            }else if (pesquisaCPFCNPJ.Jucesp == "on"){
+            }
+            if (pesquisaCPFCNPJ.Caged == "on"){
+                caged = webScraping.Caged(pesquisaCPFCNPJ);
+            }
+            if (pesquisaCPFCNPJ.Jucesp == "on"){
                 juscesp = webScraping.Jucesp(pesquisaCPFCNPJ);
             }
             
+
             ArpenspModel arpenspModel = relatorioSimplificadoRepository.SimplesArpensp(arpensp);
             CadespModel cadespModel = relatorioSimplificadoRepository.SimplesCadesp(cadesp);
             JucespModel jucespModel = relatorioSimplificadoRepository.SimplesJucesp(juscesp);
+            CagedModel cagedModel = relatorioSimplificadoRepository.SimplesCaged(caged);
 
-            var tuple = new Tuple<ArpenspModel, CadespModel, JucespModel>(arpenspModel, cadespModel, jucespModel);
+            var tuple = new Tuple<ArpenspModel, CadespModel, JucespModel, CagedModel>(arpenspModel, cadespModel, jucespModel,cagedModel);
             return View(tuple);
         }
 

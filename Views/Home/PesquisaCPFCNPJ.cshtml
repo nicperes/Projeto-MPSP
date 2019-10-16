@@ -12,11 +12,19 @@
                 if ($("#divCPF").is(":hidden")) {
                     $("#divCPF").prop("hidden", !this.checked);
                 }
-                if (!$("#cadesp").is(":checked") && !$("#jucesp").is(":checked")) {
+                if (!$("#cadesp").is(":checked") && !$("#jucesp").is(":checked") && !$("#caged").is(":checked")) {
                     $("#divCPF").prop("hidden", !this.checked);
                 }
             });
             $("#cadesp").click(function () {
+                if ($("#divCPF").is(":hidden")) {
+                    $("#divCPF").prop("hidden", !this.checked);
+                } else
+                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#caged").is(":checked")) {
+                        $("#divCPF").prop("hidden", !this.checked);
+                    }
+            });
+            $("#caged").click(function () {
                 if ($("#divCPF").is(":hidden")) {
                     $("#divCPF").prop("hidden", !this.checked);
                 } else
@@ -28,7 +36,7 @@
                 if ($("#divCPF").is(":hidden")) {
                     $("#divCPF").prop("hidden", !this.checked);
                 }
-                else if (!$("#arpensp").is(":checked") && !$("#cadesp").is(":checked")) {
+                else if (!$("#arpensp").is(":checked") && !$("#cadesp").is(":checked") && !$("#caged").is(":checked")) {
                         $("#divCPF").prop("hidden", !this.checked);
                 }
 
@@ -95,6 +103,12 @@
                             </label>
                         </div>
                         <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" asp-for="Caged" id="caged" type="checkbox" name="Caged">
+                            <label class="label-checkbox100" for="caged">
+                                Caged
+                            </label>
+                        </div>
+                        <div class="contact100-form-checkbox">
                             <input class="input-checkbox100" asp-for="Jucesp" id="jucesp" type="checkbox" name="Jucesp">
                             <label class="label-checkbox100" for="jucesp">
                                 Jucesp
@@ -111,7 +125,7 @@
                     </div>
 
                     <div id="divNome" hidden>
-                        <div class="wrap-input100 validate-input" data-validate="Informe o Nome">
+                        <div class="wrap-input100">
                             <label asp-for="Nome"></label>
                             <input class="input100" type="text" asp-for="Nome" name="Nome" placeholder="João da Silva">
                             <span class="focus-input100" data-placeholder="&#xf207;"></span>

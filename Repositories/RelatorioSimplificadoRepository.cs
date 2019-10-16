@@ -41,5 +41,12 @@ namespace WebApi.Repositories
             return jucespModel;
         }
 
+        public CagedModel SimplesCaged(string caged)
+        {
+            CagedModel cagedModel = JsonConvert.DeserializeObject<CagedModel>(caged);
+
+            return cagedModel;
+        }
+
     }
 }

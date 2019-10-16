@@ -11,6 +11,7 @@ namespace WebApi.Models
         public string Nome { get; set; }
         public string Arpensp { get; set; }
         public string Cadesp { get; set; }
+        public string Caged { get; set; }
         public string Jucesp { get; set; }
     }
 }

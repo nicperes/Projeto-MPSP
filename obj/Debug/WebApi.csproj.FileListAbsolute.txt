@@ -358,10 +358,6 @@ C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\pt-br\System.Web.WebPages.reso
 C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\pt-br\System.Web.WebPages.Deployment.resources.dll
 C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\pt-br\System.Web.WebPages.Razor.resources.dll
 C:\Users\favar\Documents\GitHub\Projeto-MPSP2\obj\Debug\WebApi.csproj.CopyComplete
-C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\System.Buffers.dll
-C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\System.Memory.dll
-C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\System.Numerics.Vectors.dll
-C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\roslyn\csc.exe
 C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\roslyn\csc.exe.config
 C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\roslyn\csc.rsp
@@ -535,3 +531,4 @@ C:\Users\nperes\Documents\GitHub\Projeto-MPSP\obj\Debug\WebApi.csproj.CoreCompil
 C:\Users\nperes\Documents\GitHub\Projeto-MPSP\obj\Debug\WebApi.csproj.CopyComplete
 C:\Users\nperes\Documents\GitHub\Projeto-MPSP\obj\Debug\WebApi.dll
 C:\Users\nperes\Documents\GitHub\Projeto-MPSP\obj\Debug\WebApi.pdb
+C:\Users\favar\Documents\GitHub\Projeto-MPSP2\obj\Debug\WebApi.csproj.CoreCompileInputs.cache
