@@ -20,6 +20,9 @@ using Newtonsoft.Json;
 using Microsoft.Ajax.Utilities;
 using WebApi.Repositories;
 using WebApi.Scraping;
+using org.apache.pdfbox.io;
+using org.apache.pdfbox.cos;
+using org.apache.pdfbox.pdmodel;
 //using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -258,5 +261,44 @@ namespace WebApi.Controllers
             }
         }
 
+        public void Detran()
+        {
+            var options = new ChromeOptions();
+            options.AddArguments("headless");
+            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            using (IWebDriver driver = new ChromeDriver())
+            {
+                Actions builder = new Actions(driver);
+
+                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/detran/login.html");
+                driver.FindElement(By.Id("form:j_id563205015_44efc15b")).Click();
+                driver.FindElement(By.Id("navigation_a_M_16")).Click();
+                driver.FindElement(By.XPath("//*[@id='navigation_a_F_16']")).Click();
+                driver.FindElement(By.Id("form:rg")).SendKeys("524390045");
+                driver.FindElement(By.Id("form:nome")).SendKeys("Joao");
+                driver.FindElement(By.LinkText("Pesquisar")).Click();
+
+                driver.SwitchTo().Window(driver.WindowHandles[1]);
+                URL url = new URL(driver.Url);
+                //https://stackoverflow.com/questions/3563147/can-selenium-verify-text-inside-a-pdf-loaded-by-the-browser
+                //https://stackoverflow.com/questions/32515883/how-to-verify-highlighted-text-present-in-pdf-using-selenium-webdriver
+                java.net.Proxy proxy = new java.net.Proxy(java.net.Proxy.Type.HTTP, new InetSocketAddress("177.54.218.140", 8080));
+                URLConnection urlc = url.openConnection(proxy);
+                urlc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36");
+                BufferedInputStream fileToParse = new BufferedInputStream(urlc.getInputStream());
+                //RandomAccessBufferedFileInputStream fileToParse = new RandomAccessBufferedFileInputStream(urlc.getInputStream());
+                PDFParser parser = new PDFParser(fileToParse);
+                parser.parse();
+                COSDocument cosDoc = parser.getDocument();
+                PDDocument pdDoc = new PDDocument(cosDoc);
+                PDFTextStripper pdfStripper = new PDFTextStripper();
+                pdfStripper.setStartPage(1);
+                pdfStripper.setEndPage(1);
+                string parsedText = pdfStripper.getText(pdDoc);
+
+                string saida = new PDFTextStripper().getText(parser.getPDDocument());
+                System.IO.File.WriteAllText(@"C:\Users\nperes\Desktop\Projeto\Arquivos\Detran.txt", saida);
+            }
+        }
     }
 }
