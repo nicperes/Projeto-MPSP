@@ -48,5 +48,11 @@ namespace WebApi.Repositories
             return cagedModel;
         }
 
+        public DetranModel SimplesDetran(string detran)
+        {
+            DetranModel detranModel = JsonConvert.DeserializeObject<DetranModel>(detran);
+
+            return detranModel;
+        }
     }
 }

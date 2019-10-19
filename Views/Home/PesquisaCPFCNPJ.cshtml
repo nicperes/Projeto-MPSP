@@ -12,7 +12,7 @@
                 if ($("#divCPF").is(":hidden")) {
                     $("#divCPF").prop("hidden", !this.checked);
                 }
-                if (!$("#cadesp").is(":checked") && !$("#jucesp").is(":checked") && !$("#caged").is(":checked")) {
+                if (!$("#cadesp").is(":checked") && !$("#jucesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked")) {
                     $("#divCPF").prop("hidden", !this.checked);
                 }
             });
@@ -20,7 +20,7 @@
                 if ($("#divCPF").is(":hidden")) {
                     $("#divCPF").prop("hidden", !this.checked);
                 } else
-                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#caged").is(":checked")) {
+                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked")) {
                         $("#divCPF").prop("hidden", !this.checked);
                     }
             });
@@ -28,7 +28,15 @@
                 if ($("#divCPF").is(":hidden")) {
                     $("#divCPF").prop("hidden", !this.checked);
                 } else
-                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked")) {
+                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#detran").is(":checked")) {
+                        $("#divCPF").prop("hidden", !this.checked);
+                    }
+            });
+            $("#detran").click(function () {
+                if ($("#divCPF").is(":hidden")) {
+                    $("#divCPF").prop("hidden", !this.checked);
+                } else
+                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#caged").is(":checked")) {
                         $("#divCPF").prop("hidden", !this.checked);
                     }
             });
@@ -106,6 +114,12 @@
                             <input class="input-checkbox100" asp-for="Caged" id="caged" type="checkbox" name="Caged">
                             <label class="label-checkbox100" for="caged">
                                 Caged
+                            </label>
+                        </div>
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" asp-for="Detran" id="detran" type="checkbox" name="Detran">
+                            <label class="label-checkbox100" for="detran">
+                                Detran
                             </label>
                         </div>
                         <div class="contact100-form-checkbox">

@@ -1,26 +1,16 @@
 ﻿using OpenQA.Selenium.Chrome;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Text;
-using System.IO;
 using System.Web.Mvc;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
-using System.Dynamic;
-using Facebook;
 using WebApi.Models;
 using java.io;
 using org.apache.pdfbox.pdfparser;
 using org.apache.pdfbox.util;
 using java.net;
 using Newtonsoft.Json;
-using Microsoft.Ajax.Utilities;
-using WebApi.Repositories;
-using OpenQA.Selenium.Remote;
-using java.sql;
+using org.apache.pdfbox.cos;
+using org.apache.pdfbox.pdmodel;
 
 namespace WebApi.Scraping
 {
@@ -263,6 +253,95 @@ namespace WebApi.Scraping
                 string objjsonData = JsonConvert.SerializeObject(objCa);
 
                 System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Caged.txt", objjsonData);
+
+                return objjsonData;
+            }
+        }
+
+
+        public string Detran(PesquisaCPFCNPJ pesquisaCPFCNPJ)
+        {
+            var options = new ChromeOptions();
+            //options.AddArguments("headless");
+            options.AddArguments("no-sandbox");
+            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            using (IWebDriver driver = new ChromeDriver(options))
+            {
+                Actions builder = new Actions(driver);
+
+                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/detran/login.html");
+                driver.FindElement(By.Id("form:j_id563205015_44efc15b")).Click();
+                driver.FindElement(By.Id("navigation_a_M_16")).Click();
+                driver.FindElement(By.XPath("//*[@id='navigation_a_F_16']")).Click();
+                driver.FindElement(By.Id("form:rg")).SendKeys("524390045");
+                driver.FindElement(By.Id("form:nome")).SendKeys("Joao");
+                driver.FindElement(By.LinkText("Pesquisar")).Click();
+
+                driver.SwitchTo().Window(driver.WindowHandles[1]);
+                URL url = new URL(driver.Url);
+                BufferedInputStream fileToParse = new BufferedInputStream(url.openStream());
+                PDFParser parser = new PDFParser(fileToParse);
+                parser.parse();
+                COSDocument cosDoc = parser.getDocument();
+                PDDocument pdDoc = new PDDocument(cosDoc);
+                PDFTextStripper pdfStripper = new PDFTextStripper();
+                pdfStripper.setStartPage(1);
+                pdfStripper.setEndPage(1);
+                string parsedText = pdfStripper.getText(pdDoc);
+
+                string saida = new PDFTextStripper().getText(parser.getPDDocument());
+
+                driver.SwitchTo().Window(driver.WindowHandles[0]);
+                driver.FindElement(By.Id("navigation_a_M_16")).Click();
+                driver.FindElement(By.PartialLinkText("Consultar Imagem da CNH")).Click();
+                driver.FindElement(By.LinkText("Pesquisar")).Click();
+                driver.SwitchTo().Window(driver.WindowHandles[2]);
+                //string nomePai = driver.FindElement(By.XPath("/html/body/div[4]/div/table/tbody/tr/td/div/div/form/div[3]/div/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td[2]")).Text;
+                string nPai = driver.FindElement(By.XPath("/html/body/div[4]/div/table/tbody/tr/td/div/div/form/div[3]/div/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td[2]/table/tbody/tr[3]/td/table/tbody/tr[2]/td/span")).Text;
+                string nMae = driver.FindElement(By.XPath("/html/body/div[4]/div/table/tbody/tr/td/div/div/form/div[3]/div/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr[2]/td/span")).Text;
+
+                string resultado = saida + nPai + nMae;
+
+                string[] strsplit = saida.Replace("\r\n", ":").Split(':');
+
+                string cpf = strsplit[33].Trim();
+                string rg = strsplit[13].Trim();
+                string expeditor = strsplit[34].Trim();
+                string registro = strsplit[36].Trim();
+                string local = strsplit[38].Trim();
+                string espelhoPid = strsplit[40].Trim();
+                string emissaoCnh = strsplit[42].Trim();
+                string categoria = strsplit[46].Trim();
+                string primeiraHab = strsplit[48].Trim();
+                string statusCnh = strsplit[50].Trim();
+                string renach = strsplit[52].Trim();
+                string espelhoCnh = strsplit[54].Trim();
+                string validadeCnh = strsplit[56].Trim();
+                string pontuacao = strsplit[58].Trim();
+                string nomePai = strsplit[119].Trim();
+                string nomeMae = strsplit[120].Trim();
+
+                DetranModel objDen = new DetranModel();
+                objDen.CNPJCPF = long.Parse(cpf);
+                objDen.RG = rg;
+                objDen.Expeditor = expeditor;
+                objDen.Registro = registro;
+                objDen.Local = local;
+                objDen.PID = espelhoPid;
+                objDen.EmissaoCnh = emissaoCnh;
+                objDen.Categoria = categoria;
+                objDen.PrimeiraHabilitação = primeiraHab;
+                objDen.StatusCnh = statusCnh;
+                objDen.Renach = renach;
+                objDen.EspelhoCnh = espelhoCnh;
+                objDen.ValidadeCnh = validadeCnh;
+                objDen.Pontuacao = pontuacao;
+                objDen.NomePai = nPai;
+                objDen.NomeMae = nMae;
+
+                string objjsonData = JsonConvert.SerializeObject(objDen, new JsonSerializerSettings { Formatting = Formatting.Indented });
+
+                System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Detran.txt", objjsonData);
 
                 return objjsonData;
             }
