@@ -265,7 +265,7 @@ namespace WebApi.Scraping
             //options.AddArguments("headless");
             options.AddArguments("no-sandbox");
             //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
-            using (IWebDriver driver = new ChromeDriver(options))
+            using (IWebDriver driver = new ChromeDriver())
             {
                 Actions builder = new Actions(driver);
 
@@ -300,9 +300,30 @@ namespace WebApi.Scraping
                 string nPai = driver.FindElement(By.XPath("/html/body/div[4]/div/table/tbody/tr/td/div/div/form/div[3]/div/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td[2]/table/tbody/tr[3]/td/table/tbody/tr[2]/td/span")).Text;
                 string nMae = driver.FindElement(By.XPath("/html/body/div[4]/div/table/tbody/tr/td/div/div/form/div[3]/div/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr[2]/td/span")).Text;
 
-                string resultado = saida + nPai + nMae;
 
-                string[] strsplit = saida.Replace("\r\n", ":").Split(':');
+                driver.SwitchTo().Window(driver.WindowHandles[0]);
+                driver.FindElement(By.Id("navigation_a_M_18")).Click();
+                driver.FindElement(By.PartialLinkText("Consultar Veículo Base Estadual")).Click();
+                driver.FindElement(By.XPath("/html/body/div[4]/div/table/tbody/tr/td/div/div/form/div[1]/div[2]/table[2]/tbody/tr[2]/td[2]/input")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ);
+                driver.FindElement(By.LinkText("Pesquisar")).Click();
+                driver.SwitchTo().Window(driver.WindowHandles[3]);
+
+                URL urlCarro = new URL(driver.Url);
+                BufferedInputStream fileToParseCarro = new BufferedInputStream(urlCarro.openStream());
+                PDFParser parserCarro = new PDFParser(fileToParseCarro);
+                parserCarro.parse();
+                COSDocument cosDocCarro = parserCarro.getDocument();
+                PDDocument pdDocCarro = new PDDocument(cosDocCarro);
+                PDFTextStripper pdfStripperCarro = new PDFTextStripper();
+                pdfStripper.setStartPage(1);
+                pdfStripper.setEndPage(1);
+                string parsedTextCarro = pdfStripperCarro.getText(pdDocCarro);
+
+                string saidaCarro = new PDFTextStripper().getText(parserCarro.getPDDocument());
+
+                string resultado = saida + nPai + nMae + saidaCarro;
+
+                string[] strsplit = resultado.Replace("\r\n", ":").Split(':');
 
                 string cpf = strsplit[33].Trim();
                 string rg = strsplit[13].Trim();
@@ -320,6 +341,28 @@ namespace WebApi.Scraping
                 string pontuacao = strsplit[58].Trim();
                 string nomePai = strsplit[119].Trim();
                 string nomeMae = strsplit[120].Trim();
+                string placa = strsplit[144].Replace(" 7107 - SAO PAULO", "").Trim();
+                string municipioPlaca = strsplit[144].Replace("gge4223  ", "").Trim();
+                string renavam = strsplit[146].Replace("  9AAAAVAU0J4001600 ", "").Trim();
+                string chassi = strsplit[146].Replace("01172566666  ", "").Trim();
+                string numMotor = strsplit[148].Replace("  22/11/18 00", "").Trim();
+                string dataAltMotor = strsplit[148].Replace("CWL031481  ", "").Trim();
+                string tipo = strsplit[151].Replace(" 1 - IMPORTADO 16 - ALCO/GASOL", "").Trim();
+                string procedencia = strsplit[151].Replace("6 - AUTOMOVEL ", "").Replace(" 16 - ALCO/GASOL ", "").Trim();
+                string combustivel = strsplit[151].Replace("6 - AUTOMOVEL 1 - IMPORTADO ", "").Trim();
+                string cor = strsplit[153].Replace("  162801 – VARIANT GL ", "").Trim();
+                string marcaModelo = strsplit[153].Replace("4 - BRANCA  162801 – ", "").Trim();
+                string categoriaAut = strsplit[155].Replace(" 1971 1972 ", "").Trim();
+                string anoFab = strsplit[155].Replace("1 - PARTICULAR ", "").Replace(" 1972 ", "").Trim();
+                string anoMod = strsplit[155].Replace("1 - PARTICULAR 1971 ", "").Trim();
+                string logradouro = strsplit[166].Replace("  00121 ", "").Trim();
+                string numero = strsplit[166].Replace("AV LINS DE VASCONCELOS  ", "").Trim();
+                string complemento = strsplit[182].Replace("  010006-010 ", "").Trim();
+                string cep = strsplit[182].Replace("4 ANDAR  ", "").Trim();
+                string bairro = strsplit[184].Replace(" 7107 - SAO PAULO SP ", "").Trim();
+                string licenciamento = strsplit[225].Replace("   07/03/2019 ", "").Trim();
+                string dataLicenciamento = strsplit[225].Replace("2019   ", "").Trim();
+                string dataEmissaoCRV = strsplit[227].Trim();
 
                 DetranModel objDen = new DetranModel();
                 objDen.CNPJCPF = long.Parse(cpf);
@@ -338,6 +381,28 @@ namespace WebApi.Scraping
                 objDen.Pontuacao = pontuacao;
                 objDen.NomePai = nPai;
                 objDen.NomeMae = nMae;
+                objDen.Placa = placa;
+                objDen.MunicipioCarro = municipioPlaca;
+                objDen.Renavam = renavam;
+                objDen.Chassi = chassi;
+                objDen.NumMotor = numMotor;
+                objDen.DataAltMotor = dataAltMotor;
+                objDen.Tipo = tipo;
+                objDen.Procedencia = procedencia;
+                objDen.Combustivel = combustivel;
+                objDen.Cor = cor;
+                objDen.MarcaModelo = marcaModelo;
+                objDen.CategoriaAut = categoriaAut;
+                objDen.Fabricacao = anoFab;
+                objDen.Modelo = anoMod;
+                objDen.Logradouro = logradouro;
+                objDen.Numero = numero;
+                objDen.Complemento = complemento;
+                objDen.CEP = cep;
+                objDen.Bairro = bairro;
+                objDen.Licenciamento = licenciamento;
+                objDen.DataLicenciamento = dataLicenciamento;
+                objDen.DataEmissaoCRV = dataEmissaoCRV;
 
                 string objjsonData = JsonConvert.SerializeObject(objDen, new JsonSerializerSettings { Formatting = Formatting.Indented });
 
