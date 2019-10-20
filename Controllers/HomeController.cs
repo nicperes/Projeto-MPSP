@@ -80,8 +80,10 @@ namespace WebApi.Controllers
             string arpensp = "";
             string cadesp = "";
             string caged = "";
-            string juscesp = "";
+            string censec = "";
             string detran = "";
+            string juscesp = "";
+            
             if (pesquisaCPFCNPJ.Arpensp == "on"){
                 arpensp = webScraping.Arpensp(pesquisaCPFCNPJ);
             }
@@ -90,6 +92,10 @@ namespace WebApi.Controllers
             }
             if (pesquisaCPFCNPJ.Caged == "on"){
                 caged = webScraping.Caged(pesquisaCPFCNPJ);
+            }
+            if (pesquisaCPFCNPJ.Censec == "on")
+            {
+                censec = webScraping.Censec(pesquisaCPFCNPJ);
             }
             if (pesquisaCPFCNPJ.Jucesp == "on"){
                 juscesp = webScraping.Jucesp(pesquisaCPFCNPJ);
@@ -104,10 +110,11 @@ namespace WebApi.Controllers
             JucespModel jucespModel = relatorioSimplificadoRepository.SimplesJucesp(juscesp);
             CagedModel cagedModel = relatorioSimplificadoRepository.SimplesCaged(caged);
             DetranModel detranModel = relatorioSimplificadoRepository.SimplesDetran(detran);
+            CensecModel censecModel = relatorioSimplificadoRepository.SimplesCensec(censec);
 
             //var tuple = new Tuple<ArpenspModel, CadespModel, JucespModel, CagedModel, Tuple<DetranModel>>(arpenspModel,cadespModel,jucespModel,cagedModel,Tuple.Create(detranModel));
 
-            return View(new PesquisaCPFCNPJ() {ArpenspModel = arpenspModel, CadespModel = cadespModel, JucespModel = jucespModel, CagedModel = cagedModel, DetranModel = detranModel });
+            return View(new PesquisaCPFCNPJ() {ArpenspModel = arpenspModel, CadespModel = cadespModel, JucespModel = jucespModel, CagedModel = cagedModel, DetranModel = detranModel, CensecModel = censecModel });
         }
 
         
@@ -197,70 +204,6 @@ namespace WebApi.Controllers
 
             }
 
-        }
-
-        public void Censec()
-        {
-
-            var options = new ChromeOptions();
-            options.AddArguments("headless");
-            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
-            using (IWebDriver driver = new ChromeDriver())
-            {
-                Actions builder = new Actions(driver);
-
-                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/censec/login.html");
-
-                driver.FindElement(By.Id("EntrarButton")).Click();
-                driver.FindElement(By.Id("menucentrais")).Click();
-                driver.FindElement(By.XPath("//*[@id='ctl00_CESDILi']/a")).Click();
-                driver.FindElement(By.XPath("//*[@id='ctl00_CESDIConsultaAtoHyperLink']")).Click();
-                driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_DocumentoTextBox")).SendKeys("21321321323");
-                driver.FindElement(By.ClassName("BT_Buscar")).SendKeys(Keys.Enter);
-
-                driver.FindElement(By.XPath("//*[@id='ctl00_ContentPlaceHolder1_ResultadoBuscaGeralPanel']/div[2]/div[1]/div/table/tbody/tr[2]/td[1]/input")).Click();
-                driver.FindElement(By.ClassName("BT_Buscar")).SendKeys(Keys.Enter);
-
-                string carga = driver.FindElement(By.XPath("/html/body/form/div[5]/div/div[3]/div[2]/div[3]/div[1]/div/input")).GetAttribute("value");
-                string mes = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_MesReferenciaDropDownList")).Text;
-                string ano = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_AnoReferenciaDropDownList")).Text;
-                string ato = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_TipoAtoDropDownList")).GetAttribute("value");
-                string diaAto = driver.FindElement(By.XPath("/html/body/form/div[5]/div/div[3]/div[2]/div[3]/div[6]/div/input[1]")).GetAttribute("value");
-                string mesAto = driver.FindElement(By.XPath("/html/body/form/div[5]/div/div[3]/div[2]/div[3]/div[6]/div/input[3]")).GetAttribute("value");
-                string anoAto = driver.FindElement(By.XPath("/html/body/form/div[5]/div/div[3]/div[2]/div[3]/div[6]/div/input[4]")).GetAttribute("value");
-                string livro  = driver.FindElement(By.XPath("/html/body/form/div[5]/div/div[3]/div[2]/div[3]/div[7]/div/input[1]")).GetAttribute("value");
-                string folha = driver.FindElement(By.XPath("/html/body/form/div[5]/div/div[3]/div[2]/div[3]/div[9]/div/input[1]")).GetAttribute("value");
-
-                string nomes = driver.FindElement(By.XPath("/html/body/form/div[5]/div/div[3]/div[2]/div[6]/div[1]/div/div/table/tbody")).GetAttribute("value");
-
-                string uf = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_DadosCartorio_CartorioUFTextBox")).GetAttribute("value");
-                string municipio = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_DadosCartorio_CartorioMunicipioTextBox")).GetAttribute("value");
-                string cartorio = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_DadosCartorio_CartorioNomeTextBox")).GetAttribute("value");
-                string tabela = driver.FindElement(By.XPath("//*[@id='ctl00_ContentPlaceHolder1_DadosCartorio_DivTelefonesCartorioListView']/div/table")).GetAttribute("value");
-
-
-                CensecModel objCen = new CensecModel();
-                objCen.Carga = carga.Trim();
-                objCen.Mes = mes.Trim();
-                objCen.Ano = ano.Trim();
-                objCen.Ato = ato.Replace("\r\n","").Trim();
-                objCen.DiaAto = diaAto.Trim();
-                objCen.MesAto = mesAto.Trim();
-                objCen.AnoAto = anoAto.Trim();
-                objCen.Livro = livro.Trim();
-                objCen.Folha = folha.Trim();
-                objCen.Nomes = nomes.Trim();
-                objCen.UF = uf.Trim();
-                objCen.Municipio = municipio.Trim();
-                objCen.Cartorio = cartorio.Trim();
-                objCen.Tabela = tabela.Trim();
-
-                string objjsonData = JsonConvert.SerializeObject(objCen);
-
-                System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Censec.txt", objjsonData);
-                
-
-            }
         }
 
 

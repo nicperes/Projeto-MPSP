@@ -54,5 +54,12 @@ namespace WebApi.Repositories
 
             return detranModel;
         }
+
+        public CensecModel SimplesCensec(string censec)
+        {
+            CensecModel censecModel = JsonConvert.DeserializeObject<CensecModel>(censec);
+
+            return censecModel;
+        }
     }
 }

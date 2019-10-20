@@ -16,12 +16,15 @@ namespace WebApi.Models
         public string AnoAto { get; set; }
         public string Livro { get; set; }
         public string Folha { get; set; }
-        public string Nomes { get; set; }
+        public string NomesPartes { get; set; }
+        public string CpfCnpjPartes { get; set; }
+        public string QualidadePartes { get; set; }
         public string UF { get; set; }
         public string Municipio { get; set; }
         public string Cartorio { get; set; }
-        public string Tabela { get; set; }
-        
-
+        public string TelefoneCartorio { get; set; }
+        public string TipoTelefoneCartorio { get; set; }
+        public string ContatoCartorio { get; set; }
+        public string StatusCartorio { get; set; }
     }
 }

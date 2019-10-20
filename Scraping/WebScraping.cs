@@ -412,5 +412,132 @@ namespace WebApi.Scraping
             }
         }
 
+        public string Censec(PesquisaCPFCNPJ pesquisaCPFCNPJ)
+        {
+
+            var options = new ChromeOptions();
+            options.AddArguments("headless");
+            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            using (IWebDriver driver = new ChromeDriver(options))
+            {
+                Actions builder = new Actions(driver);
+
+                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/censec/login.html");
+
+                driver.FindElement(By.Id("EntrarButton")).Click();
+                driver.FindElement(By.Id("menucentrais")).Click();
+                driver.FindElement(By.XPath("//*[@id='ctl00_CESDILi']/a")).Click();
+                driver.FindElement(By.XPath("//*[@id='ctl00_CESDIConsultaAtoHyperLink']")).Click();
+                driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_DocumentoTextBox")).SendKeys("21321321323");
+                driver.FindElement(By.ClassName("BT_Buscar")).SendKeys(Keys.Enter);
+
+                driver.FindElement(By.XPath("//*[@id='ctl00_ContentPlaceHolder1_ResultadoBuscaGeralPanel']/div[2]/div[1]/div/table/tbody/tr[2]/td[1]/input")).Click();
+                driver.FindElement(By.ClassName("BT_Buscar")).SendKeys(Keys.Enter);
+
+                string carga = driver.FindElement(By.XPath("/html/body/form/div[5]/div/div[3]/div[2]/div[3]/div[1]/div/input")).GetAttribute("value");
+                string mes = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_MesReferenciaDropDownList")).Text;
+                string ano = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_AnoReferenciaDropDownList")).Text;
+                string ato = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_TipoAtoDropDownList")).GetAttribute("value");
+                string diaAto = driver.FindElement(By.XPath("/html/body/form/div[5]/div/div[3]/div[2]/div[3]/div[6]/div/input[1]")).GetAttribute("value");
+                string mesAto = driver.FindElement(By.XPath("/html/body/form/div[5]/div/div[3]/div[2]/div[3]/div[6]/div/input[3]")).GetAttribute("value");
+                string anoAto = driver.FindElement(By.XPath("/html/body/form/div[5]/div/div[3]/div[2]/div[3]/div[6]/div/input[4]")).GetAttribute("value");
+                string livro = driver.FindElement(By.XPath("/html/body/form/div[5]/div/div[3]/div[2]/div[3]/div[7]/div/input[1]")).GetAttribute("value");
+                string folha = driver.FindElement(By.XPath("/html/body/form/div[5]/div/div[3]/div[2]/div[3]/div[9]/div/input[1]")).GetAttribute("value");
+
+                string tabelaPartes = driver.FindElement(By.XPath("/html/body/form/div[5]/div/div[3]/div[2]/div[6]/div[1]/div/div/table/tbody")).Text;
+
+                string uf = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_DadosCartorio_CartorioUFTextBox")).GetAttribute("value");
+                string municipio = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_DadosCartorio_CartorioMunicipioTextBox")).GetAttribute("value");
+                string cartorio = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_DadosCartorio_CartorioNomeTextBox")).GetAttribute("value");
+                string tabela = driver.FindElement(By.XPath("//*[@id='ctl00_ContentPlaceHolder1_DadosCartorio_DivTelefonesCartorioListView']/div/table")).Text;
+
+                string[] strsplit = tabelaPartes.Replace("\r\n", ":").Replace("  ", ":").Split(':');
+                var nomes = "";
+                var cpfCnpj = "";
+                var quali = "";
+                var table = driver.FindElement(By.XPath("/html/body/form/div[5]/div/div[3]/div[2]/div[6]/div[1]/div/div/table/tbody"));
+                var rows = table.FindElements(By.TagName("tr"));
+                var count = rows.Count;
+
+                //For para pegar os nomes
+                for (int i = 0; i < count * 3; i += 3)
+                {
+                    nomes = nomes + " |" + strsplit[i];
+                }
+
+                //For para pegar os CPFs/CNPJs
+                for (int i = 1; i < count * 3; i += 3)
+                {
+                    cpfCnpj = cpfCnpj + " | " + strsplit[i];
+                }
+
+                //For para pegar as qualidades
+                for (int i = 2; i < count * 3; i += 3)
+                {
+                    quali = quali + " | " + strsplit[i];
+                }
+
+                string[] strsplit2 = tabela.Replace("\r\n", ":").Replace("  ", ":").Split(':');
+                var telefones = "";
+                var tipos = "";
+                var contatos = "";
+                var status = "";
+                var table2 = driver.FindElement(By.XPath("/html/body/form/div[5]/div/div[3]/div[2]/div[7]/div[2]/div[2]/div/table/tbody"));
+                var rows2 = table2.FindElements(By.TagName("tr"));
+                var count2 = rows2.Count;
+
+                //For para pegar os telefones
+                for (int i = 0; i < count2 * 5; i += 5)
+                {
+                    telefones = telefones + " |" + strsplit2[i];
+                }
+
+                //For para pegar os tipos
+                for (int i = 1; i < count2 * 5; i += 5)
+                {
+                    tipos = tipos + " |" + strsplit2[i];
+                }
+
+                //For para pegar os contatos
+                for (int i = 3; i < count2 * 5; i += 5)
+                {
+                    contatos = contatos + " |" + strsplit2[i];
+                }
+
+                //For para pegar os status
+                for (int i = 4; i < count2 * 5; i += 5)
+                {
+                    status = status + " |" + strsplit2[i];
+                }
+
+                CensecModel objCen = new CensecModel();
+                objCen.Carga = carga.Trim();
+                objCen.Mes = mes.Trim();
+                objCen.Ano = ano.Trim();
+                objCen.Ato = ato.Replace("\r\n", "").Trim();
+                objCen.DiaAto = diaAto.Trim();
+                objCen.MesAto = mesAto.Trim();
+                objCen.AnoAto = anoAto.Trim();
+                objCen.Livro = livro.Trim();
+                objCen.Folha = folha.Trim();
+                objCen.NomesPartes = nomes.Trim();
+                objCen.CpfCnpjPartes = cpfCnpj.Trim();
+                objCen.QualidadePartes = quali.Trim();
+                objCen.UF = uf.Trim();
+                objCen.Municipio = municipio.Trim();
+                objCen.Cartorio = cartorio.Trim();
+                objCen.TelefoneCartorio = telefones.Replace("_", "").Trim();
+                objCen.TipoTelefoneCartorio = tipos.Trim();
+                objCen.ContatoCartorio = contatos.Trim();
+                objCen.StatusCartorio = status.Trim();
+
+                string objjsonData = JsonConvert.SerializeObject(objCen);
+
+                System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Censec.txt", objjsonData);
+
+                return objjsonData;
+            }
+        }
+
     }
 }

@@ -14,6 +14,7 @@ namespace WebApi.Models
         public string Caged { get; set; }
         public string Jucesp { get; set; }
         public string Detran { get; set; }
+        public string Censec { get; set; }
 
         public ArpenspModel ArpenspModel { get; set; }
         public CadespModel CadespModel { get; set; }
