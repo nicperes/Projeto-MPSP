@@ -4,6 +4,17 @@
 }
 
 <!-- Page Content -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script  type="text/javascript">
+
+    var div = $("#DivCartorioRegistro");
+    var texto = $("#cartorioRegistro");
+
+    if (texto.text == null) {
+        div.prop("hidden", "true");
+    }
+
+</script>
 
 <html lang="en">
 <head>
@@ -48,39 +59,39 @@
                     <span class="login100-form-title p-b-34 p-t-27">
                         Arpensp
                     </span>
-
-                    <label>Cartorio do Registro</label>
-                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.CartorioRegistro)">
-
+                    <div id="DivCartorioRegistro">
+                        <label>Cartorio do Registro</label>
+                        <input class="input100" type="text" id="cartorioRegistro" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.CartorioRegistro)">
+                    </div>
                     <label>Numero do CNS</label>
-                    <input class="input100" type="number" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.NumCNS)">
+                    <input class="input100" type="number" id="numCNS" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.NumCNS)">
 
                     <label>UF</label>
-                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.UF)">
+                    <input class="input100" type="text" id="uf" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.UF)">
 
                     <label>Nome do Conjuge</label>
-                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.NomeConj)">
+                    <input class="input100" type="text" id="nomeConj" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.NomeConj)">
 
                     <label>Novo nome do Conjuge</label>
-                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.NovoNomeConj)">
+                    <input class="input100" type="text" id="novoNomeConj" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.NovoNomeConj)">
 
                     <label>Nome do Conjuge 2</label>
-                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.NomeConj2)">
+                    <input class="input100" type="text" id="nomeConj2" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.NomeConj2)">
 
                     <label>Novo nome do Conjuge 2</label>
-                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.NovoNomeConj2)">
+                    <input class="input100" type="text" id="novoNomeConj2" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.NovoNomeConj2)">
 
                     <label>Data do Casamento</label>
-                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.DataCasamento)">
+                    <input class="input100" type="text" id="dataCasamento" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.DataCasamento)">
 
                     <label>Matricula</label>
-                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.Matricula)">
+                    <input class="input100" type="text" id="matricula" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.Matricula)">
 
                     <label>Data da Entrada</label>
-                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.DataEntrada)">
+                    <input class="input100" type="text" id="dataEntrada" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.DataEntrada)">
 
                     <label>Data do Registro</label>
-                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.DataRegistro)">
+                    <input class="input100" type="text" id="dataRegistro" disabled="disabled" value="@Html.DisplayFor(model => model.ArpenspModel.DataRegistro)">
 
                     <br />
 
@@ -89,19 +100,19 @@
                     </span>
 
                     <label>CNPJ</label>
-                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.CadespModel.CNPJ)">
+                    <input class="input100" type="text" id="cnpj" disabled="disabled" value="@Html.DisplayFor(model => model.CadespModel.CNPJ)">
 
                     <label>Data da Inscrição</label>
-                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.CadespModel.DataInscricao)">
+                    <input class="input100" type="text" id="dataInscricao" disabled="disabled" value="@Html.DisplayFor(model => model.CadespModel.DataInscricao)">
 
                     <label>DRT</label>
-                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.CadespModel.DRT)">
+                    <input class="input100" type="text" id="drt" disabled="disabled" value="@Html.DisplayFor(model => model.CadespModel.DRT)">
 
                     <label>Formas de Atuação</label>
-                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.CadespModel.FormasAtuacao)">
+                    <input class="input100" type="text" id="formasAtuacao" disabled="disabled" value="@Html.DisplayFor(model => model.CadespModel.FormasAtuacao)">
 
                     <label>IE</label>
-                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.CadespModel.IE)">
+                    <input class="input100" type="text" id="" disabled="disabled" value="@Html.DisplayFor(model => model.CadespModel.IE)">
 
                     <label>Nire</label>
                     <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.CadespModel.Nire)">
@@ -368,7 +379,20 @@
                     <label>Status do Cartorio</label>
                     <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.CensecModel.StatusCartorio)">
 
+                    <br />
 
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Siel
+                    </span>
+
+                    <label>Titulo</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.SielModel.Titulo)">
+
+                    <label>Zona</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.SielModel.Zona)">
+
+                    <label>Data Domicilio</label>
+                    <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.SielModel.DataDomicilio)">
 
                     <br />
 

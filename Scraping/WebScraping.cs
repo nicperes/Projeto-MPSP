@@ -539,5 +539,42 @@ namespace WebApi.Scraping
             }
         }
 
+        public string Siel(PesquisaCPFCNPJ pesquisaCPFCNPJ)
+        {
+
+            var options = new ChromeOptions();
+            options.AddArguments("headless");
+            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            using (IWebDriver driver = new ChromeDriver(options))
+            {
+                Actions builder = new Actions(driver);
+
+                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/siel/login.html");
+                driver.FindElement(By.XPath("//html/body/div[1]/div[1]/div[4]/form/table/tbody/tr[3]/td[2]/input")).Click();
+                driver.FindElement(By.XPath("/html/body/div[1]/div[1]/div[4]/form[2]/fieldset[1]/table/tbody/tr[1]/td[2]/input")).SendKeys("Teste");
+                driver.FindElement(By.XPath("/html/body/div[1]/div[1]/div[4]/form[2]/fieldset[2]/table[1]/tbody/tr/td[2]/input")).Click();
+                driver.FindElement(By.XPath("/html/body/div[1]/div[1]/div[4]/form[1]/div[2]/table/tbody/tr/td/p")).Click();
+                driver.FindElement(By.XPath("/html/body/div[1]/div[1]/div[4]/form[2]/fieldset[2]/table[1]/tbody/tr/td[2]/input")).SendKeys("2434234");
+                driver.FindElement(By.XPath("/html/body/div[1]/div[1]/div[4]/form[2]/table/tbody/tr/td[2]/input")).Click();
+                string tabela = driver.FindElement(By.XPath("/html/body/div[1]/div[1]/div[4]/table")).Text;
+
+                string[] strsplit = tabela.Replace("\r\n", ":").Split(':');
+                string titulo = strsplit[2].Replace("Título ", "").Trim();
+                string zona = strsplit[4].Replace("Zona ", "").Trim();
+                string dataDomicilio = strsplit[8].Replace("Data Domicílio ", "").Trim();
+
+                SielModel objSiel = new SielModel();
+                objSiel.Titulo = titulo;
+                objSiel.Zona = zona;
+                objSiel.DataDomicilio = dataDomicilio;
+
+                string objjsonData = JsonConvert.SerializeObject(objSiel);
+
+                System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\SielSaida.txt", objjsonData);
+
+                return objjsonData;
+            }
+        }
+
     }
 }

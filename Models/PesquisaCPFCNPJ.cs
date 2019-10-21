@@ -15,6 +15,7 @@ namespace WebApi.Models
         public string Jucesp { get; set; }
         public string Detran { get; set; }
         public string Censec { get; set; }
+        public string Siel { get; set; }
 
         public ArpenspModel ArpenspModel { get; set; }
         public CadespModel CadespModel { get; set; }
@@ -22,5 +23,6 @@ namespace WebApi.Models
         public CensecModel CensecModel { get; set; }
         public DetranModel DetranModel { get; set; }
         public JucespModel JucespModel { get; set; }
+        public SielModel SielModel { get; set; }
     }
 }

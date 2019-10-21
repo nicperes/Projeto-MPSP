@@ -83,6 +83,7 @@ namespace WebApi.Controllers
             string censec = "";
             string detran = "";
             string juscesp = "";
+            string siel = "";
             
             if (pesquisaCPFCNPJ.Arpensp == "on"){
                 arpensp = webScraping.Arpensp(pesquisaCPFCNPJ);
@@ -103,7 +104,9 @@ namespace WebApi.Controllers
             if (pesquisaCPFCNPJ.Detran == "on"){
                 detran = webScraping.Detran(pesquisaCPFCNPJ);
             }
-            
+            if (pesquisaCPFCNPJ.Siel == "on"){
+                siel = webScraping.Siel(pesquisaCPFCNPJ);
+            }
 
             ArpenspModel arpenspModel = relatorioSimplificadoRepository.SimplesArpensp(arpensp);
             CadespModel cadespModel = relatorioSimplificadoRepository.SimplesCadesp(cadesp);
@@ -111,10 +114,9 @@ namespace WebApi.Controllers
             CagedModel cagedModel = relatorioSimplificadoRepository.SimplesCaged(caged);
             DetranModel detranModel = relatorioSimplificadoRepository.SimplesDetran(detran);
             CensecModel censecModel = relatorioSimplificadoRepository.SimplesCensec(censec);
+            SielModel sielModel = relatorioSimplificadoRepository.SimplesSiel(siel);
 
-            //var tuple = new Tuple<ArpenspModel, CadespModel, JucespModel, CagedModel, Tuple<DetranModel>>(arpenspModel,cadespModel,jucespModel,cagedModel,Tuple.Create(detranModel));
-
-            return View(new PesquisaCPFCNPJ() {ArpenspModel = arpenspModel, CadespModel = cadespModel, JucespModel = jucespModel, CagedModel = cagedModel, DetranModel = detranModel, CensecModel = censecModel });
+            return View(new PesquisaCPFCNPJ() {ArpenspModel = arpenspModel, CadespModel = cadespModel, JucespModel = jucespModel, CagedModel = cagedModel, DetranModel = detranModel, CensecModel = censecModel, SielModel = sielModel });
         }
 
         
@@ -145,8 +147,11 @@ namespace WebApi.Controllers
 
         
 
-        public void WebSrapingArisp()
+        public void Arisp()
         {
+            var options = new ChromeOptions();
+            options.AddArguments("headless");
+            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
             using (IWebDriver driver = new ChromeDriver())
             {
                 
@@ -180,7 +185,7 @@ namespace WebApi.Controllers
 
                 }
 
-                string texto = driver.FindElement(By.TagName("label")).Text;
+                string texto = driver.FindElement(By.LinkText("Foi pesquisado, encontramos ocorrência(s), a base de dados está atualizada.")).Text;
 
                 for (int i = 0; i > count; i++)
                 {
@@ -205,6 +210,52 @@ namespace WebApi.Controllers
             }
 
         }
+
+        
+
+        public void Infocrim()
+        {
+
+            var options = new ChromeOptions();
+            options.AddArguments("headless");
+            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            using (IWebDriver driver = new ChromeDriver())
+            {
+
+                Actions builder = new Actions(driver);
+
+                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/infocrim/login.html");
+                driver.FindElement(By.XPath("/html/body/table/tbody/tr[3]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td[4]/a/img")).Click();
+                System.Threading.Thread.Sleep(2000);
+                var alert = driver.SwitchTo().Alert();
+                alert.SetAuthenticationCredentials("fiap", "mpsp");
+                alert.SendKeys("fiap" + Keys.Tab + "mpsp" + Keys.Tab);
+                alert.Accept();
+                driver.SwitchTo().DefaultContent();
+                driver.FindElement(By.XPath("/html/body/a/table[3]/tbody/tr/td[2]/table[1]/tbody/tr[3]/td/table/tbody/tr[2]/td/table/tbody/tr/td/div/a/img")).Click();
+                driver.FindElement(By.XPath("/html/body/table/tbody/tr[2]/td/table[3]/tbody/tr[2]/td[2]/a")).Click();
+                driver.FindElement(By.XPath("/html/body/table/tbody/tr/td/a[2]/img")).Click();
+                driver.FindElement(By.XPath("/html/body/print-preview-app//print-preview-sidebar//div[2]/print-preview-destination-settings//print-preview-settings-section[1]/div/print-preview-destination-select//select")).Click();
+                driver.FindElement(By.XPath("/html/body/print-preview-app//print-preview-sidebar//div[2]/print-preview-destination-settings//print-preview-settings-section[1]/div/print-preview-destination-select//select/option[2]")).Click();
+
+                URL url = new URL(driver.Url);
+                BufferedInputStream fileToParse = new BufferedInputStream(url.openStream());
+                PDFParser parser = new PDFParser(fileToParse);
+                parser.parse();
+                COSDocument cosDoc = parser.getDocument();
+                PDDocument pdDoc = new PDDocument(cosDoc);
+                PDFTextStripper pdfStripper = new PDFTextStripper();
+                pdfStripper.setStartPage(1);
+                pdfStripper.setEndPage(1);
+                string parsedText = pdfStripper.getText(cosDoc);
+
+                string saida = new PDFTextStripper().getText(parser.getPDDocument());
+
+                System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Infocrim.txt", saida);
+            }
+        }
+
+
 
 
     }

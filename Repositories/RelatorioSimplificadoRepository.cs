@@ -61,5 +61,12 @@ namespace WebApi.Repositories
 
             return censecModel;
         }
+
+        public SielModel SimplesSiel(string siel)
+        {
+            SielModel sielModel = JsonConvert.DeserializeObject<SielModel>(siel);
+
+            return sielModel;
+        }
     }
 }

@@ -5,13 +5,24 @@
 <!-- Page Content -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script type="text/javascript">
+    
+    $(document).ready(function () {
 
-    function myfunctionChecked() {
-        $(document).ready(function () {
-            $("#arpensp").click(function () {
+        var processo = $("#processo");
+        var cpf = $("#cpf");
+        var nome = $("#nome");
+
+
+        //Campos ficam em hidden
+        $("#divCPF").prop("hidden", "true");
+        $("#divNome").prop("hidden", "true");
+        $("#divProcesso").prop("hidden", "true");
+
+        $("#arpensp").click(function () {
                 if ($("#divCPF").is(":hidden")) {
                     $("#divCPF").prop("hidden", !this.checked);
-                }
+                    cpf.attr('required', '');
+                }else
                 if (!$("#cadesp").is(":checked") && !$("#jucesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked")) {
                     $("#divCPF").prop("hidden", !this.checked);
                 }
@@ -19,6 +30,7 @@
             $("#cadesp").click(function () {
                 if ($("#divCPF").is(":hidden")) {
                     $("#divCPF").prop("hidden", !this.checked);
+                    cpf.attr('required', '');
                 } else
                     if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked")) {
                         $("#divCPF").prop("hidden", !this.checked);
@@ -27,6 +39,7 @@
             $("#caged").click(function () {
                 if ($("#divCPF").is(":hidden")) {
                     $("#divCPF").prop("hidden", !this.checked);
+                    cpf.attr('required', '');
                 } else
                     if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked")) {
                         $("#divCPF").prop("hidden", !this.checked);
@@ -35,14 +48,17 @@
             $("#censec").click(function () {
                 if ($("#divCPF").is(":hidden")) {
                     $("#divCPF").prop("hidden", !this.checked);
+                    cpf.attr('required', '');
                 } else
                     if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#detran").is(":checked") && !$("#caged").is(":checked")) {
                         $("#divCPF").prop("hidden", !this.checked);
+
                     }
             });
             $("#detran").click(function () {
                 if ($("#divCPF").is(":hidden")) {
                     $("#divCPF").prop("hidden", !this.checked);
+                    cpf.attr('required', '');
                 } else
                     if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#caged").is(":checked") && !$("#censec").is(":checked")) {
                         $("#divCPF").prop("hidden", !this.checked);
@@ -51,19 +67,36 @@
             $("#jucesp").click(function () {
                 if ($("#divCPF").is(":hidden")) {
                     $("#divCPF").prop("hidden", !this.checked);
+                    cpf.attr('required', '');
                 }
                 else if (!$("#arpensp").is(":checked") && !$("#cadesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked")) {
-                        $("#divCPF").prop("hidden", !this.checked);
+                    $("#divCPF").prop("hidden", !this.checked);
                 }
 
                 if ($("#divNome").is(":hidden")) {
                     $("#divNome").prop("hidden", !this.checked);
-                } else if (!$("#jucesp").is(":checked")){
+                    nome.attr('required', '');
+                } else if (!$("#jucesp").is(":checked") && !$("#siel").is(":checked")){
+                    $("#divNome").prop("hidden", !this.checked);
+                }
+            });
+            $("#siel").click(function () {
+                if ($("#divProcesso").is(":hidden")) {
+                    $("#divProcesso").prop("hidden", !this.checked);
+                    processo.attr('required', '');
+                } else if (!$("#siel").is(":checked")) {
+                    $("#divProcesso").prop("hidden", !this.checked);
+                }
+
+                if ($("#divNome").is(":hidden")) {
+                    $("#divNome").prop("hidden", !this.checked);
+                    nome.attr('required', '');
+                } else if (!$("#jucesp").is(":checked") && !$("#siel").is(":checked")){
                     $("#divNome").prop("hidden", !this.checked);
                 }
             });
         });
-    }
+    
 </script>
 <html lang="en">
 <head>
@@ -105,7 +138,7 @@
                     <span class="login100-form-title p-b-34 p-t-27">
                         Portais de Consulta
                     </span>
-                    <div id="teste" onclick="myfunctionChecked()">
+                    <div id="teste">
                         <div class="contact100-form-checkbox">
                             <input class="input-checkbox100" asp-for="Arpensp" id="arpensp" type="checkbox" name="Arpensp">
                             <label class="label-checkbox100" for="arpensp">
@@ -142,20 +175,34 @@
                                 Jucesp
                             </label>
                         </div>
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" asp-for="Siel" id="siel" type="checkbox" name="Siel">
+                            <label class="label-checkbox100" for="siel">
+                                Siel
+                            </label>
+                        </div>
                     </div>
 
-                    <div id="divCPF" hidden>
-                        <div class="wrap-input100 validate-input" data-validate="Informe o CPF ou CNPJ">
+                    <div id="divCPF">
+                        <div class="wrap-input100 validate-input-cpf" data-validate="Informe o CPF ou CNPJ">
                             <label asp-for="CPFCNPJ"></label>
-                            <input class="input100" type="number" asp-for="CPFCNPJ" name="CPFCNPJ" placeholder="CPF ou CNPJ">
+                            <input class="input100 cpf" type="number" asp-for="CPFCNPJ" id="cpf" name="CPFCNPJ" placeholder="CPF ou CNPJ">
                             <span class="focus-input100" data-placeholder="&#xf207;"></span>
                         </div>
                     </div>
 
-                    <div id="divNome" hidden>
-                        <div class="wrap-input100">
+                    <div id="divNome">
+                        <div class="wrap-input100 validate-input-nome">
                             <label asp-for="Nome"></label>
-                            <input class="input100" type="text" asp-for="Nome" name="Nome" placeholder="João da Silva">
+                            <input class="input100 nome" type="text" asp-for="Nome" name="Nome" id="nome" placeholder="João da Silva">
+                            <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        </div>
+                    </div>
+
+                    <div id="divProcesso">
+                        <div class="wrap-input100 validate-input-processo">
+                            <label asp-for="Numero do Processo"></label>
+                            <input class="input100 processo" type="number" asp-for="Numero do Processo" name="Processo" id="processo" placeholder="Numero do Processo">
                             <span class="focus-input100" data-placeholder="&#xf207;"></span>
                         </div>
                     </div>
