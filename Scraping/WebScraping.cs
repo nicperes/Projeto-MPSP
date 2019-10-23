@@ -16,7 +16,7 @@ namespace WebApi.Scraping
 {
     public class WebScraping
     {
-
+        [Route("webscraping/arpensp")]
         [HttpPost]
         public string Arpensp(PesquisaCPFCNPJ pesquisaCPFCNPJ)
         {
@@ -54,14 +54,14 @@ namespace WebApi.Scraping
 
                 ArpenspModel objArp = new ArpenspModel();
                 objArp.CartorioRegistro = cartorioRegistro;
-                objArp.NumCNS = Double.Parse(numeroCNS);
+                objArp.NumCNS = numeroCNS;
                 objArp.UF = uf;
                 objArp.NomeConj = nomeConj;
                 objArp.NovoNomeConj = novoNomeConj;
                 objArp.NomeConj2 = nomeConj2;
                 objArp.NovoNomeConj2 = novoNomeConj2;
                 objArp.DataCasamento = dataCasamento;
-                objArp.Matricula = Double.Parse(matricula);
+                objArp.Matricula = matricula;
                 objArp.DataEntrada = dataEntrada;
                 objArp.DataRegistro = dataRegistro;
 
@@ -97,7 +97,7 @@ namespace WebApi.Scraping
                 //driver.FindElement(By.XPath("//*[@id='ctl00_menuPlaceHolder_menuControl1_LoginView1_menuSuperiorn1']/table/tbody/tr/td/a")).Click();
 
                 driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/cadesp/pagina3-pesquisa.html");
-                driver.FindElement(By.Id("ctl00_conteudoPaginaPlaceHolder_tcConsultaCompleta_TabPanel1_txtIdentificacao")).SendKeys("54545454545454");
+                driver.FindElement(By.Id("ctl00_conteudoPaginaPlaceHolder_tcConsultaCompleta_TabPanel1_txtIdentificacao")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ);
 
                 driver.FindElement(By.Id("ctl00_conteudoPaginaPlaceHolder_tcConsultaCompleta_TabPanel1_btnConsultarEstabelecimento")).SendKeys(Keys.Enter);
 
@@ -126,7 +126,7 @@ namespace WebApi.Scraping
 
                 objCad.IE = ie;
                 objCad.Situacao = situacao;
-                objCad.CNPJ = cnpj;
+                objCad.CNPJ = long.Parse(cnpj);
                 objCad.DataInscricao = dataInscricao;
                 objCad.NomeEmpresarial = nomeEmpresarial;
                 objCad.RegimeEstadual = regimeEstadual;
@@ -201,7 +201,7 @@ namespace WebApi.Scraping
                 objJu.TipoEmpresa = tipoEmpresa;
                 objJu.DataConst = dataConst;
                 objJu.InicioAtiv = inicioAtiv;
-                objJu.CNPJ = cnpj;
+                objJu.CNPJJucesp = long.Parse(cnpj);
                 objJu.Capital = capital;
                 objJu.Logradouro = logradouro;
                 objJu.Numero = numero;
@@ -252,7 +252,7 @@ namespace WebApi.Scraping
 
                 string objjsonData = JsonConvert.SerializeObject(objCa);
 
-                System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Caged.txt", objjsonData);
+                //System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Caged.txt", objjsonData);
 
                 return objjsonData;
             }
@@ -406,7 +406,7 @@ namespace WebApi.Scraping
 
                 string objjsonData = JsonConvert.SerializeObject(objDen, new JsonSerializerSettings { Formatting = Formatting.Indented });
 
-                System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Detran.txt", objjsonData);
+                //System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Detran.txt", objjsonData);
 
                 return objjsonData;
             }
@@ -428,7 +428,7 @@ namespace WebApi.Scraping
                 driver.FindElement(By.Id("menucentrais")).Click();
                 driver.FindElement(By.XPath("//*[@id='ctl00_CESDILi']/a")).Click();
                 driver.FindElement(By.XPath("//*[@id='ctl00_CESDIConsultaAtoHyperLink']")).Click();
-                driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_DocumentoTextBox")).SendKeys("21321321323");
+                driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_DocumentoTextBox")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ);
                 driver.FindElement(By.ClassName("BT_Buscar")).SendKeys(Keys.Enter);
 
                 driver.FindElement(By.XPath("//*[@id='ctl00_ContentPlaceHolder1_ResultadoBuscaGeralPanel']/div[2]/div[1]/div/table/tbody/tr[2]/td[1]/input")).Click();
@@ -533,7 +533,7 @@ namespace WebApi.Scraping
 
                 string objjsonData = JsonConvert.SerializeObject(objCen);
 
-                System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Censec.txt", objjsonData);
+                //System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Censec.txt", objjsonData);
 
                 return objjsonData;
             }
@@ -551,10 +551,10 @@ namespace WebApi.Scraping
 
                 driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/siel/login.html");
                 driver.FindElement(By.XPath("//html/body/div[1]/div[1]/div[4]/form/table/tbody/tr[3]/td[2]/input")).Click();
-                driver.FindElement(By.XPath("/html/body/div[1]/div[1]/div[4]/form[2]/fieldset[1]/table/tbody/tr[1]/td[2]/input")).SendKeys("Teste");
+                driver.FindElement(By.XPath("/html/body/div[1]/div[1]/div[4]/form[2]/fieldset[1]/table/tbody/tr[1]/td[2]/input")).SendKeys(pesquisaCPFCNPJ.Nome);
                 driver.FindElement(By.XPath("/html/body/div[1]/div[1]/div[4]/form[2]/fieldset[2]/table[1]/tbody/tr/td[2]/input")).Click();
                 driver.FindElement(By.XPath("/html/body/div[1]/div[1]/div[4]/form[1]/div[2]/table/tbody/tr/td/p")).Click();
-                driver.FindElement(By.XPath("/html/body/div[1]/div[1]/div[4]/form[2]/fieldset[2]/table[1]/tbody/tr/td[2]/input")).SendKeys("2434234");
+                driver.FindElement(By.XPath("/html/body/div[1]/div[1]/div[4]/form[2]/fieldset[2]/table[1]/tbody/tr/td[2]/input")).SendKeys(pesquisaCPFCNPJ.Processo);
                 driver.FindElement(By.XPath("/html/body/div[1]/div[1]/div[4]/form[2]/table/tbody/tr/td[2]/input")).Click();
                 string tabela = driver.FindElement(By.XPath("/html/body/div[1]/div[1]/div[4]/table")).Text;
 
@@ -570,7 +570,70 @@ namespace WebApi.Scraping
 
                 string objjsonData = JsonConvert.SerializeObject(objSiel);
 
-                System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\SielSaida.txt", objjsonData);
+                //System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\SielSaida.txt", objjsonData);
+
+                return objjsonData;
+            }
+        }
+
+        public string Sivec(PesquisaCPFCNPJ pesquisaCPFCNPJ)
+        {
+
+            var options = new ChromeOptions();
+            options.AddArguments("headless");
+            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            using (IWebDriver driver = new ChromeDriver(options))
+            {
+                Actions builder = new Actions(driver);
+
+                //Validação
+                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/ ");
+                driver.FindElement(By.Id("username")).SendKeys("fiap");
+                driver.FindElement(By.Id("password")).SendKeys("mpsp");
+                driver.FindElement(By.Id("password")).SendKeys(Keys.Enter);
+
+                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/sivec/login.html");
+                driver.FindElement(By.Id("nomeusuario")).SendKeys("fiap");
+                driver.FindElement(By.Id("senhausuario")).SendKeys("mpsp");
+                driver.FindElement(By.Id("Acessar")).Click();
+
+                driver.FindElement(By.XPath("/html/body/nav/div[2]/ul/li[4]/a")).Click();
+                driver.FindElement(By.XPath("/html/body/nav/div[2]/ul/li[4]/ul/li[2]/a")).Click();
+                driver.FindElement(By.XPath("/html/body/nav/div[2]/ul/li[4]/ul/li[2]/ul/li[1]/a")).Click();
+
+                driver.FindElement(By.Id("idValorPesq")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ);
+                driver.FindElement(By.Id("procurar")).Click();
+                System.Threading.Thread.Sleep(1000);
+                driver.FindElement(By.XPath("//*[@id='tabelaPesquisa']/tbody/tr[1]/td[1]/a")).Click();
+
+                var tabela = driver.FindElement(By.XPath("/html/body/form[1]/div/div[5]/div[4]/table/tbody")).Text;
+
+                string[] strsplit = tabela.Replace("\r\n", ":").Split(':');
+
+                string dataEmissao = strsplit[1].Replace(" Alcunha", "").Trim();
+                string estadoCivil = strsplit[4].Replace(" Naturalidade", "").Trim();
+                string naturalizado = strsplit[7].Replace(" Posto de Identificação", "").Trim();
+                string postoIdentificacao = strsplit[8].Trim();
+                string grauInstituicao = strsplit[10].Replace(" Fórmula Fundamental", "").Trim();
+                string corOlho = strsplit[14].Trim();
+                string corCabelo = strsplit[17].Trim();
+                string corPele = strsplit[19].Replace(" Profissão", "").Trim();
+                string profissao = strsplit[20].Trim();
+
+                SivecModel objSivec = new SivecModel();
+                objSivec.DataEmissao = dataEmissao;
+                objSivec.EstadoCivil = estadoCivil;
+                objSivec.Naturalizado = naturalizado;
+                objSivec.PostoIdentificacao = postoIdentificacao;
+                objSivec.GrauInstituicao = grauInstituicao;
+                objSivec.CorOlho = corOlho;
+                objSivec.CorPele = corPele;
+                objSivec.CorCabelo = corCabelo;
+                objSivec.Profissao = profissao;
+
+                string objjsonData = JsonConvert.SerializeObject(objSivec);
+
+                System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Sivec.txt", objjsonData);
 
                 return objjsonData;
             }

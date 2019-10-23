@@ -1,13 +1,106 @@
-﻿
-@{
-    ViewData["Title"] = "Pesquisa por CPF/CNPJ";
+﻿@{
+    ViewData["Title"] = "Portais de Consulta";
 }
 
 <!-- Page Content -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript">
+    
+    $(document).ready(function () {
 
+        var processo = $("#processo");
+        var cpf = $("#cpf");
+        var nome = $("#nome");
+
+
+        //Campos ficam em hidden
+        $("#divCPF").prop("hidden", "true");
+        $("#divNome").prop("hidden", "true");
+        $("#divProcesso").prop("hidden", "true");
+
+        $("#arpensp").click(function () {
+                if ($("#divCPF").is(":hidden")) {
+                    $("#divCPF").prop("hidden", !this.checked);
+                    cpf.attr('required', '');
+                }else
+                if (!$("#cadesp").is(":checked") && !$("#jucesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked")) {
+                    $("#divCPF").prop("hidden", !this.checked);
+                }
+            });
+            $("#cadesp").click(function () {
+                if ($("#divCPF").is(":hidden")) {
+                    $("#divCPF").prop("hidden", !this.checked);
+                    cpf.attr('required', '');
+                } else
+                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked")) {
+                        $("#divCPF").prop("hidden", !this.checked);
+                    }
+            });
+            $("#caged").click(function () {
+                if ($("#divCPF").is(":hidden")) {
+                    $("#divCPF").prop("hidden", !this.checked);
+                    cpf.attr('required', '');
+                } else
+                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked")) {
+                        $("#divCPF").prop("hidden", !this.checked);
+                    }
+            });
+            $("#censec").click(function () {
+                if ($("#divCPF").is(":hidden")) {
+                    $("#divCPF").prop("hidden", !this.checked);
+                    cpf.attr('required', '');
+                } else
+                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#detran").is(":checked") && !$("#caged").is(":checked")) {
+                        $("#divCPF").prop("hidden", !this.checked);
+
+                    }
+            });
+            $("#detran").click(function () {
+                if ($("#divCPF").is(":hidden")) {
+                    $("#divCPF").prop("hidden", !this.checked);
+                    cpf.attr('required', '');
+                } else
+                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#caged").is(":checked") && !$("#censec").is(":checked")) {
+                        $("#divCPF").prop("hidden", !this.checked);
+                    }
+            });
+            $("#jucesp").click(function () {
+                if ($("#divCPF").is(":hidden")) {
+                    $("#divCPF").prop("hidden", !this.checked);
+                    cpf.attr('required', '');
+                }
+                else if (!$("#arpensp").is(":checked") && !$("#cadesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked")) {
+                    $("#divCPF").prop("hidden", !this.checked);
+                }
+
+                if ($("#divNome").is(":hidden")) {
+                    $("#divNome").prop("hidden", !this.checked);
+                    nome.attr('required', '');
+                } else if (!$("#jucesp").is(":checked") && !$("#siel").is(":checked")){
+                    $("#divNome").prop("hidden", !this.checked);
+                }
+            });
+            $("#siel").click(function () {
+                if ($("#divProcesso").is(":hidden")) {
+                    $("#divProcesso").prop("hidden", !this.checked);
+                    processo.attr('required', '');
+                } else if (!$("#siel").is(":checked")) {
+                    $("#divProcesso").prop("hidden", !this.checked);
+                }
+
+                if ($("#divNome").is(":hidden")) {
+                    $("#divNome").prop("hidden", !this.checked);
+                    nome.attr('required', '');
+                } else if (!$("#jucesp").is(":checked") && !$("#siel").is(":checked")){
+                    $("#divNome").prop("hidden", !this.checked);
+                }
+            });
+        });
+    
+</script>
 <html lang="en">
 <head>
-    <title>Login V3</title>
+    <title>Portais de Consulta</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -33,8 +126,8 @@
     <link rel="stylesheet" type="text/css" href="~/wwwroot/css/main.css">
     <!--===============================================================================================-->
 </head>
-<body>
 
+<body>
     <div class="limiter">
         <div class="container-login100" style="background-image: url(../../wwwroot/images/bg-01.jpg)">
             <div class="wrap-login100">
@@ -43,13 +136,75 @@
                         <img src="~/wwwroot/images/mpsp.png" />
                     </span>
                     <span class="login100-form-title p-b-34 p-t-27">
-                        Pesquisa por CPF ou CNPJ
+                        Portais de Consulta
                     </span>
+                    <div id="teste">
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" asp-for="Arpensp" id="arpensp" type="checkbox" name="Arpensp">
+                            <label class="label-checkbox100" for="arpensp">
+                                Arpensp
+                            </label>
+                        </div>
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" asp-for="Cadesp" id="cadesp" type="checkbox" name="Cadesp">
+                            <label class="label-checkbox100" for="cadesp">
+                                Cadesp
+                            </label>
+                        </div>
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" asp-for="Caged" id="caged" type="checkbox" name="Caged">
+                            <label class="label-checkbox100" for="caged">
+                                Caged
+                            </label>
+                        </div>
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" asp-for="Censec" id="censec" type="checkbox" name="Censec">
+                            <label class="label-checkbox100" for="censec">
+                                Censec
+                            </label>
+                        </div>
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" asp-for="Detran" id="detran" type="checkbox" name="Detran">
+                            <label class="label-checkbox100" for="detran">
+                                Detran
+                            </label>
+                        </div>
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" asp-for="Jucesp" id="jucesp" type="checkbox" name="Jucesp">
+                            <label class="label-checkbox100" for="jucesp">
+                                Jucesp
+                            </label>
+                        </div>
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" asp-for="Siel" id="siel" type="checkbox" name="Siel">
+                            <label class="label-checkbox100" for="siel">
+                                Siel
+                            </label>
+                        </div>
+                    </div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Informe o CPF ou CNPJ">
-                        <label asp-for="CPFCNPJ"></label>
-                        <input class="input100" type="number" asp-for="CPFCNPJ" name="CPFCNPJ" placeholder="CPF ou CNPJ">
-                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    <div id="divCPF">
+                        <div class="wrap-input100 validate-input-cpf" data-validate="Informe o CPF ou CNPJ">
+                            <label asp-for="CPFCNPJ"></label>
+                            <input class="input100 cpf" type="number" asp-for="CPFCNPJ" id="cpf" name="CPFCNPJ" placeholder="CPF ou CNPJ">
+                            <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        </div>
+                    </div>
+
+                    <div id="divNome">
+                        <div class="wrap-input100 validate-input-nome">
+                            <label asp-for="Nome"></label>
+                            <input class="input100 nome" type="text" asp-for="Nome" name="Nome" id="nome" placeholder="João da Silva">
+                            <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        </div>
+                    </div>
+
+                    <div id="divProcesso">
+                        <div class="wrap-input100 validate-input-processo">
+                            <label asp-for="Numero do Processo"></label>
+                            <input class="input100 processo" type="number" asp-for="Numero do Processo" name="Processo" id="processo" placeholder="Numero do Processo">
+                            <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        </div>
                     </div>
 
                     <div class="container-login100-form-btn">

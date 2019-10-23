@@ -1,5 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace WebApi.Models
 {
@@ -11,55 +15,55 @@ namespace WebApi.Models
 
         [Column("RG")]
         [Display(Name = "RG")]
-        public string RG { get; set; }
+        public String   RG { get; set; }
 
         [Column("Expeditor")]
         [Display(Name = "Expeditor")]
-        public string Expeditor { get; set; }
+        public String Expeditor { get; set; }
 
         [Column("Registro")]
         [Display(Name = "Registro")]
-        public string Registro { get; set; }
+        public String Registro { get; set; }
 
         [Column("Local")]
         [Display(Name = "Local")]
-        public string Local { get; set; }
+        public String Local { get; set; }
 
         [Column("PID")]
         [Display(Name = "PID")]
-        public string PID { get; set; }
+        public String PID { get; set; }
 
         [Column("EmissaoCnh")]
         [Display(Name = "EmissaoCnh")]
-        public string EmissaoCnh { get; set; }
+        public String EmissaoCnh { get; set; }
 
         [Column("Categoria")]
         [Display(Name = "Categoria")]
-        public string Categoria { get; set; }
+        public String Categoria { get; set; }
 
         [Column("PrimeiraHabilitação")]
         [Display(Name = "PrimeiraHabilitação")]
-        public string PrimeiraHabilitação { get; set; }
+        public String  PrimeiraHabilitação { get; set; }
 
         [Column("StatusCnh")]
         [Display(Name = "StatusCnh")]
-        public string StatusCnh { get; set; }
+        public String StatusCnh { get; set; }
 
         [Column("Renach")]
         [Display(Name = "Renach")]
-        public string Renach { get; set; }
+        public String  Renach { get; set; }
 
         [Column("EspelhoCnh")]
         [Display(Name = "EspelhoCnh")]
-        public string EspelhoCnh { get; set; }
+        public String EspelhoCnh { get; set; }
 
         [Column("ValidadeCnh")]
         [Display(Name = "ValidadeCnh")]
-        public string ValidadeCnh { get; set; }
+        public String ValidadeCnh { get; set; }
 
         [Column("Pontuacao")]
         [Display(Name = "Pontuacao")]
-        public string Pontuacao { get; set; }
+        public String Pontuacao { get; set; }
 
         [Column("NomePai")]
         [Display(Name = "NomePai")]
@@ -79,7 +83,7 @@ namespace WebApi.Models
 
         [Column("Renavam")]
         [Display(Name = "Renavam")]
-        public string Renavam{ get; set; }
+        public string Renavam { get; set; }
 
         [Column("Chassi")]
         [Display(Name = "Chassi")]
@@ -156,5 +160,7 @@ namespace WebApi.Models
         [Column("DataEmissaoCRV")]
         [Display(Name = "DataEmissaoCRV")]
         public string DataEmissaoCRV { get; set; }
-    }
+    
+
+}
 }

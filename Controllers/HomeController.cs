@@ -13,6 +13,8 @@ using WebApi.Scraping;
 using org.apache.pdfbox.cos;
 using org.apache.pdfbox.pdmodel;
 using org.apache.pdfbox.util;
+using HiQPdf;
+using System.IO;
 
 namespace WebApi.Controllers
 {
@@ -70,6 +72,7 @@ namespace WebApi.Controllers
         [HttpPost]
         public ActionResult PesquisaCPFCNPJ(PesquisaCPFCNPJ pesquisaCPFCNPJ)
         {
+
             //Adicionar no Banco de Dados o CPF/CNPJ e o horario
             return RedirectToAction("RelatorioSimplificado",pesquisaCPFCNPJ);
         }
@@ -84,6 +87,7 @@ namespace WebApi.Controllers
             string detran = "";
             string juscesp = "";
             string siel = "";
+            string sivec = "";
             
             if (pesquisaCPFCNPJ.Arpensp == "on"){
                 arpensp = webScraping.Arpensp(pesquisaCPFCNPJ);
@@ -107,6 +111,11 @@ namespace WebApi.Controllers
             if (pesquisaCPFCNPJ.Siel == "on"){
                 siel = webScraping.Siel(pesquisaCPFCNPJ);
             }
+            if (pesquisaCPFCNPJ.Sivec == "on"){
+                sivec = webScraping.Sivec(pesquisaCPFCNPJ);
+            }
+
+
 
             ArpenspModel arpenspModel = relatorioSimplificadoRepository.SimplesArpensp(arpensp);
             CadespModel cadespModel = relatorioSimplificadoRepository.SimplesCadesp(cadesp);
@@ -115,20 +124,61 @@ namespace WebApi.Controllers
             DetranModel detranModel = relatorioSimplificadoRepository.SimplesDetran(detran);
             CensecModel censecModel = relatorioSimplificadoRepository.SimplesCensec(censec);
             SielModel sielModel = relatorioSimplificadoRepository.SimplesSiel(siel);
+            SivecModel sivecModel = relatorioSimplificadoRepository.SimplesSivec(sivec);
 
-            return View(new PesquisaCPFCNPJ() {ArpenspModel = arpenspModel, CadespModel = cadespModel, JucespModel = jucespModel, CagedModel = cagedModel, DetranModel = detranModel, CensecModel = censecModel, SielModel = sielModel });
+            return View(new PesquisaCPFCNPJ() {ArpenspModel = arpenspModel, CadespModel = cadespModel, JucespModel = jucespModel, CagedModel = cagedModel, DetranModel = detranModel, CensecModel = censecModel, SielModel = sielModel, SivecModel = sivecModel });
+        }
+
+        public string RenderViewAsString(string viewName, object model)
+        {
+            // create a string writer to receive the HTML code
+            System.IO.StringWriter stringWriter = new System.IO.StringWriter();
+
+            // get the view to render
+            ViewEngineResult viewResult = ViewEngines.Engines.FindView(ControllerContext, viewName, null);
+            // create a context to render a view based on a model
+            ViewContext viewContext = new ViewContext(
+                    ControllerContext,
+                    viewResult.View,
+                    new ViewDataDictionary(model),
+                    new TempDataDictionary(),
+                    stringWriter
+                    );
+
+            // render the view to a HTML code
+            viewResult.View.Render(viewContext, stringWriter);
+
+            // return the HTML code
+            return stringWriter.ToString();
         }
 
         
         public ActionResult RelatorioPdf()
         {
+            // get the HTML code of this view
+            string htmlToConvert = RenderViewAsString("RelatorioSimplificado", null);
 
-            //relatorioSimplificadoRepository.RelatorioPDF();
+            // the base URL to resolve relative images and css
+            String thisPageUrl = this.ControllerContext.HttpContext.Request.Url.AbsoluteUri;
+            String baseUrl = thisPageUrl.Substring(0, thisPageUrl.Length - "Home/RelatorioPdf".Length);
 
-            return RedirectToAction("Menu");
+            // instantiate the HiQPdf HTML to PDF converter
+            HtmlToPdf htmlToPdfConverter = new HtmlToPdf();
+
+            // hide the button in the created PDF
+            htmlToPdfConverter.HiddenHtmlElements = new string[] { "#convertThisPageButtonDiv", "#voltar" };
+
+            // render the HTML code as PDF in memory
+            byte[] pdfBuffer = htmlToPdfConverter.ConvertHtmlToMemory(htmlToConvert, baseUrl);
+
+            // send the PDF file to browser
+            FileResult fileResult = new FileContentResult(pdfBuffer, "application/pdf");
+            fileResult.FileDownloadName = "Relatorio.pdf";
+
+            return fileResult;
         }
 
-
+        
 
         //Conversão do PDF
         public void ReadPDF()
@@ -254,9 +304,6 @@ namespace WebApi.Controllers
                 System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Infocrim.txt", saida);
             }
         }
-
-
-
 
     }
 }

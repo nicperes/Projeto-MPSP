@@ -68,5 +68,12 @@ namespace WebApi.Repositories
 
             return sielModel;
         }
+
+        public SivecModel SimplesSivec(string sivec)
+        {
+            SivecModel sivecModel = JsonConvert.DeserializeObject<SivecModel>(sivec);
+
+            return sivecModel;
+        }
     }
 }

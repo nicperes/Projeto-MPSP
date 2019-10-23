@@ -9,6 +9,7 @@ namespace WebApi.Models
     {
         public string CPFCNPJ { get; set; }
         public string Nome { get; set; }
+        public string Processo { get; set; }
         public string Arpensp { get; set; }
         public string Cadesp { get; set; }
         public string Caged { get; set; }
@@ -16,6 +17,7 @@ namespace WebApi.Models
         public string Detran { get; set; }
         public string Censec { get; set; }
         public string Siel { get; set; }
+        public string Sivec { get; set; }
 
         public ArpenspModel ArpenspModel { get; set; }
         public CadespModel CadespModel { get; set; }
@@ -24,5 +26,6 @@ namespace WebApi.Models
         public DetranModel DetranModel { get; set; }
         public JucespModel JucespModel { get; set; }
         public SielModel SielModel { get; set; }
+        public SivecModel SivecModel { get; set; }
     }
 }

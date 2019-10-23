@@ -23,7 +23,7 @@
                     $("#divCPF").prop("hidden", !this.checked);
                     cpf.attr('required', '');
                 }else
-                if (!$("#cadesp").is(":checked") && !$("#jucesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked")) {
+                if (!$("#cadesp").is(":checked") && !$("#jucesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked") && !$("#sivec").is(":checked")) {
                     $("#divCPF").prop("hidden", !this.checked);
                 }
             });
@@ -32,7 +32,7 @@
                     $("#divCPF").prop("hidden", !this.checked);
                     cpf.attr('required', '');
                 } else
-                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked")) {
+                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked") && !$("#sivec").is(":checked")) {
                         $("#divCPF").prop("hidden", !this.checked);
                     }
             });
@@ -41,7 +41,7 @@
                     $("#divCPF").prop("hidden", !this.checked);
                     cpf.attr('required', '');
                 } else
-                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked")) {
+                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked") && !$("#sivec").is(":checked")) {
                         $("#divCPF").prop("hidden", !this.checked);
                     }
             });
@@ -50,7 +50,7 @@
                     $("#divCPF").prop("hidden", !this.checked);
                     cpf.attr('required', '');
                 } else
-                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#detran").is(":checked") && !$("#caged").is(":checked")) {
+                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#detran").is(":checked") && !$("#caged").is(":checked") && !$("#sivec").is(":checked")) {
                         $("#divCPF").prop("hidden", !this.checked);
 
                     }
@@ -60,7 +60,7 @@
                     $("#divCPF").prop("hidden", !this.checked);
                     cpf.attr('required', '');
                 } else
-                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#caged").is(":checked") && !$("#censec").is(":checked")) {
+                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#caged").is(":checked") && !$("#censec").is(":checked") && !$("#sivec").is(":checked")) {
                         $("#divCPF").prop("hidden", !this.checked);
                     }
             });
@@ -69,7 +69,7 @@
                     $("#divCPF").prop("hidden", !this.checked);
                     cpf.attr('required', '');
                 }
-                else if (!$("#arpensp").is(":checked") && !$("#cadesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked")) {
+                else if (!$("#arpensp").is(":checked") && !$("#cadesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked") && !$("#sivec").is(":checked")) {
                     $("#divCPF").prop("hidden", !this.checked);
                 }
 
@@ -94,6 +94,15 @@
                 } else if (!$("#jucesp").is(":checked") && !$("#siel").is(":checked")){
                     $("#divNome").prop("hidden", !this.checked);
                 }
+            });
+            $("#sivec").click(function () {
+                if ($("#divCPF").is(":hidden")) {
+                    $("#divCPF").prop("hidden", !this.checked);
+                    cpf.attr('required', '');
+                } else
+                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked")) {
+                        $("#divCPF").prop("hidden", !this.checked);
+                    }
             });
         });
     
@@ -179,6 +188,12 @@
                             <input class="input-checkbox100" asp-for="Siel" id="siel" type="checkbox" name="Siel">
                             <label class="label-checkbox100" for="siel">
                                 Siel
+                            </label>
+                        </div>
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" asp-for="Sivec" id="sivec" type="checkbox" name="Sivec">
+                            <label class="label-checkbox100" for="sivec">
+                                Sivec
                             </label>
                         </div>
                     </div>
