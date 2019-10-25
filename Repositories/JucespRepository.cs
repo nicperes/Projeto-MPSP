@@ -17,6 +17,23 @@ namespace WebApi.Repositories
             context = new WebApiContext();
         }
 
+
+        public void Insert(JucespModel jucespModel)
+        {
+            using (context)
+            {
+                context.Jucesp.Add(jucespModel);
+                context.SaveChanges();
+
+            }
+        }
+
+        public IList<JucespModel> FindById()
+        {
+            return context.Jucesp.ToList();
+        }
+
+
         public IList<JucespModel> FindAll()
         {
             return context.Jucesp.ToList();

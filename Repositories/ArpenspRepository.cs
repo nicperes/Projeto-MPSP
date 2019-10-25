@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebApi.Repositories.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApi.Models;
+using WebApi.Repositories.Context;
 namespace WebApi.Repositories
 {
     public class ArpenspRepository
@@ -35,7 +35,8 @@ namespace WebApi.Repositories
                      .Include(b => b.JucespModel)
                      .Include(c => c.CensecModel)
                      .Include(d => d.CagedModel)
-                     .Include(d => d.DetranModel)
+                     .Include(d => d.SielModel)
+                     .Include(d => d.SivecModel)
                      .SingleOrDefault(p => p.CNPJCPFArpensp == id);
 
             return pessoa;
@@ -54,7 +55,8 @@ namespace WebApi.Repositories
                      .Include(b => b.JucespModel)
                      .Include(c => c.CensecModel)
                      .Include(d => d.CagedModel)
-                     .Include(a => a.DetranModel)
+                      .Include(d => d.SielModel)
+                     .Include(d => d.SivecModel)
                     .ToList();
             }
 
@@ -68,11 +70,11 @@ namespace WebApi.Repositories
             context.SaveChanges();
         }
 
+
+      
+
+
     }
-
-
-
-
 
 
 }

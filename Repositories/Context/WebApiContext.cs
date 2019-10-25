@@ -17,6 +17,8 @@ namespace WebApi.Repositories.Context
         public DbSet<CensecModel> Censec { get; set; }
         public DbSet<CagedModel> Caged { get; set; }
         public DbSet<DetranModel> Detran { get; set; }
+        public DbSet<SielModel> Siel { get; set; }
+        public DbSet<SivecModel> Sivec { get; set; }
 
 
 

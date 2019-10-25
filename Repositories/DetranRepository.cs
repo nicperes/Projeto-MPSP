@@ -17,6 +17,24 @@ namespace WebApi.Repositories
             context = new WebApiContext();
         }
 
+
+        public void Insert(DetranModel detranModel)
+        {
+            using (context)
+            {
+                context.Detran.Add(detranModel);
+                context.SaveChanges();
+
+            }
+        }
+
+        public IList<DetranModel> FindById()
+        {
+            return context.Detran.ToList();
+        }
+
+
+
         public IList<DetranModel> FindAll()
         {
             return context.Detran.ToList();

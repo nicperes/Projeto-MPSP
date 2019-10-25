@@ -146,6 +146,9 @@
     <Reference Include="IKVM.Runtime.JNI, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
       <HintPath>..\packages\Pdfbox.1.1.1\lib\IKVM.Runtime.JNI.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="jempbox-1.8.2, Version=1.8.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Pdfbox.1.1.1\lib\jempbox-1.8.2.dll</HintPath>
     </Reference>
@@ -476,6 +479,8 @@
     <Compile Include="Repositories\JucespRepository.cs" />
     <Compile Include="Repositories\PesquisaCPFCNPJRepository.cs" />
     <Compile Include="Repositories\RelatorioSimplificadoRepository.cs" />
+    <Compile Include="Repositories\SielRepository.cs" />
+    <Compile Include="Repositories\SivecRepository.cs" />
     <Compile Include="Repositories\ValidacaoRepository.cs" />
     <Compile Include="Scraping\WebScraping.cs" />
   </ItemGroup>

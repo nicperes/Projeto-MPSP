@@ -16,8 +16,8 @@ namespace WebApi.Repositories
             
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
-            using (IWebDriver driver = new ChromeDriver(options))
+            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
+            //using (IWebDriver driver = new ChromeDriver(options))
             {
                 driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/ ");
                 driver.FindElement(By.Id("username")).SendKeys(loginModel.Login);

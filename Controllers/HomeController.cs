@@ -15,6 +15,12 @@ using org.apache.pdfbox.pdmodel;
 using org.apache.pdfbox.util;
 using HiQPdf;
 using System.IO;
+using StringWriter = System.IO.StringWriter;
+using System.Web.UI;
+using System.Web;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.html.simpleparser;
 
 namespace WebApi.Controllers
 {
@@ -23,7 +29,7 @@ namespace WebApi.Controllers
         private readonly ValidacaoRepository validacaoRepository;
         private readonly WebScraping webScraping;
         private readonly RelatorioSimplificadoRepository relatorioSimplificadoRepository;
-        
+
         public HomeController()
         {
             validacaoRepository = new ValidacaoRepository();
@@ -32,9 +38,9 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        public  ActionResult Login()
+        public ActionResult Login()
         {
-            
+
             return View(new LoginModel());
 
         }
@@ -74,7 +80,7 @@ namespace WebApi.Controllers
         {
 
             //Adicionar no Banco de Dados o CPF/CNPJ e o horario
-            return RedirectToAction("RelatorioSimplificado",pesquisaCPFCNPJ);
+            return RedirectToAction("RelatorioSimplificado", pesquisaCPFCNPJ);
         }
 
         [HttpGet]
@@ -88,30 +94,37 @@ namespace WebApi.Controllers
             string juscesp = "";
             string siel = "";
             string sivec = "";
-            
-            if (pesquisaCPFCNPJ.Arpensp == "on"){
+
+            if (pesquisaCPFCNPJ.Arpensp == "on")
+            {
                 arpensp = webScraping.Arpensp(pesquisaCPFCNPJ);
             }
-            if (pesquisaCPFCNPJ.Cadesp == "on"){
+            if (pesquisaCPFCNPJ.Cadesp == "on")
+            {
                 cadesp = webScraping.Cadesp(pesquisaCPFCNPJ);
             }
-            if (pesquisaCPFCNPJ.Caged == "on"){
+            if (pesquisaCPFCNPJ.Caged == "on")
+            {
                 caged = webScraping.Caged(pesquisaCPFCNPJ);
             }
             if (pesquisaCPFCNPJ.Censec == "on")
             {
                 censec = webScraping.Censec(pesquisaCPFCNPJ);
             }
-            if (pesquisaCPFCNPJ.Jucesp == "on"){
+            if (pesquisaCPFCNPJ.Jucesp == "on")
+            {
                 juscesp = webScraping.Jucesp(pesquisaCPFCNPJ);
             }
-            if (pesquisaCPFCNPJ.Detran == "on"){
+            if (pesquisaCPFCNPJ.Detran == "on")
+            {
                 detran = webScraping.Detran(pesquisaCPFCNPJ);
             }
-            if (pesquisaCPFCNPJ.Siel == "on"){
+            if (pesquisaCPFCNPJ.Siel == "on")
+            {
                 siel = webScraping.Siel(pesquisaCPFCNPJ);
             }
-            if (pesquisaCPFCNPJ.Sivec == "on"){
+            if (pesquisaCPFCNPJ.Sivec == "on")
+            {
                 sivec = webScraping.Sivec(pesquisaCPFCNPJ);
             }
 
@@ -126,76 +139,30 @@ namespace WebApi.Controllers
             SielModel sielModel = relatorioSimplificadoRepository.SimplesSiel(siel);
             SivecModel sivecModel = relatorioSimplificadoRepository.SimplesSivec(sivec);
 
-            return View(new PesquisaCPFCNPJ() {ArpenspModel = arpenspModel, CadespModel = cadespModel, JucespModel = jucespModel, CagedModel = cagedModel, DetranModel = detranModel, CensecModel = censecModel, SielModel = sielModel, SivecModel = sivecModel });
+            return View(new PesquisaCPFCNPJ() { ArpenspModel = arpenspModel, CadespModel = cadespModel, JucespModel = jucespModel, CagedModel = cagedModel, DetranModel = detranModel, CensecModel = censecModel, SielModel = sielModel, SivecModel = sivecModel });
         }
 
-        public string RenderViewAsString(string viewName, object model)
-        {
-            // create a string writer to receive the HTML code
-            System.IO.StringWriter stringWriter = new System.IO.StringWriter();
+        //public ActionResult PrintPDF(PesquisaCPFCNPJ pesquisaCPFCNPJ)
+        //{
+        //    string result = RenderRazorViewToString("ViewName", model);
+        //    return RedirectToAction("PesquisaCPFCNPJ");
+        //}
 
-            // get the view to render
-            ViewEngineResult viewResult = ViewEngines.Engines.FindView(ControllerContext, viewName, null);
-            // create a context to render a view based on a model
-            ViewContext viewContext = new ViewContext(
-                    ControllerContext,
-                    viewResult.View,
-                    new ViewDataDictionary(model),
-                    new TempDataDictionary(),
-                    stringWriter
-                    );
-
-            // render the view to a HTML code
-            viewResult.View.Render(viewContext, stringWriter);
-
-            // return the HTML code
-            return stringWriter.ToString();
-        }
-
-        
-        public ActionResult RelatorioPdf()
-        {
-            // get the HTML code of this view
-            string htmlToConvert = RenderViewAsString("RelatorioSimplificado", null);
-
-            // the base URL to resolve relative images and css
-            String thisPageUrl = this.ControllerContext.HttpContext.Request.Url.AbsoluteUri;
-            String baseUrl = thisPageUrl.Substring(0, thisPageUrl.Length - "Home/RelatorioPdf".Length);
-
-            // instantiate the HiQPdf HTML to PDF converter
-            HtmlToPdf htmlToPdfConverter = new HtmlToPdf();
-
-            // hide the button in the created PDF
-            htmlToPdfConverter.HiddenHtmlElements = new string[] { "#convertThisPageButtonDiv", "#voltar" };
-
-            // render the HTML code as PDF in memory
-            byte[] pdfBuffer = htmlToPdfConverter.ConvertHtmlToMemory(htmlToConvert, baseUrl);
-
-            // send the PDF file to browser
-            FileResult fileResult = new FileContentResult(pdfBuffer, "application/pdf");
-            fileResult.FileDownloadName = "Relatorio.pdf";
-
-            return fileResult;
-        }
-
-        
-
-        //Conversão do PDF
-        public void ReadPDF()
-        {
-
-            IWebDriver driver = new ChromeDriver();
-
-            URL TestURL = new URL(driver.Url);
-
-            BufferedInputStream TestFile = new BufferedInputStream(TestURL.openStream());
-            PDFParser TestPDF = new PDFParser(TestFile);
-            TestPDF.parse();
-            //String TestText = new PDFTextStripper().getText(TestPDF.getPDDocument());
-            //System.IO.File.WriteAllText(@"C:\Users\Nicolas PC\Desktop\teste\PDFTESTE.txt", TestText);
-        }
-
-        
+        //public static class RazorViewToString
+        //{
+        //    public static string RenderRazorViewToString(this Controller controller, string viewName, object model)
+        //    {
+        //        controller.ViewData.Model = model;
+        //        using (var sw = new StringWriter())
+        //        {
+        //            var viewResult = ViewEngines.Engines.FindPartialView(controller.ControllerContext, viewName);
+        //            var viewContext = new ViewContext(controller.ControllerContext, viewResult.View, controller.ViewData, controller.TempData, sw);
+        //            viewResult.View.Render(viewContext, sw);
+        //            viewResult.ViewEngine.ReleaseView(controller.ControllerContext, viewResult.View);
+        //            return sw.GetStringBuilder().ToString();
+        //        }
+        //    }
+        //}
 
         public void Arisp()
         {
@@ -204,7 +171,7 @@ namespace WebApi.Controllers
             //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
             using (IWebDriver driver = new ChromeDriver())
             {
-                
+
                 Actions builder = new Actions(driver);
 
                 driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/arisp/login.html");
@@ -261,7 +228,7 @@ namespace WebApi.Controllers
 
         }
 
-        
+
 
         public void Infocrim()
         {
@@ -274,14 +241,14 @@ namespace WebApi.Controllers
 
                 Actions builder = new Actions(driver);
 
+                //Validação
+                driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/ ");
+                driver.FindElement(By.Id("username")).SendKeys("fiap");
+                driver.FindElement(By.Id("password")).SendKeys("mpsp");
+                driver.FindElement(By.Id("password")).SendKeys(Keys.Enter);
+
                 driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/infocrim/login.html");
                 driver.FindElement(By.XPath("/html/body/table/tbody/tr[3]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td[4]/a/img")).Click();
-                System.Threading.Thread.Sleep(2000);
-                var alert = driver.SwitchTo().Alert();
-                alert.SetAuthenticationCredentials("fiap", "mpsp");
-                alert.SendKeys("fiap" + Keys.Tab + "mpsp" + Keys.Tab);
-                alert.Accept();
-                driver.SwitchTo().DefaultContent();
                 driver.FindElement(By.XPath("/html/body/a/table[3]/tbody/tr/td[2]/table[1]/tbody/tr[3]/td/table/tbody/tr[2]/td/table/tbody/tr/td/div/a/img")).Click();
                 driver.FindElement(By.XPath("/html/body/table/tbody/tr[2]/td/table[3]/tbody/tr[2]/td[2]/a")).Click();
                 driver.FindElement(By.XPath("/html/body/table/tbody/tr/td/a[2]/img")).Click();
@@ -303,6 +270,63 @@ namespace WebApi.Controllers
 
                 System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Infocrim.txt", saida);
             }
+        }
+
+        [HttpPost]
+        public string Arpensp(PesquisaCPFCNPJ pesquisaCPFCNPJ)
+        {
+            string arpensp = webScraping.Arpensp(pesquisaCPFCNPJ);
+
+            return arpensp;
+        }
+
+        public string Cadesp(PesquisaCPFCNPJ pesquisaCPFCNPJ)
+        {
+            string cadesp = webScraping.Cadesp(pesquisaCPFCNPJ);
+
+            return cadesp;
+        }
+
+        public string Caged(PesquisaCPFCNPJ pesquisaCPFCNPJ)
+        {
+            string caged = webScraping.Caged(pesquisaCPFCNPJ);
+
+            return caged;
+        }
+
+        public string Censec(PesquisaCPFCNPJ pesquisaCPFCNPJ)
+        {
+            string censec = webScraping.Censec(pesquisaCPFCNPJ);
+
+            return censec;
+        }
+
+        public string Jucesp(PesquisaCPFCNPJ pesquisaCPFCNPJ)
+        {
+            string jucesp = webScraping.Jucesp(pesquisaCPFCNPJ);
+
+            return jucesp;
+        }
+
+        public string Detran(PesquisaCPFCNPJ pesquisaCPFCNPJ)
+        {
+            string detran = webScraping.Detran(pesquisaCPFCNPJ);
+
+            return detran;
+        }
+
+        public string Siel(PesquisaCPFCNPJ pesquisaCPFCNPJ)
+        {
+            string siel = webScraping.Siel(pesquisaCPFCNPJ);
+
+            return siel;
+        }
+
+        public string Sivec(PesquisaCPFCNPJ pesquisaCPFCNPJ)
+        {
+            string sivec = webScraping.Sivec(pesquisaCPFCNPJ);
+
+            return sivec;
         }
 
     }

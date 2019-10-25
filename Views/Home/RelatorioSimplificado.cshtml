@@ -68,10 +68,10 @@
             divSiel.style.display = "block";
         }
 
-        if (textoSivec == null || textoSiel == "") {
-            divSiel.style.display = "none";
+        if (textoSivec == null || textoSivec == "") {
+            divSivec.style.display = "none";
         } else {
-            divSiel.style.display = "block";
+            divSivec.style.display = "block";
         }
 
     });
@@ -462,9 +462,43 @@
 
                         <br />
                     </div>
-                    <div class="container-login100-form-btn"  id="convertThisPageButtonDiv">
+                    <div id="sivec">
+                        <span class="login100-form-title p-b-34 p-t-27">
+                            Sivec
+                        </span>
+
+                        <label>Data de Emissao</label>
+                        <input class="input100" type="text" id="sivecText" disabled="disabled" value="@Html.DisplayFor(model => model.SivecModel.DataEmissao)">
+
+                        <label>Estado Civil</label>
+                        <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.SivecModel.EstadoCivil)">
+
+                        <label>Naturalizado</label>
+                        <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.SivecModel.Naturalizado)">
+
+                        <label>Posto de Identificacao</label>
+                        <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.SivecModel.PostoIdentificacao)">
+
+                        <label>Grau da Instituicao</label>
+                        <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.SivecModel.GrauInstituicao)">
+
+                        <label>Cor do Olho</label>
+                        <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.SivecModel.CorOlho)">
+
+                        <label>Cor do Cabelo</label>
+                        <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.SivecModel.CorCabelo)">
+
+                        <label>Cor da Pele</label>
+                        <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.SivecModel.CorPele)">
+
+                        <label>Profissao</label>
+                        <input class="input100" type="text" disabled="disabled" value="@Html.DisplayFor(model => model.SivecModel.Profissao)">
+
+                        <br />
+                    </div>
+                    <div class="container-login100-form-btn" id="convertThisPageButtonDiv">
                         <button class="login100-form-btn">
-                            @Html.ActionLink("Gerar PDF", "RelatorioPdf")
+                            @Html.ActionLink("Gerar PDF", "PrintPDF")
                         </button>
                     </div>
 

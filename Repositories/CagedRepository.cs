@@ -18,6 +18,23 @@ namespace WebApi.Repositories
             context = new WebApiContext();
         }
 
+
+        public void Insert(CagedModel cagedModel)
+        {
+            using (context)
+            {
+                context.Caged.Add(cagedModel);
+                context.SaveChanges();
+
+            }
+        }
+
+        public IList<CagedModel> FindById()
+        {
+            return context.Caged.ToList();
+        }
+
+
         public IList<CagedModel> FindAll()
         {
             return context.Caged.ToList();

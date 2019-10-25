@@ -16,15 +16,15 @@ namespace WebApi.Scraping
 {
     public class WebScraping
     {
-        [Route("webscraping/arpensp")]
+        
         [HttpPost]
         public string Arpensp(PesquisaCPFCNPJ pesquisaCPFCNPJ)
         {
 
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
-            using (IWebDriver driver = new ChromeDriver(options))
+            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            //using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -84,8 +84,8 @@ namespace WebApi.Scraping
 
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
-            using (IWebDriver driver = new ChromeDriver(options))
+            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
+            //using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -126,7 +126,7 @@ namespace WebApi.Scraping
 
                 objCad.IE = ie;
                 objCad.Situacao = situacao;
-                objCad.CNPJ = long.Parse(cnpj);
+                objCad.CNPJ = long.Parse(cnpj.Replace(".","").Replace("/","").Replace("-",""));
                 objCad.DataInscricao = dataInscricao;
                 objCad.NomeEmpresarial = nomeEmpresarial;
                 objCad.RegimeEstadual = regimeEstadual;
@@ -150,13 +150,13 @@ namespace WebApi.Scraping
         {
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
-            using (IWebDriver driver = new ChromeDriver(options))
+            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
+            //using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
                 driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/jucesp/index.html");
-                driver.FindElement(By.Id("ctl00_cphContent_frmBuscaSimples_txtPalavraChave")).SendKeys("google");
+                driver.FindElement(By.Id("ctl00_cphContent_frmBuscaSimples_txtPalavraChave")).SendKeys(pesquisaCPFCNPJ.Nome);
                 driver.FindElement(By.XPath("//*[@id='ctl00_cphContent_frmBuscaSimples_pnlBuscaSimples']/table/tbody/tr/td[2]/input")).Click();
 
                 driver.FindElement(By.XPath("//*[@id='formBuscaAvancada']/table/tbody/tr[1]/td/div/div[2]/label/input")).SendKeys("Q8TJA");
@@ -201,7 +201,7 @@ namespace WebApi.Scraping
                 objJu.TipoEmpresa = tipoEmpresa;
                 objJu.DataConst = dataConst;
                 objJu.InicioAtiv = inicioAtiv;
-                objJu.CNPJJucesp = long.Parse(cnpj);
+                objJu.CNPJJucesp = long.Parse(cnpj.Replace(".", "").Replace("/", "").Replace("-", ""));
                 objJu.Capital = capital;
                 objJu.Logradouro = logradouro;
                 objJu.Numero = numero;
@@ -224,8 +224,8 @@ namespace WebApi.Scraping
 
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
-            using (IWebDriver driver = new ChromeDriver(options))
+            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
+            //using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -264,8 +264,8 @@ namespace WebApi.Scraping
             var options = new ChromeOptions();
             //options.AddArguments("headless");
             options.AddArguments("no-sandbox");
-            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
-            using (IWebDriver driver = new ChromeDriver())
+            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            //using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -273,8 +273,8 @@ namespace WebApi.Scraping
                 driver.FindElement(By.Id("form:j_id563205015_44efc15b")).Click();
                 driver.FindElement(By.Id("navigation_a_M_16")).Click();
                 driver.FindElement(By.XPath("//*[@id='navigation_a_F_16']")).Click();
-                driver.FindElement(By.Id("form:rg")).SendKeys("524390045");
-                driver.FindElement(By.Id("form:nome")).SendKeys("Joao");
+                driver.FindElement(By.Id("form:rg")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ);
+                driver.FindElement(By.Id("form:nome")).SendKeys(pesquisaCPFCNPJ.Nome);
                 driver.FindElement(By.LinkText("Pesquisar")).Click();
 
                 driver.SwitchTo().Window(driver.WindowHandles[1]);
@@ -365,7 +365,7 @@ namespace WebApi.Scraping
                 string dataEmissaoCRV = strsplit[227].Trim();
 
                 DetranModel objDen = new DetranModel();
-                objDen.CNPJCPF = long.Parse(cpf);
+                objDen.CNPJCPF = long.Parse(cpf.Replace(".","").Replace("-", ""));
                 objDen.RG = rg;
                 objDen.Expeditor = expeditor;
                 objDen.Registro = registro;
@@ -417,8 +417,8 @@ namespace WebApi.Scraping
 
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
-            using (IWebDriver driver = new ChromeDriver(options))
+            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            //using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -544,8 +544,8 @@ namespace WebApi.Scraping
 
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
-            using (IWebDriver driver = new ChromeDriver(options))
+            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            //using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -581,8 +581,8 @@ namespace WebApi.Scraping
 
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
-            using (IWebDriver driver = new ChromeDriver(options))
+            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            //using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -603,7 +603,7 @@ namespace WebApi.Scraping
 
                 driver.FindElement(By.Id("idValorPesq")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ);
                 driver.FindElement(By.Id("procurar")).Click();
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(2000);
                 driver.FindElement(By.XPath("//*[@id='tabelaPesquisa']/tbody/tr[1]/td[1]/a")).Click();
 
                 var tabela = driver.FindElement(By.XPath("/html/body/form[1]/div/div[5]/div[4]/table/tbody")).Text;
@@ -633,7 +633,7 @@ namespace WebApi.Scraping
 
                 string objjsonData = JsonConvert.SerializeObject(objSivec);
 
-                System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Sivec.txt", objjsonData);
+                //System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Sivec.txt", objjsonData);
 
                 return objjsonData;
             }

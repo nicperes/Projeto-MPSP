@@ -17,6 +17,23 @@ namespace WebApi.Repositories
             context = new WebApiContext();
         }
 
+
+        public void Insert(CensecModel censecModel)
+        {
+            using (context)
+            {
+                context.Censec.Add(censecModel);
+                context.SaveChanges();
+
+            }
+        }
+
+        public IList<CensecModel> FindById()
+        {
+            return context.Censec.ToList();
+        }
+
+
         public IList<CensecModel> FindAll()
         {
             return context.Censec.ToList();

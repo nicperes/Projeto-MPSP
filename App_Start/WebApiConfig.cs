@@ -23,7 +23,11 @@ namespace WebApi
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            
+            config.Routes.MapHttpRoute(
+                name: "WebScraping",
+                routeTemplate: "api/{scraping}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
         }
     }
 }

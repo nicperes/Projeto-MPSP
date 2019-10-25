@@ -81,15 +81,23 @@ namespace WebApi.Models
 
         public long CnpjCensec { get; set; }
         [ForeignKey("CnpjCensec")]
-        public JucespModel CensecModel { get; set; }
+        public CensecModel CensecModel { get; set; }
 
         public long CnpjCaged { get; set; }
         [ForeignKey("CnpjCaged")]
-        public CadespModel CagedModel { get; set; }
+        public CagedModel CagedModel { get; set; }
 
         public long CnpjDetran { get; set; }
         [ForeignKey("CnpjDetran")]
-        public CadespModel DetranModel { get; set; }
+        public DetranModel DetranModel { get; set; }
+
+        public long CnpjSiel { get; set; }
+        [ForeignKey("CnpjSiel")]
+        public SielModel SielModel { get; set; }
+
+        public long CnpjSivec { get; set; }
+        [ForeignKey("CnpjSivec")]
+        public SivecModel SivecModel { get; set; }
 
         public ArpenspModel()
         {

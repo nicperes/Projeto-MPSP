@@ -17,8 +17,10 @@ namespace WebApi.Repositories
         public RelatorioSimplificadoRepository()
         {
             webScrapingArpensp = new WebScraping();
-            
+            WebScraping webScraping = new WebScraping();
         }
+
+        
 
         public ArpenspModel SimplesArpensp(string arpensp)
         {
