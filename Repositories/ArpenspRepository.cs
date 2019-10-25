@@ -44,9 +44,9 @@ namespace WebApi.Repositories
         }
 
 
-        public IList<ArpenspModel> FindAll()
+        public List<ArpenspModel> FindAll()
         {
-            IList<ArpenspModel> listaPessoas;
+            List<ArpenspModel> listaPessoas;
             using (context)
             {
 

@@ -11,12 +11,21 @@ using java.net;
 using Newtonsoft.Json;
 using org.apache.pdfbox.cos;
 using org.apache.pdfbox.pdmodel;
+using WebApi.Repositories;
 
 namespace WebApi.Scraping
 {
     public class WebScraping
     {
-        
+        ArpenspRepository arpenspRepository;
+        CadespRepository cadespRepository;
+        JucespRepository jucespRepository;
+        CensecRepository censecRepository;
+        CagedRepository cagedRepository;
+        SielRepository sielRepository;
+        SivecRepository sivecRepository;
+        DetranRepository detranRepository;
+
         [HttpPost]
         public string Arpensp(PesquisaCPFCNPJ pesquisaCPFCNPJ)
         {
@@ -64,6 +73,8 @@ namespace WebApi.Scraping
                 objArp.Matricula = matricula;
                 objArp.DataEntrada = dataEntrada;
                 objArp.DataRegistro = dataRegistro;
+
+                arpenspRepository.Insert(objArp);
 
                 string objjsonData = JsonConvert.SerializeObject(objArp, new JsonSerializerSettings { Formatting = Formatting.Indented });
 
@@ -136,6 +147,8 @@ namespace WebApi.Scraping
                 objCad.OcorrenciaFiscal = ocorrenciaFiscal;
                 objCad.TipoUnidade = tipoUnidade;
                 objCad.FormasAtuacao = formaAtuacao;
+
+                cadespRepository.Insert(objCad);
 
                 string objjsonData = JsonConvert.SerializeObject(objCad, new JsonSerializerSettings { Formatting = Formatting.Indented });
 
@@ -210,6 +223,9 @@ namespace WebApi.Scraping
                 objJu.Municipio = municipio;
                 objJu.Cep = cep;
                 objJu.Uf = uf;
+
+                jucespRepository.Insert(objJu);
+
                 string objjsonData = JsonConvert.SerializeObject(objJu, new JsonSerializerSettings { Formatting = Formatting.Indented });
                 
                 //System.IO.File.WriteAllText(@"C:\Users\nperes\Desktop\Projeto\Arquivos\Jucesp.txt", objjsonData);
@@ -249,6 +265,8 @@ namespace WebApi.Scraping
                 objCa.Telefone = telefone;
                 objCa.Ramal = ramal;
                 objCa.Email = email;
+
+                cagedRepository.Insert(objCa);
 
                 string objjsonData = JsonConvert.SerializeObject(objCa);
 
@@ -404,6 +422,8 @@ namespace WebApi.Scraping
                 objDen.DataLicenciamento = dataLicenciamento;
                 objDen.DataEmissaoCRV = dataEmissaoCRV;
 
+                detranRepository.Insert(objDen);
+
                 string objjsonData = JsonConvert.SerializeObject(objDen, new JsonSerializerSettings { Formatting = Formatting.Indented });
 
                 //System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Detran.txt", objjsonData);
@@ -531,6 +551,8 @@ namespace WebApi.Scraping
                 objCen.ContatoCartorio = contatos.Trim();
                 objCen.StatusCartorio = status.Trim();
 
+                censecRepository.Insert(objCen);
+
                 string objjsonData = JsonConvert.SerializeObject(objCen);
 
                 //System.IO.File.WriteAllText(@"C:\Users\favar\Desktop\Texto\Censec.txt", objjsonData);
@@ -567,6 +589,8 @@ namespace WebApi.Scraping
                 objSiel.Titulo = titulo;
                 objSiel.Zona = zona;
                 objSiel.DataDomicilio = dataDomicilio;
+
+                sielRepository.Insert(objSiel);
 
                 string objjsonData = JsonConvert.SerializeObject(objSiel);
 
@@ -630,6 +654,8 @@ namespace WebApi.Scraping
                 objSivec.CorPele = corPele;
                 objSivec.CorCabelo = corCabelo;
                 objSivec.Profissao = profissao;
+
+                sivecRepository.Insert(objSivec);
 
                 string objjsonData = JsonConvert.SerializeObject(objSivec);
 
