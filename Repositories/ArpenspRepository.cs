@@ -31,12 +31,12 @@ namespace WebApi.Repositories
         public ArpenspModel FindById(int id)
         {
             var pessoa = context.Arpensp
-                     .Include(a => a.CadespModel)
-                     .Include(b => b.JucespModel)
-                     .Include(c => c.CensecModel)
-                     .Include(d => d.CagedModel)
-                     .Include(d => d.SielModel)
-                     .Include(d => d.SivecModel)
+                     //.Include(a => a.CadespModel)
+                     //.Include(b => b.JucespModel)
+                     //.Include(c => c.CensecModel)
+                     //.Include(d => d.CagedModel)
+                     //.Include(d => d.SielModel)
+                     //.Include(d => d.SivecModel)
                      .SingleOrDefault(p => p.CNPJCPFArpensp == id);
 
             return pessoa;
@@ -51,12 +51,12 @@ namespace WebApi.Repositories
             {
 
                 listaPessoas = context.Arpensp
-                    .Include(a => a.CadespModel)
-                     .Include(b => b.JucespModel)
-                     .Include(c => c.CensecModel)
-                     .Include(d => d.CagedModel)
-                      .Include(d => d.SielModel)
-                     .Include(d => d.SivecModel)
+                    //.Include(a => a.CadespModel)
+                    // .Include(b => b.JucespModel)
+                    // .Include(c => c.CensecModel)
+                    // .Include(d => d.CagedModel)
+                    //  .Include(d => d.SielModel)
+                    // .Include(d => d.SivecModel)
                     .ToList();
             }
 

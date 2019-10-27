@@ -12,7 +12,7 @@ namespace WebApi.Models
     public class JucespModel {
 
         [Key]
-        [Column("CNPJ")]
+        [Column("CnpjJucesp")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long CNPJJucesp { get; set; }
 

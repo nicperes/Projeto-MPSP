@@ -17,14 +17,14 @@ namespace WebApi.Scraping
 {
     public class WebScraping
     {
-        ArpenspRepository arpenspRepository;
-        CadespRepository cadespRepository;
-        JucespRepository jucespRepository;
-        CensecRepository censecRepository;
-        CagedRepository cagedRepository;
-        SielRepository sielRepository;
-        SivecRepository sivecRepository;
-        DetranRepository detranRepository;
+        ArpenspRepository arpenspRepository = new ArpenspRepository();
+        CadespRepository cadespRepository = new CadespRepository();
+        JucespRepository jucespRepository = new JucespRepository();
+        CensecRepository censecRepository = new CensecRepository();
+        CagedRepository cagedRepository = new CagedRepository();
+        SielRepository sielRepository = new SielRepository();
+        SivecRepository sivecRepository = new SivecRepository();
+        DetranRepository detranRepository = new DetranRepository();
 
         [HttpPost]
         public string Arpensp(PesquisaCPFCNPJ pesquisaCPFCNPJ)
@@ -32,8 +32,8 @@ namespace WebApi.Scraping
 
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
-            //using (IWebDriver driver = new ChromeDriver(options))
+            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -42,7 +42,7 @@ namespace WebApi.Scraping
                 driver.FindElement(By.XPath("//*[@id='main']/div[2]/div[2]/div[2]/div/a/img")).Click();
                 driver.FindElement(By.ClassName("item3")).Click();
                 driver.FindElement(By.XPath("//*[@id='wrapper']/ul/li[2]/ul/li[1]/a")).Click();
-                driver.FindElement(By.XPath("//*[@id='principal']/div/form/table/tbody/tr[10]/td[2]/input")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ);
+                driver.FindElement(By.XPath("//*[@id='principal']/div/form/table/tbody/tr[10]/td[2]/input")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ.ToString());
                 driver.FindElement(By.ClassName("botao")).SendKeys(Keys.Enter);
 
                 var resultado = driver.FindElement(By.ClassName("principal")).Text;
@@ -62,6 +62,7 @@ namespace WebApi.Scraping
                 string dataRegistro = strsplit[24].Trim();
 
                 ArpenspModel objArp = new ArpenspModel();
+                objArp.CNPJCPFArpensp = pesquisaCPFCNPJ.CPFCNPJ;
                 objArp.CartorioRegistro = cartorioRegistro;
                 objArp.NumCNS = numeroCNS;
                 objArp.UF = uf;
@@ -73,6 +74,7 @@ namespace WebApi.Scraping
                 objArp.Matricula = matricula;
                 objArp.DataEntrada = dataEntrada;
                 objArp.DataRegistro = dataRegistro;
+                
 
                 arpenspRepository.Insert(objArp);
 
@@ -95,8 +97,8 @@ namespace WebApi.Scraping
 
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
-            //using (IWebDriver driver = new ChromeDriver(options))
+            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
+            using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -108,7 +110,7 @@ namespace WebApi.Scraping
                 //driver.FindElement(By.XPath("//*[@id='ctl00_menuPlaceHolder_menuControl1_LoginView1_menuSuperiorn1']/table/tbody/tr/td/a")).Click();
 
                 driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/cadesp/pagina3-pesquisa.html");
-                driver.FindElement(By.Id("ctl00_conteudoPaginaPlaceHolder_tcConsultaCompleta_TabPanel1_txtIdentificacao")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ);
+                driver.FindElement(By.Id("ctl00_conteudoPaginaPlaceHolder_tcConsultaCompleta_TabPanel1_txtIdentificacao")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ.ToString());
 
                 driver.FindElement(By.Id("ctl00_conteudoPaginaPlaceHolder_tcConsultaCompleta_TabPanel1_btnConsultarEstabelecimento")).SendKeys(Keys.Enter);
 
@@ -134,7 +136,6 @@ namespace WebApi.Scraping
                 string formaAtuacao = strsplit[30].Trim();
 
                 CadespModel objCad = new CadespModel();
-
                 objCad.IE = ie;
                 objCad.Situacao = situacao;
                 objCad.CNPJ = long.Parse(cnpj.Replace(".","").Replace("/","").Replace("-",""));
@@ -163,8 +164,8 @@ namespace WebApi.Scraping
         {
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
-            //using (IWebDriver driver = new ChromeDriver(options))
+            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
+            using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -240,15 +241,15 @@ namespace WebApi.Scraping
 
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
-            //using (IWebDriver driver = new ChromeDriver(options))
+            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
+            using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
                 driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/login.html");
                 driver.FindElement(By.Id("btn-submit")).Click();
                 driver.Navigate().GoToUrl("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina3-consulta-autorizado-responsavel.html");
-                driver.FindElement(By.Id("formPesquisarAutorizado:txtChavePesquisaAutorizado014")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ);
+                driver.FindElement(By.Id("formPesquisarAutorizado:txtChavePesquisaAutorizado014")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ.ToString());
                 driver.FindElement(By.Id("formPesquisarAutorizado:bt027_8")).Click();
 
                 var resultado = driver.FindElement(By.XPath("//*[@id='conteudo']/fieldset[3]")).Text;
@@ -261,6 +262,7 @@ namespace WebApi.Scraping
                 string email = strsplit[15].Trim();
 
                 CagedModel objCa = new CagedModel();
+                objCa.CNPJCaged = pesquisaCPFCNPJ.CPFCNPJ;
                 objCa.Nome = nome;
                 objCa.Telefone = telefone;
                 objCa.Ramal = ramal;
@@ -282,8 +284,8 @@ namespace WebApi.Scraping
             var options = new ChromeOptions();
             //options.AddArguments("headless");
             options.AddArguments("no-sandbox");
-            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
-            //using (IWebDriver driver = new ChromeDriver(options))
+            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -291,7 +293,7 @@ namespace WebApi.Scraping
                 driver.FindElement(By.Id("form:j_id563205015_44efc15b")).Click();
                 driver.FindElement(By.Id("navigation_a_M_16")).Click();
                 driver.FindElement(By.XPath("//*[@id='navigation_a_F_16']")).Click();
-                driver.FindElement(By.Id("form:rg")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ);
+                driver.FindElement(By.Id("form:rg")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ.ToString());
                 driver.FindElement(By.Id("form:nome")).SendKeys(pesquisaCPFCNPJ.Nome);
                 driver.FindElement(By.LinkText("Pesquisar")).Click();
 
@@ -322,7 +324,7 @@ namespace WebApi.Scraping
                 driver.SwitchTo().Window(driver.WindowHandles[0]);
                 driver.FindElement(By.Id("navigation_a_M_18")).Click();
                 driver.FindElement(By.PartialLinkText("Consultar Veículo Base Estadual")).Click();
-                driver.FindElement(By.XPath("/html/body/div[4]/div/table/tbody/tr/td/div/div/form/div[1]/div[2]/table[2]/tbody/tr[2]/td[2]/input")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ);
+                driver.FindElement(By.XPath("/html/body/div[4]/div/table/tbody/tr/td/div/div/form/div[1]/div[2]/table[2]/tbody/tr[2]/td[2]/input")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ.ToString());
                 driver.FindElement(By.LinkText("Pesquisar")).Click();
                 driver.SwitchTo().Window(driver.WindowHandles[3]);
 
@@ -437,8 +439,8 @@ namespace WebApi.Scraping
 
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
-            //using (IWebDriver driver = new ChromeDriver(options))
+            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -448,7 +450,7 @@ namespace WebApi.Scraping
                 driver.FindElement(By.Id("menucentrais")).Click();
                 driver.FindElement(By.XPath("//*[@id='ctl00_CESDILi']/a")).Click();
                 driver.FindElement(By.XPath("//*[@id='ctl00_CESDIConsultaAtoHyperLink']")).Click();
-                driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_DocumentoTextBox")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ);
+                driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_DocumentoTextBox")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ.ToString());
                 driver.FindElement(By.ClassName("BT_Buscar")).SendKeys(Keys.Enter);
 
                 driver.FindElement(By.XPath("//*[@id='ctl00_ContentPlaceHolder1_ResultadoBuscaGeralPanel']/div[2]/div[1]/div/table/tbody/tr[2]/td[1]/input")).Click();
@@ -531,6 +533,7 @@ namespace WebApi.Scraping
                 }
 
                 CensecModel objCen = new CensecModel();
+                objCen.CNPJCensec = long.Parse(pesquisaCPFCNPJ.CPFCNPJ.ToString());
                 objCen.Carga = carga.Trim();
                 objCen.Mes = mes.Trim();
                 objCen.Ano = ano.Trim();
@@ -566,8 +569,8 @@ namespace WebApi.Scraping
 
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
-            //using (IWebDriver driver = new ChromeDriver(options))
+            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -586,6 +589,7 @@ namespace WebApi.Scraping
                 string dataDomicilio = strsplit[8].Replace("Data Domicílio ", "").Trim();
 
                 SielModel objSiel = new SielModel();
+                objSiel.CNPJSiel = pesquisaCPFCNPJ.CPFCNPJ;
                 objSiel.Titulo = titulo;
                 objSiel.Zona = zona;
                 objSiel.DataDomicilio = dataDomicilio;
@@ -605,8 +609,8 @@ namespace WebApi.Scraping
 
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
-            //using (IWebDriver driver = new ChromeDriver(options))
+            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -625,7 +629,7 @@ namespace WebApi.Scraping
                 driver.FindElement(By.XPath("/html/body/nav/div[2]/ul/li[4]/ul/li[2]/a")).Click();
                 driver.FindElement(By.XPath("/html/body/nav/div[2]/ul/li[4]/ul/li[2]/ul/li[1]/a")).Click();
 
-                driver.FindElement(By.Id("idValorPesq")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ);
+                driver.FindElement(By.Id("idValorPesq")).SendKeys(pesquisaCPFCNPJ.CPFCNPJ.ToString());
                 driver.FindElement(By.Id("procurar")).Click();
                 System.Threading.Thread.Sleep(2000);
                 driver.FindElement(By.XPath("//*[@id='tabelaPesquisa']/tbody/tr[1]/td[1]/a")).Click();
@@ -645,6 +649,7 @@ namespace WebApi.Scraping
                 string profissao = strsplit[20].Trim();
 
                 SivecModel objSivec = new SivecModel();
+                objSivec.CnpjSivec = pesquisaCPFCNPJ.CPFCNPJ;
                 objSivec.DataEmissao = dataEmissao;
                 objSivec.EstadoCivil = estadoCivil;
                 objSivec.Naturalizado = naturalizado;

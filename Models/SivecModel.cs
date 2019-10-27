@@ -15,40 +15,40 @@ namespace WebApi.Models
         [Column("CnpjSivec")]
         public long CnpjSivec { get; set; }
 
-        [Column("DataEmissao  ")]
-        [Display(Name = "DataEmissao  ")]
+        [Column("DataEmissao")]
+        [Display(Name = "DataEmissao")]
         public string DataEmissao { get; set; }
 
-        [Column("EstadoCivil  ")]
-        [Display(Name = "EstadoCivil  ")]
+        [Column("EstadoCivil")]
+        [Display(Name = "EstadoCivil")]
         public string EstadoCivil { get; set; }
 
-        [Column("Naturalizado  ")]
-        [Display(Name = "Naturalizado  ")]
+        [Column("Naturalizado")]
+        [Display(Name = "Naturalizado")]
         public string Naturalizado { get; set; }
 
-        [Column("PostoIdentificacao   ")]
-        [Display(Name = "PostoIdentificacao   ")]
+        [Column("PostoIdentificacao")]
+        [Display(Name = "PostoIdentificacao")]
         public string PostoIdentificacao { get; set; }
 
-        [Column("GrauInstituicao   ")]
-        [Display(Name = "GrauInstituicao   ")]
+        [Column("GrauInstituicao")]
+        [Display(Name = "GrauInstituicao")]
         public string GrauInstituicao { get; set; }
 
-        [Column("CorOlho   ")]
-        [Display(Name = "CorOlho   ")]
+        [Column("CorOlho")]
+        [Display(Name = "CorOlho")]
         public string CorOlho { get; set; }
 
-        [Column("CorCabelo   ")]
-        [Display(Name = "CorCabelo   ")]
+        [Column("CorCabelo")]
+        [Display(Name = "CorCabelo")]
         public string CorCabelo { get; set; }
 
-        [Column("CorPele   ")]
-        [Display(Name = "CorPele   ")]
+        [Column("CorPele")]
+        [Display(Name = "CorPele")]
         public string CorPele { get; set; }
 
-        [Column("Profissao    ")]
-        [Display(Name = "Profissao    ")]
+        [Column("Profissao")]
+        [Display(Name = "Profissao")]
         public string Profissao { get; set; }
 
 

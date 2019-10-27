@@ -19,7 +19,7 @@ namespace WebApi.Repositories.Context
         public DbSet<DetranModel> Detran { get; set; }
         public DbSet<SielModel> Siel { get; set; }
         public DbSet<SivecModel> Sivec { get; set; }
-
+        public DbSet<PesquisaCPFCNPJ> PesquisaCPFCNPJ { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

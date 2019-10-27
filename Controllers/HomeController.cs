@@ -29,12 +29,16 @@ namespace WebApi.Controllers
         private readonly ValidacaoRepository validacaoRepository;
         private readonly WebScraping webScraping;
         private readonly RelatorioSimplificadoRepository relatorioSimplificadoRepository;
+        private readonly ConsultaAnteriorRepository consultaAnteriorRepository;
+        private readonly ArpenspRepository arpenspRepository;
 
         public HomeController()
         {
             validacaoRepository = new ValidacaoRepository();
             webScraping = new WebScraping();
             relatorioSimplificadoRepository = new RelatorioSimplificadoRepository();
+            consultaAnteriorRepository = new ConsultaAnteriorRepository();
+            arpenspRepository = new ArpenspRepository();
         }
 
         [HttpGet]
@@ -67,6 +71,24 @@ namespace WebApi.Controllers
         public ActionResult Menu()
         {
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult ConsultaAnterior()
+        {
+            //Chama lista FindAll do banco de dados
+
+
+
+            return View(consultaAnteriorRepository.FindAll());
+        }
+
+        [HttpPost]
+        public ActionResult ReculperarConsulta(PesquisaCPFCNPJ pesquisaCPFCNPJ)
+        {
+
+            //Adicionar no Banco de Dados o CPF/CNPJ e o horario
+            return RedirectToAction("RelatorioSimplificado", pesquisaCPFCNPJ);
         }
 
         [HttpGet]
@@ -138,6 +160,8 @@ namespace WebApi.Controllers
             CensecModel censecModel = relatorioSimplificadoRepository.SimplesCensec(censec);
             SielModel sielModel = relatorioSimplificadoRepository.SimplesSiel(siel);
             SivecModel sivecModel = relatorioSimplificadoRepository.SimplesSivec(sivec);
+
+            consultaAnteriorRepository.Insert(pesquisaCPFCNPJ);
 
             return View(new PesquisaCPFCNPJ() { ArpenspModel = arpenspModel, CadespModel = cadespModel, JucespModel = jucespModel, CagedModel = cagedModel, DetranModel = detranModel, CensecModel = censecModel, SielModel = sielModel, SivecModel = sivecModel });
         }

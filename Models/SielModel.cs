@@ -12,8 +12,8 @@ namespace WebApi.Models
     {
 
         [Key]
-        [Column("CNPJSiel")]
-        public long CNPJCaged { get; set; }
+        [Column("CnpjSiel")]
+        public long CNPJSiel { get; set; }
 
         [Column("Titulo ")]
         [Display(Name = "Titulo ")]

@@ -23,7 +23,7 @@
                     $("#divCPF").prop("hidden", !this.checked);
                     cpf.attr('required', '');
                 }else
-                if (!$("#cadesp").is(":checked") && !$("#jucesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked") && !$("#sivec").is(":checked")) {
+                if (!$("#cadesp").is(":checked") && !$("#jucesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked") && !$("#siel").is(":checked") && !$("#sivec").is(":checked")) {
                     $("#divCPF").prop("hidden", !this.checked);
                 }
             });
@@ -32,7 +32,7 @@
                     $("#divCPF").prop("hidden", !this.checked);
                     cpf.attr('required', '');
                 } else
-                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked") && !$("#sivec").is(":checked")) {
+                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked") && !$("#siel").is(":checked") && !$("#sivec").is(":checked")) {
                         $("#divCPF").prop("hidden", !this.checked);
                     }
             });
@@ -41,7 +41,7 @@
                     $("#divCPF").prop("hidden", !this.checked);
                     cpf.attr('required', '');
                 } else
-                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked") && !$("#sivec").is(":checked")) {
+                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked") && !$("#siel").is(":checked") && !$("#sivec").is(":checked")) {
                         $("#divCPF").prop("hidden", !this.checked);
                     }
             });
@@ -50,7 +50,7 @@
                     $("#divCPF").prop("hidden", !this.checked);
                     cpf.attr('required', '');
                 } else
-                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#detran").is(":checked") && !$("#caged").is(":checked") && !$("#sivec").is(":checked")) {
+                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#detran").is(":checked") && !$("#caged").is(":checked") && !$("#siel").is(":checked") && !$("#sivec").is(":checked")) {
                         $("#divCPF").prop("hidden", !this.checked);
 
                     }
@@ -60,27 +60,41 @@
                     $("#divCPF").prop("hidden", !this.checked);
                     cpf.attr('required', '');
                 } else
-                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#caged").is(":checked") && !$("#censec").is(":checked") && !$("#sivec").is(":checked")) {
+                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#caged").is(":checked") && !$("#censec").is(":checked") && !$("#siel").is(":checked") && !$("#sivec").is(":checked")) {
                         $("#divCPF").prop("hidden", !this.checked);
                     }
+                if ($("#divNome").is(":hidden")) {
+                    $("#divNome").prop("hidden", !this.checked);
+                    nome.attr('required', '');
+                } else if (!$("#jucesp").is(":checked") && !$("#siel").is(":checked") && !$("#detran").is(":checked")){
+                    $("#divNome").prop("hidden", !this.checked);
+                }
             });
             $("#jucesp").click(function () {
                 if ($("#divCPF").is(":hidden")) {
                     $("#divCPF").prop("hidden", !this.checked);
                     cpf.attr('required', '');
                 }
-                else if (!$("#arpensp").is(":checked") && !$("#cadesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked") && !$("#sivec").is(":checked")) {
+                else if (!$("#arpensp").is(":checked") && !$("#cadesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked") && !$("#siel").is(":checked") && !$("#sivec").is(":checked")) {
                     $("#divCPF").prop("hidden", !this.checked);
                 }
 
                 if ($("#divNome").is(":hidden")) {
                     $("#divNome").prop("hidden", !this.checked);
                     nome.attr('required', '');
-                } else if (!$("#jucesp").is(":checked") && !$("#siel").is(":checked")){
+                } else if (!$("#jucesp").is(":checked") && !$("#siel").is(":checked") && !$("#detran").is(":checked")){
                     $("#divNome").prop("hidden", !this.checked);
                 }
             });
             $("#siel").click(function () {
+                if ($("#divCPF").is(":hidden")) {
+                    $("#divCPF").prop("hidden", !this.checked);
+                    cpf.attr('required', '');
+                }
+                else if (!$("#arpensp").is(":checked") && !$("#cadesp").is(":checked") && !$("#caged").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked") && !$("#siel").is(":checked") && !$("#sivec").is(":checked")) {
+                    $("#divCPF").prop("hidden", !this.checked);
+                }
+                
                 if ($("#divProcesso").is(":hidden")) {
                     $("#divProcesso").prop("hidden", !this.checked);
                     processo.attr('required', '');
@@ -91,7 +105,7 @@
                 if ($("#divNome").is(":hidden")) {
                     $("#divNome").prop("hidden", !this.checked);
                     nome.attr('required', '');
-                } else if (!$("#jucesp").is(":checked") && !$("#siel").is(":checked")){
+                } else if (!$("#jucesp").is(":checked") && !$("#siel").is(":checked") && !$("#detran").is(":checked")){
                     $("#divNome").prop("hidden", !this.checked);
                 }
             });
@@ -100,7 +114,7 @@
                     $("#divCPF").prop("hidden", !this.checked);
                     cpf.attr('required', '');
                 } else
-                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked")) {
+                    if (!$("#arpensp").is(":checked") && !$("#jucesp").is(":checked") && !$("#cadesp").is(":checked") && !$("#detran").is(":checked") && !$("#censec").is(":checked") && !$("#siel").is(":checked")) {
                         $("#divCPF").prop("hidden", !this.checked);
                     }
             });

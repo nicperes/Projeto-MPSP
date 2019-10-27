@@ -7,10 +7,11 @@ using System.Web;
 
 namespace WebApi.Models
 {
+    [Table("CadespModel")]
     public class CadespModel
     {
         [Key]
-        [Column("CNPJCadesp")]
+        [Column("CnpjCadesp")]
         public long CNPJ { get; set; }
 
         [Column("IE")]

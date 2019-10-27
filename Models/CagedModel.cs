@@ -7,12 +7,12 @@ using System.Web;
 
 namespace WebApi.Models
 {
-    [Table("CensecModel")]
+    [Table("CagedModel")]
     public class CagedModel
     {
 
         [Key]
-        [Column("CNPJCaged")]
+        [Column("CnpjCaged")]
         public long CNPJCaged{ get; set; }
 
         [Column("Nome")]

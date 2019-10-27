@@ -10,7 +10,7 @@ namespace WebApi.Models
     public class ArpenspModel
     {
         [Key]
-        [Column("CNPJCPF")]
+        [Column("CnpjArpensp")]
         public long CNPJCPFArpensp { get; set; }
 
 
@@ -69,47 +69,47 @@ namespace WebApi.Models
         public string DataRegistro { get; set; }
 
 
-        public long CnpjJucesp { get; set; }
-        [ForeignKey("CnpjJucesp")]
-        public JucespModel JucespModel { get; set; }
+        //public long Cnpjjucesp { get; set; }
+        //[ForeignKey("cnpjjucesp")]
+        //public JucespModel JucespModel { get; set; }
 
 
-        public long CnpjCadesp { get; set; }
-        [ForeignKey("CnpjCadesp")]
-        public CadespModel CadespModel { get; set; }
+        //public long Cnpjcadesp { get; set; }
+        //[ForeignKey("cnpjcadesp")]
+        //public CadespModel CadespModel { get; set; }
 
 
-        public long CnpjCensec { get; set; }
-        [ForeignKey("CnpjCensec")]
-        public CensecModel CensecModel { get; set; }
+        //public long Cnpjcensec { get; set; }
+        //[ForeignKey("cnpjcensec")]
+        //public CensecModel CensecModel { get; set; }
 
-        public long CnpjCaged { get; set; }
-        [ForeignKey("CnpjCaged")]
-        public CagedModel CagedModel { get; set; }
+        //public long Cnpjcaged { get; set; }
+        //[ForeignKey("cnpjcaged")]
+        //public CagedModel CagedModel { get; set; }
 
-        public long CnpjDetran { get; set; }
-        [ForeignKey("CnpjDetran")]
-        public DetranModel DetranModel { get; set; }
+        //public long Cnpjdetran { get; set; }
+        //[ForeignKey("cnpjdetran")]
+        //public DetranModel DetranModel { get; set; }
 
-        public long CnpjSiel { get; set; }
-        [ForeignKey("CnpjSiel")]
-        public SielModel SielModel { get; set; }
+        //public long Cnpjsiel { get; set; }
+        //[ForeignKey("cnpjsiel")]
+        //public SielModel SielModel { get; set; }
 
-        public long CnpjSivec { get; set; }
-        [ForeignKey("CnpjSivec")]
-        public SivecModel SivecModel { get; set; }
+        //public long Cnpjsivec { get; set; }
+        //[ForeignKey("cnpjsivec")]
+        //public SivecModel SivecModel { get; set; }
 
         public ArpenspModel()
         {
 
         }
 
-        public ArpenspModel(long Cnpjcpf, String Nome)
-        {
-            this.CNPJCPFArpensp = CNPJCPFArpensp;
+        //public ArpenspModel(long Cnpjcpf, String Nome)
+        //{
+        //    this.CNPJCPFArpensp = CNPJCPFArpensp;
 
 
-        }
+        //}
 
 
     }

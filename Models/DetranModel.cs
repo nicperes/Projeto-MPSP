@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace WebApi.Models
 {
+    [Table("DetranModel")]
     public class DetranModel
     {
         [Key]
-        [Column("CNPJCPF")]
+        [Column("CnpjDetran")]
         public long CNPJCPF { get; set; }
 
         [Column("RG")]
