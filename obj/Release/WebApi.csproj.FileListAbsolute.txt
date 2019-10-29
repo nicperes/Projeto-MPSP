@@ -210,3 +210,9 @@ C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\Microsoft.Extensions.Logging.x
 C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\Remotion.Linq.xml
 C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\System.Collections.Immutable.xml
 C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\System.Interactive.Async.xml
+C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\EntityFramework.dll
+C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\EntityFramework.SqlServer.dll
+C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\itextsharp.dll
+C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\EntityFramework.xml
+C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\EntityFramework.SqlServer.xml
+C:\Users\favar\Documents\GitHub\Projeto-MPSP2\bin\itextsharp.xml

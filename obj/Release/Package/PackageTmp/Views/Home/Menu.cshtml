@@ -47,47 +47,48 @@
                     </span>
 
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn">@Html.ActionLink("Pesquisa de CPF/CNPJ", "PesquisaCPFCNPJ")</button>
+                        <button class="login100-form-btn" type="button" onclick="location.href='@Url.Action("PesquisaCPFCNPJ","Home")'">Pesquisa de CPF/CNPJ</button>
                     </div>
 
                     <br />
 
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn">@Html.ActionLink("Consultas Anteriores", "PesquisaCPFCNPJ")</button>
+                        <button class="login100-form-btn" type="button" onclick="location.href='@Url.Action("ConsultaAnterior","Home")'">Consultas Anteriores</button>
                     </div>
 
                     <br />
 
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn">
-                            @Html.ActionLink("Sair", "Login")
+                        <button class="login100-form-btn" type="button" onclick="location.href='@Url.Action("Login","Home")'">
+                            Sair
                         </button>
                     </div>
 
+
                 </form>
             </div>
-        </div>
-    </div>
+          </div>
+      </div>
 
 
-    <div id="dropDownSelect1"></div>
+      <div id="dropDownSelect1"></div>
 
-    <!--===============================================================================================-->
-    <script src="~/wwwroot/vendor/jquery/jquery-3.2.1.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/wwwroot/vendor/animsition/js/animsition.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/wwwroot/vendor/bootstrap/js/popper.js"></script>
-    <script src="~/wwwroot/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/wwwroot/vendor/select2/select2.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/wwwroot/vendor/daterangepicker/moment.min.js"></script>
-    <script src="~/wwwroot/vendor/daterangepicker/daterangepicker.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/wwwroot/vendor/countdowntime/countdowntime.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/wwwroot/js/main.js"></script>
+      <!--===============================================================================================-->
+                        <script src="~/wwwroot/vendor/jquery/jquery-3.2.1.min.js"></script>
+                        <!--===============================================================================================-->
+                        <script src="~/wwwroot/vendor/animsition/js/animsition.min.js"></script>
+                        <!--===============================================================================================-->
+                        <script src="~/wwwroot/vendor/bootstrap/js/popper.js"></script>
+                        <script src="~/wwwroot/vendor/bootstrap/js/bootstrap.min.js"></script>
+                        <!--===============================================================================================-->
+                        <script src="~/wwwroot/vendor/select2/select2.min.js"></script>
+                        <!--===============================================================================================-->
+                        <script src="~/wwwroot/vendor/daterangepicker/moment.min.js"></script>
+                        <script src="~/wwwroot/vendor/daterangepicker/daterangepicker.js"></script>
+                        <!--===============================================================================================-->
+                        <script src="~/wwwroot/vendor/countdowntime/countdowntime.js"></script>
+                        <!--===============================================================================================-->
+                        <script src="~/wwwroot/js/main.js"></script>
 
 </body>
 </html>

@@ -32,8 +32,8 @@ namespace WebApi.Scraping
 
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
-            using (IWebDriver driver = new ChromeDriver(options))
+            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            //using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -97,8 +97,8 @@ namespace WebApi.Scraping
 
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
-            using (IWebDriver driver = new ChromeDriver(options))
+            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
+            //using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -164,8 +164,8 @@ namespace WebApi.Scraping
         {
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
-            using (IWebDriver driver = new ChromeDriver(options))
+            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
+            //using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -241,8 +241,8 @@ namespace WebApi.Scraping
 
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
-            using (IWebDriver driver = new ChromeDriver(options))
+            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot", options))
+            //using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -284,8 +284,8 @@ namespace WebApi.Scraping
             var options = new ChromeOptions();
             //options.AddArguments("headless");
             options.AddArguments("no-sandbox");
-            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
-            using (IWebDriver driver = new ChromeDriver(options))
+            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            //using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -439,8 +439,8 @@ namespace WebApi.Scraping
 
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
-            using (IWebDriver driver = new ChromeDriver(options))
+            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            //using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -569,8 +569,8 @@ namespace WebApi.Scraping
 
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
-            using (IWebDriver driver = new ChromeDriver(options))
+            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            //using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 
@@ -609,8 +609,8 @@ namespace WebApi.Scraping
 
             var options = new ChromeOptions();
             options.AddArguments("headless");
-            //using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
-            using (IWebDriver driver = new ChromeDriver(options))
+            using (IWebDriver driver = new ChromeDriver("C:/inetpub/wwwroot/wwwroot",options))
+            //using (IWebDriver driver = new ChromeDriver(options))
             {
                 Actions builder = new Actions(driver);
 

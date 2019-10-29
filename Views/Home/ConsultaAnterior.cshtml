@@ -48,7 +48,8 @@
 
                     @foreach (var item in Model)
                     {
-                        <div class="login100-form-btn">
+                        <div class="login100-form-btn" onclick="location.href = '@(Url.Action("RelatorioSimplificado","Home", new { CPFCNPJ = item.CPFCNPJ, Nome = item.Nome, Processo = item.Processo, Arpensp = item.Arpensp,
+                                                              Cadesp = item.Cadesp, Caged = item.Caged, Jucesp = item.Jucesp, Detran = item.Detran, Censec = item.Censec, Siel = item.Siel, Sivec = item.Sivec}))'">
                             <table>
                                 <tr onclick="location.href = '@(Url.Action("RelatorioSimplificado","Home", new { CPFCNPJ = item.CPFCNPJ, Nome = item.Nome, Processo = item.Processo, Arpensp = item.Arpensp,
                                                               Cadesp = item.Cadesp, Caged = item.Caged, Jucesp = item.Jucesp, Detran = item.Detran, Censec = item.Censec, Siel = item.Siel, Sivec = item.Sivec}))'">
@@ -64,8 +65,8 @@
                             <br />
 
                             <div class="container-login100-form-btn">
-                                <button class="login100-form-btn">
-                                    @Html.ActionLink("Voltar", "Menu")
+                                <button class="login100-form-btn" type="button" onclick="location.href='@Url.Action("Menu","Home")'">
+                                    Voltar
                                 </button>
                             </div>
 

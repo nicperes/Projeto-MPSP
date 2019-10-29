@@ -5,7 +5,7 @@
 
 <!-- Page Content -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script  type="text/javascript">
+<script type="text/javascript">
     $(document).ready(function () {
         var divArpensp = document.getElementById('arp');
         var divCadesp = document.getElementById('cad');
@@ -24,11 +24,10 @@
         var textoCensec = document.getElementById('cenText').value;
         var textoSiel = document.getElementById('sielText').value;
         var textoSivec = document.getElementById('sivecText').value;
-        
+
         if (textoArpensp == null || textoArpensp == "") {
             divArpensp.style.display = "none";
         } else {
-            alert(textoArpensp);
             divArpensp.style.display = "block";
         }
 
@@ -76,6 +75,52 @@
 
     });
 </script>
+<!-- jsPDF library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas2image@1.0.5/canvas2image.min.js"></script>
+<script type="text/javascript">
+    function demoFromHTML() {
+
+        var quotes = document.getElementById('pagina');
+        
+        html2canvas(quotes, {
+            onrendered: function (canvas) {
+                var pdf = new jsPDF('p', 'pt', 'a4');
+
+                for (var i = 0; i <= quotes.clientHeight / 980; i++) {
+                    var srcImg = canvas;
+                    var sX = 0;
+                    var sY = 1280 * i;
+                    var sWidth = 2000;
+                    var sHeight = 1480;
+                    var dX = 0;
+                    var dY = 0;
+                    var dWidth = 1300;
+                    var dHeight = 1480;
+
+                    window.onePageCanvas = document.createElement("canvas");
+                    onePageCanvas.setAttribute('width', 2000);
+                    onePageCanvas.setAttribute('height', 1880);
+                    var ctx = onePageCanvas.getContext('2d');
+                    ctx.drawImage(srcImg, sX, sY, sWidth, sHeight, dX, dY, dWidth, dHeight);
+
+                    var canvasDataURL = onePageCanvas.toDataURL("image/png", 1.0);
+                    var width = onePageCanvas.clientWidth;
+                    var height = onePageCanvas.clientHeight;
+
+                    if (i > 0) {
+                        pdf.addPage(612, 791);
+                    }
+
+                    pdf.setPage(i + 1);
+                    pdf.addImage(canvasDataURL, 'PNG', 40, 20);
+               }
+                // Save the PDF
+                pdf.save('Relatorio.pdf');
+            }
+        });
+    }
+</script>
 
 <html lang="en">
 <head>
@@ -110,7 +155,8 @@
     <div class="limiter" id="pagina">
         <div class="container-login100" style="background-image: url(../../wwwroot/images/bg-01.jpg)">
             <div class="wrap-login100">
-                <form class="login100-form validate-form" asp-action="RelatorioSimplificado" asp-controller="Home" asp-route-id="" method="get">
+                <!-- asp-action="RelatorioSimplificado" asp-controller="Home" asp-route-id="" method="get"-->
+                <form class="login100-form validate-form">
                     <span class="login100-form-logo">
                         <img src="~/wwwroot/images/mpsp.png" />
                     </span>
@@ -496,17 +542,17 @@
 
                         <br />
                     </div>
-                    <div class="container-login100-form-btn" id="convertThisPageButtonDiv">
-                        <button class="login100-form-btn">
-                            @Html.ActionLink("Gerar PDF", "RelatorioPdf")
+                    <div class="container-login100-form-btn" data-html2canvas-ignore="true" id="convertThisPageButtonDiv">
+                        <button class="login100-form-btn" type="button" onclick="demoFromHTML();">
+                            Gerar PDF
                         </button>
                     </div>
 
                     <br />
 
-                    <div class="container-login100-form-btn" id="voltar">
-                        <button class="login100-form-btn">
-                            @Html.ActionLink("Voltar", "Menu")
+                    <div class="container-login100-form-btn" data-html2canvas-ignore="true" id="voltar">
+                        <button class="login100-form-btn" type="button" onclick="location.href='@Url.Action("Menu","Home")'">
+                            Voltar
                         </button>
                     </div>
 
